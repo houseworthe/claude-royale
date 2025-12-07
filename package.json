@@ -1,0 +1,16 @@
+{
+  "name": "claude-royale",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "chat": "node twitch-chat.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "tmi.js": "^1.8.5"
+  }
+}

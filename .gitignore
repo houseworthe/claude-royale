@@ -1,0 +1,32 @@
+# Screenshots (large binary files)
+screenshots/
+*.png
+*.jpg
+*.jpeg
+
+# Logs
+logs/
+*.log
+firebase-debug.log
+
+# Node
+node_modules/
+package-lock.json
+
+# Claude Code local settings (may contain paths)
+.claude/settings.local.json
+
+# macOS
+.DS_Store
+
+# Twitch chat state (ephemeral)
+.chat-collector.pid
+.chat-last-seen
+chat-log.txt
+
+# Environment/secrets (if any added later)
+.env
+.env.*
+*.secret
+*credentials*
+*token*

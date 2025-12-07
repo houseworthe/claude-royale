@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(osascript:*)",
+      "Bash(screencapture:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)",
+      "Bash(sleep:*)",
+      "Bash(timeout:*)",
+      "Bash(/Applications/BlueStacks.app/*)",
+      "Bash(./scripts/*)"
+    ]
+  }
+}

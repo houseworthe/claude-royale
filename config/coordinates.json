@@ -1,0 +1,83 @@
+{
+  "_comment": "Screen coordinates calibrated Dec 6, 2025. All values from user mouse position tracking.",
+
+  "buttons": {
+    "battle": [834, 892],
+    "shop": [615, 1058],
+    "cards": [713, 1051],
+    "home_navbar": [922, 1061],
+    "battle_navbar": [858, 1065],
+    "clan": [1021, 1042],
+    "profile": [1128, 1051],
+    "arena": [875, 559],
+    "ok": [878, 1068],
+    "post_game_ok": [959, 1014],
+    "choose": [1039, 683],
+    "reward_left": [753, 332],
+    "reward_right": [957, 344]
+  },
+
+  "card_slots": {
+    "1": [655, 488],
+    "2": [735, 488],
+    "3": [815, 488],
+    "4": [895, 488]
+  },
+
+  "arena": {
+    "bridge_left": [710, 263],
+    "bridge_right": [1010, 263],
+    "center": [864, 333],
+    "left_lane": [710, 300],
+    "right_lane": [1010, 300],
+    "behind_king": [864, 413],
+    "enemy_left_princess": [710, 150],
+    "enemy_right_princess": [1010, 150]
+  },
+
+  "deck_slots": {
+    "_comment": "Deck management buttons (4x2 grid). Format: slot_<row><col>_<action>",
+    "_note": "User-calibrated coordinates from game screen",
+    "slot_1_1_card": [650, 377],
+    "slot_1_1_upgrade": [643, 513],
+    "slot_1_1_remove": [637, 581],
+    "slot_1_2_card": [799, 215],
+    "slot_1_2_upgrade": [799, 462],
+    "slot_1_2_remove": [781, 595],
+    "slot_1_3_card": [463, 325],
+    "slot_1_3_upgrade": [927, 460],
+    "slot_1_3_remove": [934, 581],
+    "slot_1_4_card": [1090, 406],
+    "slot_1_4_upgrade": [1080, 508],
+    "slot_1_4_remove": [1070, 586],
+    "slot_2_1_card": [645, 644],
+    "slot_2_1_upgrade": [643, 745],
+    "slot_2_1_remove": [647, 831],
+    "slot_2_2_card": [799, 330],
+    "slot_2_2_upgrade": [799, 385],
+    "slot_2_2_remove": [781, 448],
+    "slot_2_3_card": [927, 330],
+    "slot_2_3_upgrade": [927, 385],
+    "slot_2_3_remove": [934, 448],
+    "slot_2_4_card": [1079, 648],
+    "slot_2_4_upgrade": [1076, 752],
+    "slot_2_4_remove": [1078, 831]
+  },
+
+  "upgrade_dialog": {
+    "_comment": "Card upgrade dialog buttons",
+    "upgrade_button": [869, 969],
+    "confirm_button": [861, 843],
+    "close_button": [1106, 340]
+  },
+
+  "tower_troop": {
+    "_comment": "Tower troop upgrade workflow (King/Queen towers)",
+    "collection_button": [964, 149],
+    "tower_troop_tap": [646, 547],
+    "tower_troop_upgrade": [644, 652],
+    "tower_troop_upgrade_dialog": [919, 1030],
+    "tower_troop_confirm": [922, 901],
+    "back_to_decks": [750, 137]
+  }
+}
