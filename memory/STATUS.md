@@ -118,10 +118,29 @@ With 3 agents, we're capped at ~10 cards/minute regardless of prompt optimizatio
 
 ## Handoff Notes
 
-- System is stable and performing well
-- Win rate improved with tactical checklist
-- Bone Pit Beatdown deck proving effective through 485 trophies
-- Focus on execution quality, not system changes
+**Session 14 Setup Complete - Local Vision Model Ready**
+
+Key accomplishments this session:
+1. **Installed Ollama + Moondream** (1.7GB local vision model)
+2. **Created `scripts/analyze_board.sh`** - Local vision processing script
+3. **Pushed to GitHub** - https://github.com/houseworthe/claude-royale
+
+**New Pipeline (not yet tested):**
+```
+Screenshot → Moondream (local, 0.5-1s) → Text description → Haiku (text only, 0.5s) → Play card
+```
+
+Expected improvement: 2-2.5s per iteration vs current 5-6s = ~25 cards/min vs ~10
+
+**To test next session:**
+```bash
+./scripts/analyze_board.sh  # Takes screenshot and returns text description
+```
+
+**Remaining work:**
+- Test analyze_board.sh on actual game screenshots
+- Update agent prompts to use text input instead of images
+- Benchmark the new latency
 
 ---
 
