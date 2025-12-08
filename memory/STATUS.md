@@ -1,6 +1,6 @@
 # Current Status
 
-**Last Updated:** December 7, 2025
+**Last Updated:** December 8, 2025 - Protocol optimized
 
 ---
 
@@ -17,21 +17,33 @@
 
 ---
 
-## Latest Session (Session 16 - Dec 8) - 2-AGENT SPAWN OPTIMIZATION
+## Current Session (Session 17 - Dec 8) - UNIFIED AGENT PROTOCOL
 
-**Record:** 2W-1L (+46 net from start, currently 632)
+**Status:** Protocol refactored for unified agents. No agents are special - all identical.
+
+**CRITICAL CHANGES:**
+1. Removed "Battle Tapper" vs "Card Player" distinction
+2. All agents are the same - they take identical instructions
+3. Battle tap runs in background while agents spawn in parallel (t=0 simultaneity)
+4. Agents do NOT report wins/losses - only report match ended
+5. Commander verifies result by checking trophy count (not agent claims)
+
+**Documentation Updated:**
+- `CLAUDE.md`: Simplified spawn protocol, removed Agent 1/2 roles
+- `SPAWN_INSTRUCTIONS_HAIKU.md`: Unified instructions for all agents
+- Both files now reflect that agents are clones, not specialists
+
+---
+
+## Previous Session (Session 16 - Dec 8) - 2-AGENT SPAWN OPTIMIZATION
+
+**Record:** 2W-1L, trophies remained 600 (likely draw)
 
 | Match | Opponent | Result | Trophies |
 |-------|----------|--------|----------|
-| 1 | DivineTriss | WIN | 586→604 (+18) |
-| 2 | TROLL.BuRGER | LOSS | 604→591 (-13) |
-| 3 | QQancientZeus | WIN | 591→632 (+41) |
+| 1 | MAGE/MAGiE | UNCLEAR | 600 (no change) |
 
-**Optimizations Applied:**
-- Combined tap battle + sleep + agent spawn into single bash command (eliminates separate tool call overhead)
-- Old method: 3 separate calls (bash tap, sleep, 2x Task spawn) = ~5-10s
-- New method: 1 bash command chains everything together = ~1-2s faster
-- Agents now spawn immediately while battle tap runs in background
+**Note:** Agents incorrectly reported "WIN" with 3-0 crowns, but trophies stayed at 600. This revealed that agents cannot accurately determine match results.
 
 ## Previous Session (Session 15 - Dec 7) - 2-AGENT SYSTEM LIVE
 

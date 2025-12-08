@@ -31,28 +31,32 @@ Player Sub-Agents (both play SAME match together)
 └── Return result to Commander
 ```
 
-**Spawn Protocol (2-Agent System):**
-1. **Tap battle IN BACKGROUND:** `./scripts/tap.sh battle` with `run_in_background: true` (waits 8s, plays opening card)
-2. **Sleep 2 seconds** (let matchmaking process)
-3. **Spawn both agents in parallel** (don't wait for battle tap to finish)
-4. Poll every 60 seconds until result screen
-5. Retrieve all agent results before spawning next batch
+**Spawn Protocol (2-Agent System - OPTIMIZED):**
+1. **Tap battle in background immediately:** `./scripts/tap.sh battle` (waits 8s, auto-plays opening card)
+2. **Spawn both agents in parallel immediately** - Don't wait for tap to finish
+3. Both agents take screenshots and wait for battle to start
+4. Both agents play simultaneously, naturally staggered 1-3 seconds apart
+5. Poll every 60 seconds until both agents report "MATCH ENDED"
+6. Retrieve all agent results before spawning next batch
 
-**CRITICAL:** 2-second delay ensures matchmaking has started before agents begin playing.
+**WHY THIS WORKS:**
+- Battle tap runs in background while agents spawn in parallel
+- Eliminates sequential delays
+- Both agents start playing as soon as battle screen appears
+- Result: ~5-8 seconds faster match startup
 
 **Why 2 agents, not 3:**
 - 3 agents cause elixir collisions (multiple cards same second = only 1 succeeds)
 - 2 agents naturally alternate 1-3 seconds apart
 - Cleaner play rhythm, fewer wasted elixir
-- Validated: 3W-0L with 2-agent system
 
 **Auto-Opener:**
-- `tap.sh battle` now waits 8s after tapping, then plays slot 1 to random side (2G or 3G)
+- `tap.sh battle` waits 8s, then plays slot 1 to random side (2G or 3G)
 - First card tempo: ~8s vs old 20+ seconds
 
 **Exact Task Tool Syntax:**
 ```
-./scripts/tap.sh battle  (starts matchmaking + auto-plays opening card)
+./scripts/tap.sh battle (background, auto-opens match)
 
 Task tool call 1 (spawn in parallel):
   description: "Player Agent 1"
@@ -68,6 +72,8 @@ Task tool call 2 (spawn in parallel):
   model: "haiku"
   run_in_background: true
 ```
+
+**CRITICAL:** Agents don't report wins/losses (unreliable). They only report when match ends. Commander verifies actual result by checking trophy count.
 
 ---
 
