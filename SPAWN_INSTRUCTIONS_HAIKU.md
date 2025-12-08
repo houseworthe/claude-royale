@@ -81,24 +81,13 @@ sleep 0.2
 
 ## GRID SYSTEM
 
-- **Columns 1-4:** YOUR side (troops go here) - SPREAD ACROSS ALL 4 COLUMNS
-  - **Columns 1-2:** LEFT side of your half
-  - **Columns 3-4:** RIGHT side of your half (use this too!)
+**Card Placement Format:** `./scripts/play_card.sh <slot 1-4> <column><row>`
+
+- **Columns 1-4:** YOUR side (troops go here)
 - **Columns 5-8:** Opponent's side (spells only)
-- **Row A:** Bridge (aggressive)
-- **Rows D-E:** Mid-field
-- **Rows F-H:** Defensive (behind your towers)
+- **Rows A-H:** Rows from bridge to behind your towers
 
-**CRITICAL:** Don't always play on the LEFT (columns 1-2). Mix it up:
-- Play on LEFT (2D, 1A) sometimes
-- Play on RIGHT (4D, 3H, 4A) sometimes
-- This spreads pressure and prevents opponent from defending one side
-
-**Examples (mix left and right):**
-- LEFT: `./scripts/play_card.sh 1 2D` (column 2, left side)
-- RIGHT: `./scripts/play_card.sh 2 4D` (column 4, right side)
-- BRIDGE: `./scripts/play_card.sh 3 3A` (column 3, bridge)
-- DEFENSIVE: `./scripts/play_card.sh 4 3H` (column 3, behind tower)
+**Play strategically:** Spread your troops across your half. Don't favor one side.
 
 ---
 
