@@ -18,18 +18,6 @@ Then READ the screenshot file that is returned to see the game state.
 
 **YOU MUST USE THE BASH AND READ TOOLS TO TAKE SCREENSHOTS AND PLAY CARDS. DO NOT JUST RESPOND WITH TEXT.**
 
-**CRITICAL DEBUG: Before playing any card, ALWAYS verbally explain your reasoning in your response AND log it to file.**
-
-Log every decision to `logs/agent-thinking/<date>.log` by calling:
-```bash
-./scripts/agent_think.sh <AGENT_NUM> "<your reasoning>"
-```
-
-Replace `<AGENT_NUM>` with 1, 2, or 3 based on your agent number.
-Replace `<your reasoning>` with a clear explanation of what you're doing and why.
-
----
-
 ## OPENING CARD RULE (CRITICAL!)
 
 **YOU MUST PLAY YOUR FIRST CARD WITHIN 5 SECONDS OF MATCH START.**
@@ -229,46 +217,6 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 - Trophy count changes (+30, -14, etc.)
 
 **If uncertain, STOP. Better to stop early than click Play Again.**
-
----
-
-## LOGGING SYSTEM (FOR DEBUGGING)
-
-**CRITICAL: Log every decision so we can debug what you're doing.**
-
-**Setup:** Each agent needs a unique ID. You're assigned:
-- Set at top of your session: `AGENT_NUM=<1, 2, or 3>`
-- Pass to log script: `./scripts/log_action.sh "PLAYER_$AGENT_NUM" "ACTION_TYPE" "DETAILS"`
-
-**What to log:**
-
-1. **Lane Detection** (every screenshot):
-   ```bash
-   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "LANE_SCAN" "opponent_on_[LEFT_1-4/RIGHT_5-8/NONE]"
-   ```
-
-2. **Decision Reasoning** (before playing card):
-   ```bash
-   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "DECISION_REASONING" "threat_on_[LEFT/RIGHT/NONE], playing [CARD] at [GRID], elixir=[X]"
-   ```
-
-3. **Card Played** (after playing card):
-   ```bash
-   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "CARD_PLAYED" "[CARD_NAME] at [GRID] - cost[X], elixir_before=[Y]"
-   ```
-
-**Example Log Flow:**
-```
-[12:34:56.123] PLAYER_1 | LANE_SCAN | opponent_on_RIGHT_5-8
-[12:34:56.456] PLAYER_1 | DECISION_REASONING | threat_on_RIGHT, playing_Arrows at 5D, elixir=6
-[12:34:56.789] PLAYER_1 | CARD_PLAYED | Arrows at 5D - cost3, elixir_before=6
-```
-
-**To analyze logs after match:**
-```bash
-./scripts/analyze_logs.sh
-./scripts/analyze_logs.sh 2025-12-07
-```
 
 ---
 
