@@ -107,7 +107,7 @@ Claude reads `CLAUDE.md` for instructions and manages everything autonomously - 
 
 - **Trophies:** 1000+
 - **Arena:** Spell Valley (Arena 5)
-- **Goal:** ~~Reach 1000 trophies~~ ACHIEVED
+- **Goal:** Reach 1300 trophies (Builder's Workshop - Arena 6)
 
 ## Features
 

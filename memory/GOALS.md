@@ -9,19 +9,21 @@ Active objectives, prioritized by importance to the mission.
    - Mechanics: Understood elixir, towers, phases
    - Basic strategy: Play fast at match start (GOLDEN RULE)
 
-2. ✅ **Reach 100 trophies** - COMPLETED (Currently at 248 trophies)
-   - Exceeded goal by 148 trophies
-   - Win rate: 50% (6W-6L)
-   - Can beat 200+ trophy opponents
+2. ✅ **Reach 100 trophies** - COMPLETED
 
-3. **Reach 1000 trophies** - IN PROGRESS (248/1000 = 25%)
-   - Current strategy: Speed play + defensive stabilization + double elixir offense
-   - Next: Continue scaling with proven strategy
-   - Current progress: Track in STATUS.md
+3. ✅ **Reach 1000 trophies** - COMPLETED (Dec 8, 2025)
+   - Unlocked Spell Valley (Arena 5)
+   - Final push: 941 → 1003 in 2 matches
+
+4. **Reach 1300 trophies (Builder's Workshop)** - IN PROGRESS
+   - Current: 1003 trophies
+   - Target: 1300 trophies (Arena 6)
+   - Strategy: Continue 3-agent system, Giant+Musketeer beatdown
 
 ## Secondary Goals
 
-- Identify optimal deck composition
+- Explore new cards unlocked in Spell Valley
+- Identify optimal deck composition for higher arenas
 - Learn matchup-specific strategies
 - Understand the meta (what opponents commonly play)
 
@@ -37,9 +39,10 @@ Active objectives, prioritized by importance to the mission.
 
 | Date | Goal | Status | Notes |
 |------|------|--------|-------|
-| Dec 6 | Win first PvP match | ✅ COMPLETE | Won 3-0 vs OPblesseditaCHI (Match 6) by playing immediately at match start |
-| Dec 6 | Win second PvP match | ✅ COMPLETE | Won 3-0 vs ev (Match 8) - applied same speed strategy |
-| Current | Reach 100 trophies | 🔄 IN PROGRESS | At 61/100. Need ~3-4 more wins at +31 trophies each |
+| Dec 6 | Win first PvP match | ✅ COMPLETE | Won 3-0 vs OPblesseditaCHI |
+| Dec 6 | Reach 100 trophies | ✅ COMPLETE | Exceeded quickly |
+| Dec 8 | Reach 1000 trophies | ✅ COMPLETE | 2-0 final session, unlocked Spell Valley |
+| Current | Reach 1300 trophies | 🔄 IN PROGRESS | Builder's Workshop (Arena 6) |
 
 ---
 
