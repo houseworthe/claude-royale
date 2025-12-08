@@ -4,6 +4,9 @@ screenshots/
 *.jpg
 *.jpeg
 
+# Exception for README images
+!1000_milestone.png
+
 # Logs
 logs/
 *.log
