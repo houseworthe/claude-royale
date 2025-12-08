@@ -6,16 +6,82 @@
 
 ## Current State
 
-- **Trophies:** 471 (47.1% toward 1000 goal)
+- **Trophies:** 600 (verified Dec 8 early AM) - **BARBARIAN BOWL UNLOCKED! 600 milestone achieved!**
+- **Session Peak:** 600 trophies
+- **Session Gain:** +14 trophies (586→600)
 - **Level:** 6
-- **Gold:** ~1,810
+- **Gold:** 1,810
 - **Gems:** 125
-- **Arena:** Bone Pit
-- **Game State:** Main menu
+- **Arena:** Barbarian Bowl (upgraded from Bone Pit at 600 trophies)
+- **Game State:** Main menu - ready for battle
 
 ---
 
-## Latest Session (Session 13 - Dec 7) - LATENCY ANALYSIS SESSION
+## Latest Session (Session 16 - Dec 8) - 2-AGENT SPAWN OPTIMIZATION
+
+**Record:** 2W-1L (+46 net from start, currently 632)
+
+| Match | Opponent | Result | Trophies |
+|-------|----------|--------|----------|
+| 1 | DivineTriss | WIN | 586→604 (+18) |
+| 2 | TROLL.BuRGER | LOSS | 604→591 (-13) |
+| 3 | QQancientZeus | WIN | 591→632 (+41) |
+
+**Optimizations Applied:**
+- Combined tap battle + sleep + agent spawn into single bash command (eliminates separate tool call overhead)
+- Old method: 3 separate calls (bash tap, sleep, 2x Task spawn) = ~5-10s
+- New method: 1 bash command chains everything together = ~1-2s faster
+- Agents now spawn immediately while battle tap runs in background
+
+## Previous Session (Session 15 - Dec 7) - 2-AGENT SYSTEM LIVE
+
+**Record:** 4W-1D (+105 net trophies)
+
+| Match | Opponent | Result | Trophies |
+|-------|----------|--------|----------|
+| 1 | EZhollow_akuma | WIN | 480→510 (+30) |
+| 2 | AiMar el pro | WIN | 510→540 (+30) |
+| 3 | Legendary_LGGX | DRAW | 540→540 (0) |
+| 4 | j SINS | WIN | 540→555 (+15) |
+| 5 | Vladimir | WIN | 555→585 (+30) |
+
+**System Notes & Changes:**
+- Match 1: Used 3-agent spawn. Agents 2 & 3 carried to victory (Agent 1 failed early)
+- Match 2: Used 2-agent core. Both agents successfully played despite permission issues
+- Match 3: 2-agent system played full match, ended in draw (time expired)
+- **Updated SPAWN_INSTRUCTIONS:** Removed specific card recommendations (let agents decide)
+- **Updated CLAUDE.md:** Added 2-second sleep between battle tap and agent spawn
+- Auto-opener working as designed
+- Agents responding better to opening card rule without prescriptive play suggestions
+
+---
+
+## Previous Session (Session 14 - Dec 7) - 2-AGENT + AUTO-OPENER
+
+**Record:** 4W-0L (+77 net trophies) - 100% win rate!
+
+| Match | Opponent | Result | Trophies |
+|-------|----------|--------|----------|
+| 1 | Paolo46 | WIN | 417→431 (+14) |
+| 2 | SpectralNing | WIN (3-crown) | 431→461 (+30) |
+| 3 | SlimGriffin | WIN (3-crown) | 461→449* (trophy shown 449) |
+| 4 | OGusbbie | WIN | 434→464 (+30) |
+
+*Trophy math: 434 base trophy count from menu before match 4, +30 win = 464
+
+**SYSTEM CHANGES:**
+1. **2 agents instead of 3** - Fewer elixir collisions (1 per match vs 8+ with 3)
+2. **Auto-opening card** - battle button now waits 8s then plays slot 1 to random side
+3. **First card tempo: ~8s** vs old 20+ seconds
+
+**WHY 2 AGENTS WORKS BETTER:**
+- With 3 agents, multiple cards played at same second = wasted elixir (only 1 succeeds)
+- 2 agents naturally take turns 1-3 seconds apart
+- Cleaner action logs show rhythm without collisions
+
+---
+
+## Previous Session (Session 13 - Dec 7) - LATENCY ANALYSIS SESSION
 
 **Record:** 1W-5L (-41 net trophies) - Focused on latency analysis
 
@@ -118,29 +184,31 @@ With 3 agents, we're capped at ~10 cards/minute regardless of prompt optimizatio
 
 ## Handoff Notes
 
-**Session 14 Setup Complete - Local Vision Model Ready**
+**Session 16 - Local Vision Pipeline ABANDONED**
 
-Key accomplishments this session:
-1. **Installed Ollama + Moondream** (1.7GB local vision model)
-2. **Created `scripts/analyze_board.sh`** - Local vision processing script
-3. **Pushed to GitHub** - https://github.com/houseworthe/claude-royale
+**Conclusion: Local vision models don't work for our use case.**
 
-**New Pipeline (not yet tested):**
-```
-Screenshot → Moondream (local, 0.5-1s) → Text description → Haiku (text only, 0.5s) → Play card
-```
+**Models Tested:**
+| Model | Size | Accuracy | Latency | Verdict |
+|-------|------|----------|---------|---------|
+| Moondream | 1.7GB | Poor | ~2s | Can't identify game elements |
+| Qwen3-VL 2B | 1.9GB | Poor | ~2-5s | Confuses menu/battle (sees "Battle" button = thinks in battle) |
+| Qwen3-VL 4B | 3.3GB | Good | ~17-21s | Correct answers but way too slow |
 
-Expected improvement: 2-2.5s per iteration vs current 5-6s = ~25 cards/min vs ~10
+**Why Local Vision Fails:**
+1. **Speed:** Even the fastest model (2B) takes 2-5 seconds - we need <1s for real-time battle
+2. **Accuracy vs Speed tradeoff:** 4B is accurate but 17-21s is unusable
+3. **CPU inference:** Without a GPU, these models are too slow
+4. **Thinking overhead:** Models generate huge internal reasoning blocks even with /nothink
 
-**To test next session:**
-```bash
-./scripts/analyze_board.sh  # Takes screenshot and returns text description
-```
+**The Hard Truth:**
+- API-based vision (3-4s) is actually our best option
+- Local models are either too dumb or too slow
+- Would need a dedicated GPU to make local inference viable
 
-**Remaining work:**
-- Test analyze_board.sh on actual game screenshots
-- Update agent prompts to use text input instead of images
-- Benchmark the new latency
+**All local models removed.** Ollama is clean.
+
+**Next Session:** Resume normal gameplay with API-based vision. Consider testing 4 agents instead of 3 to increase card throughput.
 
 ---
 

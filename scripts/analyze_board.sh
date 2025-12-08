@@ -5,8 +5,11 @@
 
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Ensure screenshots directory exists
+mkdir -p "$PROJECT_DIR/screenshots"
 
 # Take screenshot if no path provided
 if [ -z "$1" ]; then
@@ -24,8 +27,8 @@ if [ ! -f "$SCREENSHOT_PATH" ]; then
     exit 1
 fi
 
-# Check if Ollama is running
-if ! pgrep -x "ollama" > /dev/null 2>&1; then
+# Check if Ollama is running (check API endpoint instead of process)
+if ! curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
     echo "ERROR: Ollama not running. Start with: brew services start ollama" >&2
     exit 1
 fi

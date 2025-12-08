@@ -43,13 +43,21 @@ if [ "$CARD_X" == "null" ] || [ -z "$CARD_X" ]; then
     exit 1
 fi
 
-# Get target cell coordinates from grid
+# Get target coordinates - check grid cells first, then towers
 TARGET_X=$(jq -r ".grid.cells[\"$CELL\"][0]" "$COORDS_FILE")
 TARGET_Y=$(jq -r ".grid.cells[\"$CELL\"][1]" "$COORDS_FILE")
 
+# If not found in grid, check towers section
 if [ "$TARGET_X" == "null" ] || [ -z "$TARGET_X" ]; then
-    echo "ERROR: Invalid cell '$CELL'." >&2
-    echo "Valid cells: 1A-8A, 1B-8B, 1C-8C, 1D-8D, 1E-8E, 1F-8F, 1G-8G, 1H-8H" >&2
+    TARGET_X=$(jq -r ".towers[\"$CELL\"][0]" "$COORDS_FILE")
+    TARGET_Y=$(jq -r ".towers[\"$CELL\"][1]" "$COORDS_FILE")
+fi
+
+if [ "$TARGET_X" == "null" ] || [ -z "$TARGET_X" ]; then
+    echo "ERROR: Invalid target '$CELL'." >&2
+    echo "Valid grid cells: 1A-8A, 1B-8B, 1C-8C, 1D-8D, 1E-8E, 1F-8F, 1G-8G, 1H-8H" >&2
+    echo "Valid towers: player_tower_left, player_tower_right, player_king_left, player_king_right," >&2
+    echo "              enemy_tower_left, enemy_tower_right, enemy_king_left, enemy_king_right" >&2
     exit 1
 fi
 

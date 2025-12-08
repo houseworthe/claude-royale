@@ -20,24 +20,54 @@ This is YOUR game. The account, deck, trophies, wins, losses - all yours. Keep p
 ```
 Commander (Main Agent)
 ├── Manages menus, chests, upgrades
-├── Spawns 3 Player sub-agents (3-second offsets)
-├── Taps battle AFTER agents spawn
+├── Taps battle (auto-plays opening card after 8s)
+├── Spawns 2 Player sub-agents simultaneously
 └── Updates memory files
 
-Player Sub-Agents (all play SAME match together)
+Player Sub-Agents (both play SAME match together)
 ├── Wait for battle screen
 ├── Play cards at max speed
 ├── Stop at result screen (don't dismiss)
 └── Return result to Commander
 ```
 
-**Spawn Protocol:**
-1. Spawn Agent 1 immediately
-2. Wait 3 seconds, spawn Agent 2
-3. Wait 3 seconds, spawn Agent 3
-4. THEN tap battle button
-5. Poll every 60 seconds until result screen
-6. Retrieve all agent results before spawning next batch
+**Spawn Protocol (2-Agent System):**
+1. **Tap battle IN BACKGROUND:** `./scripts/tap.sh battle` with `run_in_background: true` (waits 8s, plays opening card)
+2. **Sleep 2 seconds** (let matchmaking process)
+3. **Spawn both agents in parallel** (don't wait for battle tap to finish)
+4. Poll every 60 seconds until result screen
+5. Retrieve all agent results before spawning next batch
+
+**CRITICAL:** 2-second delay ensures matchmaking has started before agents begin playing.
+
+**Why 2 agents, not 3:**
+- 3 agents cause elixir collisions (multiple cards same second = only 1 succeeds)
+- 2 agents naturally alternate 1-3 seconds apart
+- Cleaner play rhythm, fewer wasted elixir
+- Validated: 3W-0L with 2-agent system
+
+**Auto-Opener:**
+- `tap.sh battle` now waits 8s after tapping, then plays slot 1 to random side (2G or 3G)
+- First card tempo: ~8s vs old 20+ seconds
+
+**Exact Task Tool Syntax:**
+```
+./scripts/tap.sh battle  (starts matchmaking + auto-plays opening card)
+
+Task tool call 1 (spawn in parallel):
+  description: "Player Agent 1"
+  prompt: [contents of SPAWN_INSTRUCTIONS_HAIKU.md]
+  subagent_type: "general-purpose"
+  model: "haiku"
+  run_in_background: true
+
+Task tool call 2 (spawn in parallel):
+  description: "Player Agent 2"
+  prompt: [contents of SPAWN_INSTRUCTIONS_HAIKU.md]
+  subagent_type: "general-purpose"
+  model: "haiku"
+  run_in_background: true
+```
 
 ---
 
@@ -75,14 +105,14 @@ Player Sub-Agents (all play SAME match together)
 ### Timing Rules
 - **First card: within 5 seconds of match start**
 - **Never sit at 10 elixir** - always spend if maxed
-- **Double elixir (final minute): play MORE cards, not fewer**
+- **Double elixir (final minute): ALWAYS play 2 cards per cycle** - elixir regenerates fast enough
 - **Slots 3-4 only when timer < 20 seconds** (avoid Play Again button)
 
 ### Pre-Decision Checklist
 1. Where are opponent's units?
 2. Which tower is threatened?
 3. Is this card the right counter?
-4. For spells: is there an actual target cluster?
+4. For Mini P.E.K.K.A: is there a tank to kill?
 
 ### Game Phases
 | Phase | Time | Strategy |
@@ -109,12 +139,12 @@ Always use `result_ok` to dismiss (not generic `ok`).
 
 See `memory/DECK.md` for full card details.
 
-**Current Deck:** Arrows, Bomber, Minions, Tombstone, Archers, Giant, Valkyrie, Musketeer (3.625 avg elixir)
+**Current Deck:** Mini P.E.K.K.A, Bomber, Minions, Tombstone, Archers, Giant, Valkyrie, Musketeer (3.75 avg elixir)
 
 **Win Condition:** Giant + Musketeer beatdown
-- Early: Defend with Tombstone, Valkyrie
+- Early: Defend with Tombstone, Valkyrie, Mini P.E.K.K.A on tanks
 - Double Elixir: Giant at bridge + Musketeer behind
-- Arrows: ONLY on swarm clusters (Minions, Goblins, Skeleton Army)
+- Mini P.E.K.K.A: Use on tanks (Giant, Hog, Knight) - NOT on swarms
 
 ---
 
@@ -130,7 +160,7 @@ See `memory/DECK.md` for full card details.
    - Verify trophies, update STATUS.md
    - **RUN `./scripts/get-chat.sh` (MANDATORY)**
    - Respond to any interesting chat messages
-4. If main menu → spawn 3 agents (3-sec offsets), THEN tap battle
+4. If main menu → follow Spawn Protocol (tap battle → spawn 2 agents in parallel)
 5. Repeat
 
 ### Commander Rules

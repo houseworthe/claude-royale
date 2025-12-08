@@ -115,3 +115,19 @@ if [ "$BUTTON" == "tower_troop_confirm" ]; then
     sleep 0.1
     cliclick "c:$OK_X,$OK_Y"
 fi
+
+# Special handling for battle - wait 8s then play opening card from slot 1
+if [ "$BUTTON" == "battle" ]; then
+    echo "Waiting 8s for match to load..."
+    sleep 8
+    # Pick random side (left=2G, right=3G)
+    if [ $((RANDOM % 2)) -eq 0 ]; then
+        OPEN_CELL="2G"
+        SIDE="left"
+    else
+        OPEN_CELL="3G"
+        SIDE="right"
+    fi
+    echo "Playing opening card (slot 1) to $SIDE side ($OPEN_CELL)"
+    "$SCRIPT_DIR/play_card.sh" 1 "$OPEN_CELL"
+fi

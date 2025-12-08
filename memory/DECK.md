@@ -10,7 +10,7 @@
 
 | Slot | Card | Elixir | Level | Role |
 |------|------|--------|-------|------|
-| 1 | Arrows | 3 | L5 | Instant swarm removal |
+| 1 | Mini P.E.K.K.A | 4 | L? | High-damage tank killer |
 | 2 | Bomber | 3 | L5 | Splash damage |
 | 3 | Minions | 3 | L4 | Air swarm |
 | 4 | Tombstone | 3 | L4 | Defense/distraction |
@@ -27,7 +27,7 @@
 
 | Slot | Card | Visual Marker |
 |------|------|---------------|
-| 1 | Arrows | RED bundle of arrows |
+| 1 | Mini P.E.K.K.A | PURPLE armor, big sword |
 | 2 | Bomber | BIG YELLOW GOGGLES |
 | 3 | Minions | Small BLUE flying creatures |
 | 4 | Tombstone | GRAY gravestone |
@@ -43,7 +43,7 @@
 ### Early Game (3:00-1:00) - DEFEND
 - Tombstone at center to pull/distract
 - Valkyrie reactively on swarms
-- Arrows only on actual swarm clusters
+- Mini P.E.K.K.A to kill tanks (Giant, Hog Rider, Knight)
 - Goal: survive with both towers
 
 ### Double Elixir (1:00-0:00) - ATTACK
@@ -76,10 +76,11 @@
 - **Placement:** Center (2-3, C-D) for max coverage
 - **Never:** Single-target defense
 
-### Arrows (3 elixir) - Spell
-- **Use:** ONLY on swarm clusters
-- **Target:** Opponent's Minions, Goblins, Skeleton Army
-- **Never:** Empty board, single units, predictive shots
+### Mini P.E.K.K.A (4 elixir) - Tank Killer
+- **Use:** Kill high-HP units (Giant, Hog Rider, Knight, Valkyrie)
+- **Placement:** Directly on top of enemy tank, or path intercept
+- **Also:** Punish opposite lane when opponent overcommits
+- **Never:** Against swarms (gets surrounded and dies)
 
 ### Tombstone (3 elixir) - Defense
 - **Use:** Pull/distract opponent troops
@@ -97,8 +98,8 @@
 
 - **Giant + Musketeer** = Unstoppable beatdown (MAIN WIN CONDITION)
 - **Valkyrie + Bomber** = Perfect swarm clear
-- **Tombstone + Arrows** = Cheap defensive cycle
-- **Arrows** = Counter to ANY swarm
+- **Mini P.E.K.K.A + Musketeer** = Counter-push after defense
+- **Tombstone + Mini P.E.K.K.A** = Tank killing combo (pull + burst)
 
 ---
 

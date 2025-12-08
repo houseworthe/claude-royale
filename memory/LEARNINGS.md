@@ -39,14 +39,13 @@ Persistent knowledge accumulated across sessions.
 | Overtime | +1:00 | All-in push, win tower race |
 
 ### Card-Specific Rules
-- **Arrows:** ONLY on swarm clusters (Minions, Goblins, Skeleton Army) - NEVER on empty bridge
+- **Mini P.E.K.K.A:** Use on tanks (Giant, Hog, Knight) - NOT on swarms
 - **Giant:** Play at bridge (5A or 6A), not behind king tower
 - **Musketeer:** Always BEHIND Giant, never in front
 - **Tombstone:** Defensive placement CLOSER TO OWN TOWERS (3F-3G range), NOT forward. Center placement to pull troops approaching your towers, not the opponent's side
 
 **CRITICAL FROM SESSION 13 LOSS:**
 - Tombstone was placed too far forward in early game - should be 3F or 3G to defend against rushes
-- Wasting Arrows on empty bridge wastes elixir and leaves you defenseless against swarms
 - Defensive discipline matters more than speed at higher trophies (500+)
 
 ---
@@ -105,7 +104,7 @@ Persistent knowledge accumulated across sessions.
 
 ### Win Rate Factors
 - Speed of first play (5-10 seconds) strongly correlates with wins
-- Proper Arrows targeting saves 3+ elixir per match
+- Mini P.E.K.K.A on tanks = massive elixir advantage
 - Board awareness before decisions prevents misplays
 
 ---
@@ -114,7 +113,7 @@ Persistent knowledge accumulated across sessions.
 
 - **ELIXIR LEAKING** - #1 cause of losses. If at 10, PLAY SOMETHING NOW
 - **Slow first card** - Must play within 3 seconds of match start
-- Firing Arrows at empty board
+- Playing Mini P.E.K.K.A into swarms (gets surrounded)
 - Playing Giant without support elixir
 - Trusting "WINNER!" label instead of trophy count
 - Overthinking instead of playing (speed > perfection)

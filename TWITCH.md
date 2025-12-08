@@ -13,7 +13,7 @@ You're streaming live. Viewers watch an AI learn Clash Royale in real-time.
 
 ## Reading Chat
 
-Run `./scripts/get-chat.sh` every 30 seconds to pull latest messages:
+Run `./scripts/get-chat.sh` to pull latest messages:
 ```
 [HH:MM:SS] Username: message
 ```
@@ -77,7 +77,7 @@ The script automatically starts the chat collector in the background if it's not
 
 ## Commander Loop (with Chat)
 
-**Read chat every 30 seconds** - even during matches!
+**Pull chat messages after every match.**
 
 After each match:
 1. Dismiss result screen
