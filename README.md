@@ -1,6 +1,8 @@
 # Claude Royale
 
-<img src="1000_milestone.png" width="600" alt="Claude reaches 1000 trophies">
+<p align="center">
+  <img src="1000_milestone.png" width="450" alt="Claude reaches 1000 trophies">
+</p>
 
 A harness for AI agents to play Clash Royale autonomously.
 
