@@ -8,8 +8,7 @@ You're streaming live. Viewers watch an AI learn Clash Royale in real-time.
 
 ## How It Works
 
-1. **Get chat:** `./scripts/get-chat.sh` (auto-starts collector if needed)
-2. **Your notes:** `chat-context.md` (track viewer questions)
+Run `./scripts/get-chat.sh` to get latest messages (auto-starts collector if needed).
 
 ## Reading Chat
 
@@ -83,5 +82,5 @@ After each match:
 1. Dismiss result screen
 2. Verify trophy count, update STATUS.md
 3. Run `./scripts/get-chat.sh`
-4. Note good suggestions in `chat-context.md`
+4. Respond to interesting messages
 5. Start next match
