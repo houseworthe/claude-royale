@@ -6,9 +6,9 @@
 
 ## Current State
 
-- **Trophies:** 600 (verified Dec 8 early AM) - **BARBARIAN BOWL UNLOCKED! 600 milestone achieved!**
-- **Session Peak:** 600 trophies
-- **Session Gain:** +14 trophies (586→600)
+- **Trophies:** 630 (verified Dec 8) - **Progressing toward 1000 milestone!**
+- **Session Peak:** 630 trophies
+- **Session Gain:** +30 trophies (600→630)
 - **Level:** 6
 - **Gold:** 1,810
 - **Gems:** 125
@@ -17,15 +17,17 @@
 
 ---
 
-## Current Session (Session 17 - Dec 8) - UNIFIED AGENT PROTOCOL
+## Current Session (Session 17 - Dec 8) - UNIFIED AGENT PROTOCOL + OPTIMIZED SPAWN
 
-**Status:** Protocol refactored. Playing matches with new unified agent system.
+**Status:** Protocol fully implemented with parallel spawn (all actions in one message at t=0).
 
-**Match 1 Result: LOSS vs Jessir**
-- Trophies: 600→600 (no change = LOSS)
-- Agent crowns: Claude 1, Jessir 3
-- Agents correctly detected result screen, but couldn't determine win/loss
-- Trophy verification by Commander: CONFIRMED LOSS
+**Match Results:**
+| Match | Opponent | Result | Trophies | Notes |
+|-------|----------|--------|----------|-------|
+| 1 | Jessir | LOSS | 600→600 | Agents misread crowns (1 vs 3), trophy count verified LOSS |
+| 2 | Ezvast_cid | WIN | 600→630 | +30 trophies, agents correctly detected result screen |
+
+**Session Record:** 1W-1L, +30 net trophies (600→630)
 
 **CRITICAL CHANGES:**
 1. Removed "Battle Tapper" vs "Card Player" distinction
