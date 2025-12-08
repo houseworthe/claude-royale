@@ -85,22 +85,23 @@ sleep 0.2
 
 **Battle Map (Battleship-style):**
 ```
+    [1A][2A][3A][4A] | [5A][6A][7A][8A]  A (OPPONENT BRIDGE)
+    [1B][2B][3B][4B] | [5B][6B][7B][8B]  B
+    [1C][2C][3C][4C] | [5C][6C][7C][8C]  C
+    [1D][2D][3D][4D] | [5D][6D][7D][8D]  D
+    [1E][2E][3E][4E] | [5E][6E][7E][8E]  E
+    [1F][2F][3F][4F] | [5F][6F][7F][8F]  F
+    [1G][2G][3G][4G] | [5G][6G][7G][8G]  G
+    [1H][2H][3H][4H] | [5H][6H][7H][8H]  H (YOUR KING)
          1   2   3   4   |   5   6   7   8
-    A  [1A][2A][3A][4A] | [5A][6A][7A][8A]  <- BRIDGE
-    B  [1B][2B][3B][4B] | [5B][6B][7B][8B]
-    C  [1C][2C][3C][4C] | [5C][6C][7C][8C]
-    D  [1D][2D][3D][4D] | [5D][6D][7D][8D]
-    E  [1E][2E][3E][4E] | [5E][6E][7E][8E]
-    F  [1F][2F][3F][4F] | [5F][6F][7F][8F]
-    G  [1G][2G][3G][4G] | [5G][6G][7G][8G]
-    H  [1H][2H][3H][4H] | [5H][6H][7H][8H]  <- BACK
 
-YOUR SIDE (1-4)    |    OPPONENT SIDE (5-8)
+COLUMNS 1-4 (YOUR HALF) | COLUMNS 5-8 (OPPONENT HALF)
 ```
 
-- **YOUR SIDE (Columns 1-4):** Play troops here
-- **OPPONENT SIDE (Columns 5-8):** Play spells here only
-- **Rows A-H:** From bridge (A) to back tower (H)
+- **Rows A-D:** Opponent's side (play spells here, columns 5-8 only)
+- **Rows E-H:** Your side (play troops here, columns 1-4)
+- **Columns 1-4:** Your half (for troops)
+- **Columns 5-8:** Opponent's half (for spells only)
 
 ---
 
