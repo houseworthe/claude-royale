@@ -52,6 +52,12 @@ if [ "$BTN_X" == "null" ] || [ -z "$BTN_X" ]; then
     BTN_Y=$(jq -r ".tower_troop[\"$BUTTON\"][1]" "$CONFIG_FILE")
 fi
 
+# If not found in tower_troop, try towers
+if [ "$BTN_X" == "null" ] || [ -z "$BTN_X" ]; then
+    BTN_X=$(jq -r ".towers[\"$BUTTON\"][0]" "$CONFIG_FILE")
+    BTN_Y=$(jq -r ".towers[\"$BUTTON\"][1]" "$CONFIG_FILE")
+fi
+
 # Handle result_ok alias for post_game_ok (CRITICAL: post-match button)
 if [ "$BUTTON" == "result_ok" ]; then
     BUTTON="post_game_ok"
@@ -120,14 +126,12 @@ fi
 if [ "$BUTTON" == "battle" ]; then
     echo "Waiting 8s for match to load..."
     sleep 8
-    # Pick random side (left=2G, right=3G)
-    if [ $((RANDOM % 2)) -eq 0 ]; then
-        OPEN_CELL="2G"
-        SIDE="left"
-    else
-        OPEN_CELL="3G"
-        SIDE="right"
-    fi
-    echo "Playing opening card (slot 1) to $SIDE side ($OPEN_CELL)"
-    "$SCRIPT_DIR/play_card.sh" 1 "$OPEN_CELL"
+    # Play opening card to LEFT side (2G)
+    echo "Playing opening card (slot 1) to left side (2G)"
+    "$SCRIPT_DIR/play_card.sh" 1 "2G"
+
+    # Wait 3 seconds then play second card to RIGHT side (3G)
+    sleep 3
+    echo "Playing second card (slot 2) to right side (3G)"
+    "$SCRIPT_DIR/play_card.sh" 2 "3G"
 fi

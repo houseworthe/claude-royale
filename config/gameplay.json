@@ -1,0 +1,131 @@
+{
+  "cards": {
+    "slot_1": [748, 987],
+    "slot_2": [867, 1001],
+    "slot_3": [965, 992],
+    "slot_4": [1085, 983]
+  },
+  "card_types": {
+    "note": "Optional: Specify 'spell' or 'troop' for each slot to enable validation. If not specified, all placements are allowed.",
+    "slot_1": "troop",
+    "slot_2": "troop",
+    "slot_3": "spell",
+    "slot_4": "spell"
+  },
+  "board": {
+    "claude_half": {
+      "bounds": {
+        "min_x": 702,
+        "max_x": 1024,
+        "min_y": 480,
+        "max_y": 702
+      },
+      "width": 322,
+      "height": 222
+    },
+    "opponent_half": {
+      "bounds": {
+        "min_x": 702,
+        "max_x": 1024,
+        "min_y": 259,
+        "max_y": 480
+      },
+      "width": 322,
+      "height": 221
+    },
+    "bridge": {
+      "left": [703, 480],
+      "right": [1030, 480]
+    }
+  },
+  "towers": {
+    "description": "Tower-specific targets for precise spell/troop placement",
+    "player_tower_left": [702, 702],
+    "player_tower_right": [1024, 703],
+    "player_king_left": [870, 880],
+    "player_king_right": [836, 824],
+    "enemy_tower_left": [702, 259],
+    "enemy_tower_right": [1019, 235],
+    "enemy_king_left": [828, 151],
+    "enemy_king_right": [902, 159]
+  },
+  "grid": {
+    "description": "8x8 grid system. Columns 1-8 go left to right across arena. Rows A-H go from top (enemy side) to bottom (Claude's side). Column 1 = far left lane, Column 8 = far right lane.",
+    "columns": 8,
+    "rows": 8,
+    "col_width": 68.71,
+    "row_height": 55.375,
+    "bounds": {
+      "min_x": 622,
+      "max_x": 1103,
+      "min_y": 259,
+      "max_y": 702
+    },
+    "cells": {
+      "1A": [622, 286],
+      "2A": [691, 286],
+      "3A": [760, 286],
+      "4A": [828, 286],
+      "5A": [897, 286],
+      "6A": [966, 286],
+      "7A": [1034, 286],
+      "8A": [1103, 286],
+      "1B": [622, 342],
+      "2B": [691, 342],
+      "3B": [760, 342],
+      "4B": [828, 342],
+      "5B": [897, 342],
+      "6B": [966, 342],
+      "7B": [1034, 342],
+      "8B": [1103, 342],
+      "1C": [622, 397],
+      "2C": [691, 397],
+      "3C": [760, 397],
+      "4C": [828, 397],
+      "5C": [897, 397],
+      "6C": [966, 397],
+      "7C": [1034, 397],
+      "8C": [1103, 397],
+      "1D": [622, 452],
+      "2D": [691, 452],
+      "3D": [760, 452],
+      "4D": [828, 452],
+      "5D": [897, 452],
+      "6D": [966, 452],
+      "7D": [1034, 452],
+      "8D": [1103, 452],
+      "1E": [622, 540],
+      "2E": [691, 540],
+      "3E": [760, 540],
+      "4E": [828, 540],
+      "5E": [897, 540],
+      "6E": [966, 540],
+      "7E": [1034, 540],
+      "8E": [1103, 540],
+      "1F": [622, 670],
+      "2F": [691, 670],
+      "3F": [760, 670],
+      "4F": [828, 670],
+      "5F": [897, 670],
+      "6F": [966, 670],
+      "7F": [1034, 670],
+      "8F": [1103, 670],
+      "1G": [622, 800],
+      "2G": [691, 800],
+      "3G": [760, 800],
+      "4G": [828, 800],
+      "5G": [897, 800],
+      "6G": [966, 800],
+      "7G": [1034, 800],
+      "8G": [1103, 800],
+      "1H": [622, 880],
+      "2H": [691, 880],
+      "3H": [760, 880],
+      "4H": [828, 880],
+      "5H": [897, 880],
+      "6H": [966, 880],
+      "7H": [1034, 880],
+      "8H": [1103, 880]
+    }
+  }
+}

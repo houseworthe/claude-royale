@@ -79,5 +79,17 @@
     "tower_troop_upgrade_dialog": [919, 1030],
     "tower_troop_confirm": [922, 901],
     "back_to_decks": [750, 137]
+  },
+
+  "towers": {
+    "description": "Tower-specific targets for precise spell/troop placement",
+    "player_tower_left": [702, 702],
+    "player_tower_right": [1024, 703],
+    "player_king_left": [870, 880],
+    "player_king_right": [836, 824],
+    "enemy_tower_left": [702, 259],
+    "enemy_tower_right": [1019, 235],
+    "enemy_king_left": [828, 151],
+    "enemy_king_right": [902, 159]
   }
 }

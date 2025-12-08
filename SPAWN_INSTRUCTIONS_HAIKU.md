@@ -18,6 +18,16 @@ Then READ the screenshot file that is returned to see the game state.
 
 **YOU MUST USE THE BASH AND READ TOOLS TO TAKE SCREENSHOTS AND PLAY CARDS. DO NOT JUST RESPOND WITH TEXT.**
 
+**CRITICAL DEBUG: Before playing any card, ALWAYS verbally explain your reasoning in your response AND log it to file.**
+
+Log every decision to `logs/agent-thinking/<date>.log` by calling:
+```bash
+./scripts/agent_think.sh <AGENT_NUM> "<your reasoning>"
+```
+
+Replace `<AGENT_NUM>` with 1, 2, or 3 based on your agent number.
+Replace `<your reasoning>` with a clear explanation of what you're doing and why.
+
 ---
 
 ## OPENING CARD RULE (CRITICAL!)
@@ -31,6 +41,29 @@ Then READ the screenshot file that is returned to see the game state.
 
 ---
 
+## DEFENSIVE LANE LOGIC (CRITICAL!)
+
+**ALWAYS check which lane opponent is attacking, then defend THAT lane:**
+
+### OPPONENT ATTACKING LEFT LANE (columns 1-4, left side of screen):
+- Defend by placing troops in columns 2-3, rows E-F
+- **Examples:** `2E`, `3E`, `2F`, `3F`
+
+### OPPONENT ATTACKING RIGHT LANE (columns 5-8, right side of screen):
+- Defend by placing troops in columns 6-7, rows E-F
+- **Examples:** `6E`, `7E`, `6F`, `7F`
+
+### NO IMMEDIATE THREAT:
+- Play offensive pressure: **Giant** at `3E` or `6E` (at bridge)
+- Support with **Musketeer** at `3F` or `6F` (behind Giant)
+
+**CRITICAL RULE:**
+- **Opponent on LEFT (cols 1-4) = Defend LEFT (cols 2-3)**
+- **Opponent on RIGHT (cols 5-8) = Defend RIGHT (cols 6-7)**
+- **REACT to the threat. Don't always play the same side.**
+
+---
+
 ## BATTLE LOOP (REPEAT UNTIL MATCH ENDS)
 
 **Speed is EVERYTHING. You can play 1 OR 2 cards per loop based on elixir.**
@@ -40,10 +73,18 @@ LOOP:
 1. ./scripts/screenshot.sh then READ the image
 2. Check elixir bar (pink bar at bottom, number shown)
 3. Look at hand (4 cards at bottom)
-4. DECIDE: Play 1 or 2 cards based on elixir (see ELIXIR DECISION below)
-5. Play card(s): ./scripts/play_card.sh <slot 1-4> <grid>
-6. sleep 0.3
-7. REPEAT
+4. SCAN OPPONENT: Look at TOP HALF of screen
+   - Opponent units on VISUALLY LEFT side (top-left) = Columns 7-8
+   - Opponent units on VISUALLY RIGHT side (top-right) = Columns 5-6
+5. DECIDE DEFENSE:
+   - If opponent on TOP-RIGHT (columns 5-6) → Defend on YOUR BOTTOM-RIGHT (columns 3-4)
+   - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
+   - If no threat → Attack with Giant/Musketeer on YOUR BOTTOM-RIGHT (columns 3-4)
+6. **BEFORE PLAYING - EXPLAIN YOUR REASONING OUT LOUD:**
+   "I see opponent [TOP-LEFT/TOP-RIGHT/NONE]. I'm placing [CARD] at column [1-4] because [REASON]. This is YOUR [LEFT/RIGHT] side."
+7. Play card(s): ./scripts/play_card.sh <slot 1-4> <grid>
+8. sleep 0.3
+9. REPEAT
 ```
 
 ---
@@ -79,12 +120,53 @@ sleep 0.2
 
 ---
 
-## GRID SYSTEM
+## GRID SYSTEM - CRITICAL
+
+```
+            ENEMY SIDE (TOP OF SCREEN)
+     Col 1    2    3    4    5    6    7    8
+     x=622  691  760  828  897  966  1034 1103
+
+y=286  1A   2A   3A   4A   5A   6A   7A   8A   Row A  ┐
+y=342  1B   2B   3B   4B   5B   6B   7B   8B   Row B  │ ENEMY HALF
+y=397  1C   2C   3C   4C   5C   6C   7C   8C   Row C  │ (spells only)
+y=452  1D   2D   3D   4D   5D   6D   7D   8D   Row D  ┘
+       ~~~~~~~~~~~  RIVER  ~~~~~~~~~~~
+       [BRIDGE]                [BRIDGE]
+y=540  1E   2E   3E   4E   5E   6E   7E   8E   Row E  ┐
+y=670  1F   2F   3F   4F   5F   6F   7F   8F   Row F  │ CLAUDE HALF
+y=800  1G   2G   3G   4G   5G   6G   7G   8G   Row G  │ (troops OK!)
+y=880  1H   2H   3H   4H   5H   6H   7H   8H   Row H  ┘
+            CLAUDE'S SIDE (BOTTOM)
+
+LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
+```
 
 **Card Placement Format:** `./scripts/play_card.sh <slot 1-4> <column><row>`
 
-- Columns 1-8 (1-4 your side, 5-8 opponent side)
-- Rows A-H
+**COLUMNS:** 1-8 go left to right across the arena
+- **Columns 1-4** = LEFT LANE (toward left bridge)
+- **Columns 5-8** = RIGHT LANE (toward right bridge)
+
+**ROWS:** A-H go top to bottom
+- **Rows A-D** = ENEMY HALF (spells only)
+- **Rows E-H** = CLAUDE HALF (troops OK)
+- **Row E** = At the bridge (aggressive)
+- **Row H** = At king tower (defensive)
+
+**PLACEMENT RULES:**
+- **Troops:** Rows E-H only (your half)
+- **Spells:** Can be placed ANYWHERE (rows A-H)
+- **Left lane attack:** Columns 2-3, Row E
+- **Right lane attack:** Columns 6-7, Row E
+
+**Examples:**
+- `3E` = Left lane at bridge (aggressive)
+- `6E` = Right lane at bridge (aggressive)
+- `2F` = Left lane, princess tower level
+- `7F` = Right lane, princess tower level
+- `3H` = Left side, deep defense
+- `6H` = Right side, deep defense
 
 ---
 
@@ -92,16 +174,21 @@ sleep 0.2
 
 | Slot | Card | Cost | Type |
 |------|------|------|------|
-| 1 | Arrows | 3 | Spell - kills swarms |
-| 2 | Bomber | 2 | Splash ground |
-| 3 | Minions | 3 | Flying DPS |
-| 4 | Tombstone | 3 | Building - distracts |
-| 1 | Archers | 3 | Ranged DPS |
-| 2 | Giant | 5 | Tank - WIN CONDITION |
-| 3 | Valkyrie | 4 | Splash tank |
-| 4 | Musketeer | 4 | Ranged anti-air |
+| 1 | Arrows | 3 | Spell - kills swarms anywhere |
+| 2 | Bomber | 2 | Ground troop - splash damage |
+| 3 | Minions | 3 | Flying troop - fast DPS |
+| 4 | Tombstone | 3 | Building - distracts enemies |
+| 1 | Archers | 3 | Ranged troop - precise DPS |
+| 2 | Giant | 5 | Tank troop - WIN CONDITION |
+| 3 | Valkyrie | 4 | Melee tank - splash damage |
+| 4 | Musketeer | 4 | Ranged troop - anti-air |
 
 (Cards rotate through slots as you play them)
+
+**KEY DISTINCTION:**
+- **Spells (only Arrows)**: Can be placed ANYWHERE (columns 1-8) to target threats
+- **Troops (Bomber, Minions, Archers, Giant, Valkyrie, Musketeer)**: Deploy on YOUR HALF (columns 1-4) unless opponent towers are destroyed
+- **Building (Tombstone)**: Defensive building for YOUR HALF (columns 1-4)
 
 ---
 
@@ -141,6 +228,46 @@ sleep 0.2
 - Trophy count changes (+30, -14, etc.)
 
 **If uncertain, STOP. Better to stop early than click Play Again.**
+
+---
+
+## LOGGING SYSTEM (FOR DEBUGGING)
+
+**CRITICAL: Log every decision so we can debug what you're doing.**
+
+**Setup:** Each agent needs a unique ID. You're assigned:
+- Set at top of your session: `AGENT_NUM=<1, 2, or 3>`
+- Pass to log script: `./scripts/log_action.sh "PLAYER_$AGENT_NUM" "ACTION_TYPE" "DETAILS"`
+
+**What to log:**
+
+1. **Lane Detection** (every screenshot):
+   ```bash
+   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "LANE_SCAN" "opponent_on_[LEFT_1-4/RIGHT_5-8/NONE]"
+   ```
+
+2. **Decision Reasoning** (before playing card):
+   ```bash
+   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "DECISION_REASONING" "threat_on_[LEFT/RIGHT/NONE], playing [CARD] at [GRID], elixir=[X]"
+   ```
+
+3. **Card Played** (after playing card):
+   ```bash
+   ./scripts/log_action.sh "PLAYER_$AGENT_NUM" "CARD_PLAYED" "[CARD_NAME] at [GRID] - cost[X], elixir_before=[Y]"
+   ```
+
+**Example Log Flow:**
+```
+[12:34:56.123] PLAYER_1 | LANE_SCAN | opponent_on_RIGHT_5-8
+[12:34:56.456] PLAYER_1 | DECISION_REASONING | threat_on_RIGHT, playing_Arrows at 5D, elixir=6
+[12:34:56.789] PLAYER_1 | CARD_PLAYED | Arrows at 5D - cost3, elixir_before=6
+```
+
+**To analyze logs after match:**
+```bash
+./scripts/analyze_logs.sh
+./scripts/analyze_logs.sh 2025-12-07
+```
 
 ---
 

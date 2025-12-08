@@ -13,11 +13,13 @@
 | 1 | Mini P.E.K.K.A | 4 | L? | High-damage tank killer |
 | 2 | Bomber | 3 | L5 | Splash damage |
 | 3 | Minions | 3 | L4 | Air swarm |
-| 4 | Tombstone | 3 | L4 | Defense/distraction |
-| 5 | Archers | 3 | L3 | Ranged DPS |
+| 4 | Tombstone | 3 | L5 | Defense/distraction |
+| 5 | Archers | 3 | L5 | Ranged DPS |
 | 6 | Giant | 5 | L5 | **WIN CONDITION** |
 | 7 | Valkyrie | 4 | L4 | Splash tank |
 | 8 | Musketeer | 4 | L3 | Air defense support |
+
+**Tower Princess Level:** 5
 
 ---
 
@@ -110,3 +112,18 @@
 | Lower rank | 75%+ |
 | Same rank | 55-65% |
 | Higher rank | 45-55% |
+
+---
+
+## Unlocked Cards (Not in Current Deck)
+
+| Card | Elixir | Role | Notes |
+|------|--------|------|-------|
+| Cannon | 3 | Defensive building | Ground-targeting defense, pulls units |
+| Mega Minion | 3 | Air DPS | Single target, tankier than Minions |
+| Barbarians | 5 | Swarm tank killers | 4 melee units, high total DPS |
+
+**Potential Deck Changes:**
+- **Mega Minion** could replace Minions for more survivability against spells
+- **Cannon** could replace Tombstone for stronger defense against Hog Rider
+- **Barbarians** are expensive but devastating against tanks if left alone

@@ -6,28 +6,51 @@
 
 ## Current State
 
-- **Trophies:** 630 (verified Dec 8) - **Progressing toward 1000 milestone!**
-- **Session Peak:** 630 trophies
-- **Session Gain:** +30 trophies (600→630)
+- **Trophies:** 731 (verified Dec 8, end of Session 22)
+- **Session Peak:** 731 trophies (after Match 10)
+- **Session Gain:** +131 net (600→731)
 - **Level:** 6
 - **Gold:** 1,810
 - **Gems:** 125
-- **Arena:** Barbarian Bowl (upgraded from Bone Pit at 600 trophies)
+- **Arena:** Barbarian Bowl
 - **Game State:** Main menu - ready for battle
 
 ---
 
-## Current Session (Session 17 - Dec 8) - UNIFIED AGENT PROTOCOL + OPTIMIZED SPAWN
+## Current Session (Session 22 - Dec 8) - 4-WIN STREAK
 
-**Status:** Protocol fully implemented with parallel spawn (all actions in one message at t=0).
+**Status:** Excellent session! Started at 600, went 4W-0L, peaked at 731 trophies (+131 net gain).
 
 **Match Results:**
 | Match | Opponent | Result | Trophies | Notes |
 |-------|----------|--------|----------|-------|
-| 1 | Jessir | LOSS | 600→600 | Agents misread crowns (1 vs 3), trophy count verified LOSS |
-| 2 | Ezvast_cid | WIN | 600→630 | +30 trophies, agents correctly detected result screen |
+| 7 | ElusiveRocx | WIN | 630 | 3-0 victory, +30 trophies |
+| 8 | YeetBuzz | WIN | 662 | 3-0 victory, +32 trophies |
+| 9 | feli | WIN | 701 | 2-0 victory (partial crown count), +39 trophies |
+| 10 | AetherTempiura | WIN | 731 | 2-0 victory, +30 trophies |
 
-**Session Record:** 1W-1L, +30 net trophies (600→630)
+**Session Record:** 4W-0L, net +131 trophies (600→731)
+
+**Peak:** 731 trophies (after Match 10)
+
+**SYSTEM UPDATE - 3-Agent Protocol:**
+✅ Implemented 3-player agent spawn system:
+- Battle tap in background (run_in_background: true)
+- 3 simultaneous Player Agents with SPAWN_INSTRUCTIONS_HAIKU.md
+- t=0 parallelism for fastest match startup
+- Agents only report "MATCH ENDED", don't report wins/losses
+- Commander verifies result by checking trophy count
+
+⚠️ **Agent Report Conflicts:** Agents reported conflicting results. Agent 2 claimed 3-0 win, Agent 1 showed 573 trophies (loss). Trophy count stayed at 600, indicating loss likely.
+
+**CRITICAL UPDATE - Defensive Lane Logic:**
+✅ Updated SPAWN_INSTRUCTIONS_HAIKU.md with:
+- Explicit right lane defense (Arrows on columns 5-8)
+- Left lane defense (Tombstone in columns 1-3)
+- Reactive positioning based on opponent threat
+- Attack right tower when no threat
+
+⚠️ **Finding:** Strategy improvements help, but agent-level tweaks hit diminishing returns. Opponent skill/deck still dominate match outcome.
 
 **CRITICAL CHANGES:**
 1. Removed "Battle Tapper" vs "Card Player" distinction

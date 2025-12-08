@@ -1,52 +1,48 @@
 #!/bin/bash
-# analyze_logs.sh - Analyze action logs from a battle
-# Usage: ./analyze_logs.sh
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-LOG_FILE="$PROJECT_DIR/logs/actions.log"
+# Analyze agent action logs for debugging
+# Usage: ./scripts/analyze_logs.sh [date]
+# If no date provided, shows today's logs
+
+DATE=${1:-$(date '+%Y-%m-%d')}
+LOG_FILE="logs/agent-actions/$DATE.log"
 
 if [ ! -f "$LOG_FILE" ]; then
-    echo "No log file found at $LOG_FILE"
-    exit 1
+  echo "No logs found for $DATE"
+  exit 1
 fi
 
-echo "=== Battle Action Analysis ==="
+echo "=== AGENT ACTION LOG ANALYSIS ==="
+echo "Date: $DATE"
+echo "=============================\n"
+
+# Summary stats
+echo "SUMMARY:"
+echo "Total actions: $(wc -l < "$LOG_FILE")"
+echo "Unique agents: $(cut -d'|' -f2 "$LOG_FILE" | sort | uniq | wc -l)"
+echo "Unique action types: $(cut -d'|' -f3 "$LOG_FILE" | sort | uniq | wc -l)"
 echo ""
 
-# Count actions
-SCREENSHOTS=$(grep -c "SCREENSHOT" "$LOG_FILE" 2>/dev/null || echo "0")
-CARD_PLAYS=$(grep -c "PLAY_CARD" "$LOG_FILE" 2>/dev/null || echo "0")
-
-echo "Total screenshots: $SCREENSHOTS"
-echo "Total card plays: $CARD_PLAYS"
+# Actions by type
+echo "ACTIONS BY TYPE:"
+cut -d'|' -f3 "$LOG_FILE" | sed 's/^ //;s/ $//' | sort | uniq -c | sort -rn
 echo ""
 
-# Get time range
-FIRST_ACTION=$(head -1 "$LOG_FILE" | cut -d' ' -f1,2)
-LAST_ACTION=$(tail -1 "$LOG_FILE" | cut -d' ' -f1,2)
-echo "First action: $FIRST_ACTION"
-echo "Last action: $LAST_ACTION"
+# Agent activity
+echo "ACTIONS PER AGENT:"
+cut -d'|' -f2 "$LOG_FILE" | sed 's/^ //;s/ $//' | sort | uniq -c | sort -rn
 echo ""
 
-# Calculate time between card plays
-echo "=== Card Play Timing ==="
-grep "PLAY_CARD" "$LOG_FILE" | while read line; do
-    echo "$line"
-done
+# Card placements
+echo "CARD PLACEMENTS:"
+grep "CARD_PLAYED" "$LOG_FILE" | head -20
 echo ""
 
-# Calculate average time between screenshots
-echo "=== Screenshot Frequency ==="
-PREV_TIME=""
-grep "SCREENSHOT" "$LOG_FILE" | head -10 | while read line; do
-    CURR_TIME=$(echo "$line" | cut -d' ' -f2)
-    if [ -n "$PREV_TIME" ]; then
-        echo "Screenshot at $CURR_TIME"
-    fi
-    PREV_TIME=$CURR_TIME
-done
-
+# Decision reasoning
+echo "DECISION REASONING (latest 10):"
+grep "DECISION_REASONING" "$LOG_FILE" | tail -10
 echo ""
-echo "=== Raw Log (last 20 lines) ==="
-tail -20 "$LOG_FILE"
+
+# Lane detection
+echo "LANE DETECTION:"
+grep "LANE" "$LOG_FILE" | tail -10

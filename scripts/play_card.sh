@@ -13,7 +13,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-COORDS_FILE="$PROJECT_DIR/coordinates.json"
+COORDS_FILE="$PROJECT_DIR/config/gameplay.json"
 LOG_FILE="$PROJECT_DIR/logs/actions.log"
 
 SLOT="$1"
@@ -30,7 +30,7 @@ if [ -z "$SLOT" ] || [ -z "$CELL" ]; then
 fi
 
 if [ ! -f "$COORDS_FILE" ]; then
-    echo "ERROR: coordinates.json not found." >&2
+    echo "ERROR: config/gameplay.json not found." >&2
     exit 1
 fi
 

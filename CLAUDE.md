@@ -21,35 +21,37 @@ This is YOUR game. The account, deck, trophies, wins, losses - all yours. Keep p
 Commander (Main Agent)
 ├── Manages menus, chests, upgrades
 ├── Taps battle (auto-plays opening card after 8s)
-├── Spawns 2 Player sub-agents simultaneously
+├── Spawns 3 sub-agents simultaneously
 └── Updates memory files
 
-Player Sub-Agents (both play SAME match together)
+Player Sub-Agents (all three play SAME match together)
 ├── Wait for battle screen
 ├── Play cards at max speed
 ├── Stop at result screen (don't dismiss)
 └── Return result to Commander
 ```
 
-**Spawn Protocol (2-Agent System - OPTIMIZED):**
+**Spawn Protocol (3-Agent System - OPTIMIZED):**
+
+**CRITICAL: ALWAYS READ SPAWN_INSTRUCTIONS_HAIKU.md BEFORE SPAWNING AGENTS**
 
 **IN A SINGLE MESSAGE:**
 1. Bash: `./scripts/tap.sh battle` with `run_in_background: true`
-2. Task 1: Spawn Player Agent 1 with `run_in_background: true`
-3. Task 2: Spawn Player Agent 2 with `run_in_background: true`
+2. Task 1: Spawn Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md content
+3. Task 2: Spawn Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md content
+4. Task 3: Spawn Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md content
 
-All three start at t=0 simultaneously. No waiting between them.
+All four start at t=0 simultaneously. No waiting between them.
 
 **Why this works:**
-- Battle tap, Agent 1, and Agent 2 all launch in parallel
+- Battle tap and all 3 player agents all launch in parallel
 - t=0 simultaneity = fastest possible match startup
-- Agents see battle screen immediately when it's ready
 - No sequential delays
 
-**Why 2 agents, not 3:**
-- 3 agents cause elixir collisions (multiple cards same second = only 1 succeeds)
-- 2 agents naturally alternate 1-3 seconds apart
-- Cleaner play rhythm, fewer wasted elixir
+**Why 3 player agents:**
+- 3 agents naturally stagger cards at different intervals
+- More aggressive play rhythm, better board control
+- Continuous pressure with minimal wasted elixir
 
 **Auto-Opener:**
 - `tap.sh battle` waits 8s, then plays slot 1 to random side
@@ -61,14 +63,15 @@ MESSAGE 1 - ALL IN PARALLEL:
   Bash (background): ./scripts/tap.sh battle
   Task (background): Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md
   Task (background): Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md
+  Task (background): Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md
 
 THEN:
   Wait 60 seconds
   Poll agents with AgentOutputTool
-  Repeat every 60 seconds until both agents complete
+  Repeat every 60 seconds until agents complete
 ```
 
-**CRITICAL:** Agents don't report wins/losses (unreliable). They only report "MATCH ENDED". Commander verifies result by checking trophy count.
+**CRITICAL:** Player agents don't report wins/losses (unreliable). They only report "MATCH ENDED". Commander verifies result by checking trophy count.
 
 ---
 
@@ -83,10 +86,24 @@ THEN:
 
 **Tap Elements:** `battle`, `ok`, `result_ok`, `back`, `chest_1`-`chest_4`, `shop`, `cards`
 
-**Card Placement:** `play_card.sh <1-4> <1-8><A-H>`
-- Columns 1-4 = your half, 5-8 = opponent's half
-- Row A = bridge, Row H = behind king tower
-- Troops: your half only. Spells: anywhere.
+**Card Placement:** `play_card.sh <slot 1-4> <col><row>`
+
+```
+     Col 1   2   3   4   5   6   7   8
+         LEFT LANE    |    RIGHT LANE
+     ┌───┬───┬───┬───┬───┬───┬───┬───┐
+Row A│   │   │   │   │   │   │   │   │ Enemy
+Row D│   │   │   │   │   │   │   │   │ half
+     ├~~~┼~~~┼~~~┼~~~┼~~~┼~~~┼~~~┼~~~┤ ← RIVER
+     │BRIDGE│           │       │BRIDGE│
+Row E│   │   │   │   │   │   │   │   │ Your
+Row H│   │   │   │   │   │   │   │   │ half
+     └───┴───┴───┴───┴───┴───┴───┴───┘
+```
+- **Columns 1-4** = Left lane, **Columns 5-8** = Right lane
+- **Rows A-D** = Enemy half (spells only)
+- **Rows E-H** = Your half (troops OK)
+- **Row E** = At bridge, **Row H** = At king tower
 
 ---
 
@@ -161,7 +178,7 @@ See `memory/DECK.md` for full card details.
    - Verify trophies, update STATUS.md
    - **RUN `./scripts/get-chat.sh` (MANDATORY)**
    - Respond to any interesting chat messages
-4. If main menu → follow Spawn Protocol (tap battle → spawn 2 agents in parallel)
+4. If main menu → follow Spawn Protocol (tap battle → spawn 2 player agents + 1 doc agent in parallel)
 5. Repeat
 
 ### Commander Rules
