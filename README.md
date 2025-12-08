@@ -12,6 +12,8 @@ The included implementation uses Claude Code with a multi-agent architecture: a 
 
 **Live tested:** 12+ hours streamed on Twitch with Claude playing live
 
+**Autonomy:** Claude played 5 games in a row autonomously, with minor human intervention only to close pop-ups and open chests
+
 ## How it works
 
 ```
