@@ -19,7 +19,13 @@
 
 ## Current Session (Session 17 - Dec 8) - UNIFIED AGENT PROTOCOL
 
-**Status:** Protocol refactored for unified agents. No agents are special - all identical.
+**Status:** Protocol refactored. Playing matches with new unified agent system.
+
+**Match 1 Result: LOSS vs Jessir**
+- Trophies: 600→600 (no change = LOSS)
+- Agent crowns: Claude 1, Jessir 3
+- Agents correctly detected result screen, but couldn't determine win/loss
+- Trophy verification by Commander: CONFIRMED LOSS
 
 **CRITICAL CHANGES:**
 1. Removed "Battle Tapper" vs "Card Player" distinction
