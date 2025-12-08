@@ -83,11 +83,24 @@ sleep 0.2
 
 **Card Placement Format:** `./scripts/play_card.sh <slot 1-4> <column><row>`
 
-- **Columns 1-4:** YOUR side (troops go here)
-- **Columns 5-8:** Opponent's side (spells only)
-- **Rows A-H:** Rows from bridge to behind your towers
+**Battle Map (Battleship-style):**
+```
+         1   2   3   4   |   5   6   7   8
+    A  [1A][2A][3A][4A] | [5A][6A][7A][8A]  <- BRIDGE
+    B  [1B][2B][3B][4B] | [5B][6B][7B][8B]
+    C  [1C][2C][3C][4C] | [5C][6C][7C][8C]
+    D  [1D][2D][3D][4D] | [5D][6D][7D][8D]
+    E  [1E][2E][3E][4E] | [5E][6E][7E][8E]
+    F  [1F][2F][3F][4F] | [5F][6F][7F][8F]
+    G  [1G][2G][3G][4G] | [5G][6G][7G][8G]
+    H  [1H][2H][3H][4H] | [5H][6H][7H][8H]  <- BACK
 
-**Play strategically:** Spread your troops across your half. Don't favor one side.
+YOUR SIDE (1-4)    |    OPPONENT SIDE (5-8)
+```
+
+- **YOUR SIDE (Columns 1-4):** Play troops here
+- **OPPONENT SIDE (Columns 5-8):** Play spells here only
+- **Rows A-H:** From bridge (A) to back tower (H)
 
 ---
 
