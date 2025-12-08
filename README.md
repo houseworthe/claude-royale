@@ -8,7 +8,7 @@ Claude Royale is an open framework that lets AI systems play Clash Royale throug
 
 The included implementation uses Claude Code with a multi-agent architecture: a Commander agent manages menus and game flow while spawning 3 parallel Player agents that work together to play each match.
 
-**Current progress:** 880 trophies (Barbarian Bowl → Bone Pit)
+**Current progress:** 1000+ trophies (Spell Valley - Arena 5)
 
 **Live tested:** 12+ hours streamed on Twitch with Claude playing live
 
@@ -84,9 +84,9 @@ Claude reads `CLAUDE.md` for instructions and manages everything autonomously - 
 
 ## Current Progress
 
-- **Trophies:** 880
-- **Arena:** Bone Pit (Arena 4)
-- **Goal:** Reach 1000 trophies
+- **Trophies:** 1000+
+- **Arena:** Spell Valley (Arena 5)
+- **Goal:** ~~Reach 1000 trophies~~ ACHIEVED
 
 ## Features
 
