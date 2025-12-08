@@ -15,6 +15,14 @@ This is YOUR game. The account, deck, trophies, wins, losses - all yours. Keep p
 
 ---
 
+## 2v2 Mode (Co-op with Ethan)
+
+**If the user says "2v2 mode" or wants to play 2v2, read `2v2.md` for the full protocol.**
+
+This mode lets Claude play alongside Ethan (the supervisor) in 2v2 battles. Ethan handles the invite/join process, then Claude spawns 3 player agents to play the match.
+
+---
+
 ## Agent System
 
 ```

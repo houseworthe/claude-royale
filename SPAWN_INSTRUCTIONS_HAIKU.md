@@ -73,9 +73,11 @@ LOOP:
 1. ./scripts/screenshot.sh then READ the image
 2. Check elixir bar (pink bar at bottom, number shown)
 3. Look at hand (4 cards at bottom)
-4. SCAN OPPONENT: Look at TOP HALF of screen
-   - Opponent units on VISUALLY LEFT side (top-left) = Columns 7-8
-   - Opponent units on VISUALLY RIGHT side (top-right) = Columns 5-6
+4. SCAN OPPONENT: Look for SMALL RED ICONS above troops
+   - **ENEMY troops have small RED icons above them**
+   - **YOUR troops have NO icons above them**
+   - Enemy units on VISUALLY LEFT side (top-left) = Columns 7-8
+   - Enemy units on VISUALLY RIGHT side (top-right) = Columns 5-6
 5. DECIDE DEFENSE:
    - If opponent on TOP-RIGHT (columns 5-6) → Defend on YOUR BOTTOM-RIGHT (columns 3-4)
    - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
@@ -170,25 +172,24 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 ---
 
-## YOUR CARDS
+## YOUR CARDS & STRATEGY
 
-| Slot | Card | Cost | Type |
-|------|------|------|------|
-| 1 | Arrows | 3 | Spell - kills swarms anywhere |
-| 2 | Bomber | 2 | Ground troop - splash damage |
-| 3 | Minions | 3 | Flying troop - fast DPS |
-| 4 | Tombstone | 3 | Building - distracts enemies |
-| 1 | Archers | 3 | Ranged troop - precise DPS |
-| 2 | Giant | 5 | Tank troop - WIN CONDITION |
-| 3 | Valkyrie | 4 | Melee tank - splash damage |
-| 4 | Musketeer | 4 | Ranged troop - anti-air |
+| Slot | Card | Cost | Visual | Strengths | Notes |
+|------|------|------|--------|-----------|-------|
+| 1 | Mini P.E.K.K.A | 4 | Dark blue armored figure with visor | Kills high-HP tanks (Giant, Hog, Knight) fast | Good for intercepting pushes |
+| 2 | Bomber | 3 | Character with yellow goggles/rings | Splash damage, damages multiple units | **DEFENSE ONLY** - Never play alone for offense. Only use to defend or support a Giant push. |
+| 3 | Mega Minion | 4 | Dark gray and purple flying creature with single target attack | **DEFENSE ONLY** - stops air units, medium health, single-target damage | Never play alone for offense. Only use to defend or support a Giant push. |
+| 4 | Tombstone | 3 | Stone grave with skeleton hand sticking out | Defensive building that pulls/distracts troops, spawns skeletons | Works well in center areas to affect both lanes |
+| 5 | Archers | 3 | One female character with pink hair | Ranged consistent DPS | **DEFENSE ONLY** - Never play alone for offense. Only use to defend or support a Giant push. |
+| 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Most effective with Musketeer support behind it |
+| 7 | Valkyrie | 4 | Female character with orange hair and axe | Tanky with splash damage | **DEFENSE ONLY** - place right on top of enemy swarms. Never play alone for offense. |
+| 8 | Musketeer | 4 | Female character with purple hair and hat | Strong ranged DPS, stops air units | Pair with Giant for main pushes |
 
-(Cards rotate through slots as you play them)
-
-**KEY DISTINCTION:**
-- **Spells (only Arrows)**: Can be placed ANYWHERE (columns 1-8) to target threats
-- **Troops (Bomber, Minions, Archers, Giant, Valkyrie, Musketeer)**: Deploy on YOUR HALF (columns 1-4) unless opponent towers are destroyed
-- **Building (Tombstone)**: Defensive building for YOUR HALF (columns 1-4)
+**KEY SYNERGIES:**
+- **Giant + Musketeer** = Your main win condition beatdown
+- **Valkyrie + Bomber** = Strong swarm clear
+- **Tombstone works best** when placed to pull threats toward center (vs having enemies bypass it)
+- **Mini P.E.K.K.A** = Best used on enemy tanks, less effective against small swarms
 
 ---
 
