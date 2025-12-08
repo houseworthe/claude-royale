@@ -32,18 +32,19 @@ Player Sub-Agents (both play SAME match together)
 ```
 
 **Spawn Protocol (2-Agent System - OPTIMIZED):**
-1. **Tap battle in background immediately:** `./scripts/tap.sh battle` (waits 8s, auto-plays opening card)
-2. **Spawn both agents in parallel immediately** - Don't wait for tap to finish
-3. Both agents take screenshots and wait for battle to start
-4. Both agents play simultaneously, naturally staggered 1-3 seconds apart
-5. Poll every 60 seconds until both agents report "MATCH ENDED"
-6. Retrieve all agent results before spawning next batch
 
-**WHY THIS WORKS:**
-- Battle tap runs in background while agents spawn in parallel
-- Eliminates sequential delays
-- Both agents start playing as soon as battle screen appears
-- Result: ~5-8 seconds faster match startup
+**IN A SINGLE MESSAGE:**
+1. Bash: `./scripts/tap.sh battle` with `run_in_background: true`
+2. Task 1: Spawn Player Agent 1 with `run_in_background: true`
+3. Task 2: Spawn Player Agent 2 with `run_in_background: true`
+
+All three start at t=0 simultaneously. No waiting between them.
+
+**Why this works:**
+- Battle tap, Agent 1, and Agent 2 all launch in parallel
+- t=0 simultaneity = fastest possible match startup
+- Agents see battle screen immediately when it's ready
+- No sequential delays
 
 **Why 2 agents, not 3:**
 - 3 agents cause elixir collisions (multiple cards same second = only 1 succeeds)
@@ -51,29 +52,23 @@ Player Sub-Agents (both play SAME match together)
 - Cleaner play rhythm, fewer wasted elixir
 
 **Auto-Opener:**
-- `tap.sh battle` waits 8s, then plays slot 1 to random side (2G or 3G)
+- `tap.sh battle` waits 8s, then plays slot 1 to random side
 - First card tempo: ~8s vs old 20+ seconds
 
-**Exact Task Tool Syntax:**
+**Exact Implementation:**
 ```
-./scripts/tap.sh battle (background, auto-opens match)
+MESSAGE 1 - ALL IN PARALLEL:
+  Bash (background): ./scripts/tap.sh battle
+  Task (background): Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md
+  Task (background): Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md
 
-Task tool call 1 (spawn in parallel):
-  description: "Player Agent 1"
-  prompt: [contents of SPAWN_INSTRUCTIONS_HAIKU.md]
-  subagent_type: "general-purpose"
-  model: "haiku"
-  run_in_background: true
-
-Task tool call 2 (spawn in parallel):
-  description: "Player Agent 2"
-  prompt: [contents of SPAWN_INSTRUCTIONS_HAIKU.md]
-  subagent_type: "general-purpose"
-  model: "haiku"
-  run_in_background: true
+THEN:
+  Wait 60 seconds
+  Poll agents with AgentOutputTool
+  Repeat every 60 seconds until both agents complete
 ```
 
-**CRITICAL:** Agents don't report wins/losses (unreliable). They only report when match ends. Commander verifies actual result by checking trophy count.
+**CRITICAL:** Agents don't report wins/losses (unreliable). They only report "MATCH ENDED". Commander verifies result by checking trophy count.
 
 ---
 
