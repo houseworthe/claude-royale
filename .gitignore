@@ -33,3 +33,6 @@ chat-log.txt
 *.secret
 *credentials*
 *token*
+
+# Local config overrides (user-specific coordinates)
+config/*.local.json

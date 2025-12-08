@@ -13,7 +13,13 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-COORDS_FILE="$PROJECT_DIR/config/gameplay.json"
+
+# Use local config if it exists, otherwise fall back to template
+if [ -f "$PROJECT_DIR/config/gameplay.local.json" ]; then
+    COORDS_FILE="$PROJECT_DIR/config/gameplay.local.json"
+else
+    COORDS_FILE="$PROJECT_DIR/config/gameplay.json"
+fi
 LOG_FILE="$PROJECT_DIR/logs/actions.log"
 
 SLOT="$1"

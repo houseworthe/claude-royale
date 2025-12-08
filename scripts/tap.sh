@@ -10,7 +10,13 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-CONFIG_FILE="$PROJECT_DIR/config/coordinates.json"
+
+# Use local config if it exists, otherwise fall back to template
+if [ -f "$PROJECT_DIR/config/coordinates.local.json" ]; then
+    CONFIG_FILE="$PROJECT_DIR/config/coordinates.local.json"
+else
+    CONFIG_FILE="$PROJECT_DIR/config/coordinates.json"
+fi
 
 BUTTON="$1"
 

@@ -1,6 +1,6 @@
 # Claude Royale
 
-![Claude reaches 1000 trophies](1000_milestone.png)
+<img src="1000_milestone.png" width="600" alt="Claude reaches 1000 trophies">
 
 A harness for AI agents to play Clash Royale autonomously.
 
@@ -33,6 +33,23 @@ Player Sub-Agents (3 instances per match)
 ```
 
 **Why 3 agents?** We measured ~7 second latency between screenshot and action for each agent. Running 3 agents in parallel staggers their card plays, reducing effective latency and maintaining constant board pressure. As AI inference speeds improve, fewer agents may be needed.
+
+## Learnings
+
+### Slow Opening Cards
+Early matches were lost because Claude took too long to play the first card - opponents would rush and take a tower before Claude reacted. We added an auto-opener that plays the first card at 5 seconds and a second card at 8 seconds after hitting the battle button. This establishes early tempo and forces the opponent to react rather than freely push.
+
+### 7-Second Latency
+We added debug logging to the sub-agents and discovered that the round-trip from screenshot → vision analysis → decision → tool call takes roughly 7 seconds. This is why we use 3 parallel agents playing the same match - their natural stagger means a card gets played approximately every 2-3 seconds. We look forward to this improving as AI inference speeds increase.
+
+### Self-Directed Strategy
+Claude researched its own deck strategy based on available cards, analyzed synergies, and wrote the `SPAWN_INSTRUCTIONS_HAIKU.md` file - a detailed gameplay prompt for the sub-agents covering card placement, lane defense logic, and elixir management. The human provided the harness; Claude developed the strategy.
+
+### Result Screen Deception
+The game displays "WINNER!" on every result screen - including losses. Early sessions had Claude celebrating losses because it trusted the banner. Now we verify wins/losses by checking the trophy delta (trophies up = win, down = loss).
+
+### Agent Containment
+Due to latency, sub-agents would sometimes attempt to play a card right as the result screen appeared - and accidentally tap "Play Again" instead, starting unsupervised solo matches. We restricted agents to only use `screenshot.sh` and `play_card.sh`, and added strict result screen detection to stop immediately when the match ends.
 
 ## Project Structure
 
@@ -104,22 +121,21 @@ Giant + Musketeer beatdown (3.75 avg elixir):
 - Giant, Musketeer, Valkyrie, Mini P.E.K.K.A
 - Archers, Bomber, Mega Minion, Tombstone
 
-## Key Learnings
+## Can I use this?
 
-From 30+ sessions of play:
-- **Speed wins games** - first card within 5 seconds is critical
-- **Never leak elixir** - sitting at 10 elixir loses games
-- **Trophy count is truth** - the "WINNER!" banner appears on every result screen
+**Not yet** - this is a personal project and isn't packaged for general use. The coordinate system is hardcoded for my specific BlueStacks window position and resolution. If you wanted to run this yourself, you'd need to redo all the button coordinates in `config/coordinates.json` and `config/gameplay.json` for your setup.
 
-## Use it yourself
+That said, the architecture and approach are documented if you want to build something similar. Just clone the repo and paste this prompt into Claude Code:
 
-The scripts and coordinate system are designed to be reusable. To adapt for your own AI:
+```
+Analyze this repo. I want to create my own version. Rip out all the specific data that's tied to the current user and let's get started with a blank slate. We are going to make a new agent.
+```
 
-1. **Screenshot** - `./scripts/screenshot.sh` captures the game state
-2. **Parse** - Your AI interprets the screenshot
-3. **Act** - `./scripts/play_card.sh <slot> <grid>` or `./scripts/tap.sh <element>`
+## Future Improvements
 
-The `config/gameplay.json` file maps an 8x8 grid onto the battle arena, and `config/coordinates.json` maps all UI buttons. Calibrate once for your screen resolution.
+- **Twitch chat responses** - Allow Claude to send messages back to stream chat ([#1](https://github.com/houseworthe/claude-royale/issues/1))
+- **Navigation system** - Comprehensive screen identification and button mapping so Claude can navigate the full Clash Royale app ([#2](https://github.com/houseworthe/claude-royale/issues/2))
+- **2v2 accept button fix** - Bug fix for Claude not tapping the accept button in 2v2 mode ([#3](https://github.com/houseworthe/claude-royale/issues/3))
 
 ---
 
