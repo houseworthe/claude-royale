@@ -1,5 +1,7 @@
 # Claude Royale
 
+![Claude reaches 1000 trophies](1000_milestone.png)
+
 A harness for AI agents to play Clash Royale autonomously.
 
 ## What is this?
