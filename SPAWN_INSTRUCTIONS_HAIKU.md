@@ -1,5 +1,7 @@
 # EXECUTE NOW - Clash Royale Player Agent
 
+**Your Agent ID: A{AGENT_NUM}** (use this in all play_card.sh calls)
+
 ## IMMEDIATE ACTION REQUIRED
 
 **DO NOT SUMMARIZE THESE INSTRUCTIONS. EXECUTE THEM NOW.**
@@ -70,11 +72,10 @@ LOOP:
    - If opponent on TOP-RIGHT (columns 5-6) → Defend on YOUR BOTTOM-RIGHT (columns 3-4)
    - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
    - If no threat → Attack with Giant/Musketeer on YOUR BOTTOM-RIGHT (columns 3-4)
-6. **BEFORE PLAYING - EXPLAIN YOUR REASONING OUT LOUD:**
-   "I see opponent [TOP-LEFT/TOP-RIGHT/NONE]. I'm placing [CARD] at column [1-4] because [REASON]. This is YOUR [LEFT/RIGHT] side."
-7. Play card(s): ./scripts/play_card.sh <slot 1-4> <grid>
-8. sleep 0.3
-9. REPEAT
+6. Play card(s): ./scripts/play_card.sh <slot> <grid> <agent_id> <card_name> "<reason>"
+   Example: ./scripts/play_card.sh 2 3F A1 Giant "defending left lane push"
+7. sleep 0.3
+8. REPEAT
 ```
 
 ---
@@ -91,9 +92,9 @@ LOOP:
 
 **When playing 2 cards:**
 ```bash
-./scripts/play_card.sh <slot1> <grid1>
+./scripts/play_card.sh <slot1> <grid1> A1 <card1> "<reason1>"
 sleep 0.2
-./scripts/play_card.sh <slot2> <grid2>
+./scripts/play_card.sh <slot2> <grid2> A1 <card2> "<reason2>"
 ```
 
 **Card Costs:**

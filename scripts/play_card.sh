@@ -1,7 +1,7 @@
 #!/bin/bash
 # play_card.sh - Play a card from hand to a grid cell
-# Usage: ./play_card.sh <slot 1-4> <grid_cell>
-# Example: ./play_card.sh 2 3D (column 3, row D)
+# Usage: ./play_card.sh <slot 1-4> <grid_cell> [agent_id] [card_name] [reason]
+# Example: ./play_card.sh 2 3D A1 Giant "counter push"
 #
 # Grid: 8 columns (1-4 Claude's half, 5-8 opponent's half) x 8 rows (A-H, bridge to king tower)
 # Column 1-4: Claude's side (left to right)
@@ -24,6 +24,9 @@ LOG_FILE="$PROJECT_DIR/logs/actions.log"
 
 SLOT="$1"
 CELL="$2"
+AGENT_ID="${3:-?}"
+CARD_NAME="${4:-?}"
+REASON="${5:-}"
 
 # Validate arguments
 if [ -z "$SLOT" ] || [ -z "$CELL" ]; then
@@ -94,6 +97,10 @@ sleep 0.15
 cliclick "c:$TARGET_X,$TARGET_Y"
 
 # Log the action with timestamp
-echo "$(date '+%Y-%m-%d %H:%M:%S.%3N') PLAY_CARD slot=$SLOT cell=$CELL" >> "$LOG_FILE"
+if [ -n "$REASON" ]; then
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [$AGENT_ID] PLAY slot=$SLOT cell=$CELL card=$CARD_NAME reason=\"$REASON\"" >> "$LOG_FILE"
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [$AGENT_ID] PLAY slot=$SLOT cell=$CELL card=$CARD_NAME" >> "$LOG_FILE"
+fi
 
 echo "Played card $SLOT to $CELL ($TARGET_X, $TARGET_Y)"

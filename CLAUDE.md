@@ -45,9 +45,9 @@ Player Sub-Agents (all three play SAME match together)
 
 **IN A SINGLE MESSAGE:**
 1. Bash: `./scripts/tap.sh battle` with `run_in_background: true`
-2. Task 1: Spawn Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md content
-3. Task 2: Spawn Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md content
-4. Task 3: Spawn Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md content
+2. Task 1: Spawn Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md content (replace {AGENT_NUM} with 1)
+3. Task 2: Spawn Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md content (replace {AGENT_NUM} with 2)
+4. Task 3: Spawn Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md content (replace {AGENT_NUM} with 3)
 
 All four start at t=0 simultaneously. No waiting between them.
 
@@ -69,9 +69,9 @@ All four start at t=0 simultaneously. No waiting between them.
 ```
 MESSAGE 1 - ALL IN PARALLEL:
   Bash (background): ./scripts/tap.sh battle
-  Task (background): Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md
-  Task (background): Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md
-  Task (background): Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md
+  Task (background): Player Agent 1 with SPAWN_INSTRUCTIONS_HAIKU.md (replace {AGENT_NUM} with 1)
+  Task (background): Player Agent 2 with SPAWN_INSTRUCTIONS_HAIKU.md (replace {AGENT_NUM} with 2)
+  Task (background): Player Agent 3 with SPAWN_INSTRUCTIONS_HAIKU.md (replace {AGENT_NUM} with 3)
 
 THEN:
   Wait 60 seconds

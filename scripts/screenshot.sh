@@ -8,7 +8,6 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 OUTPUT_PATH="${1:-$PROJECT_DIR/screenshots/current.png}"
-LOG_FILE="$PROJECT_DIR/logs/actions.log"
 
 # Find BlueStacks window ID
 # Try different possible app names for BlueStacks
@@ -79,6 +78,3 @@ capture_bluestacks() {
 
 # Run capture
 capture_bluestacks
-
-# Log the screenshot with timestamp
-echo "$(date '+%Y-%m-%d %H:%M:%S.%3N') SCREENSHOT" >> "$LOG_FILE"
