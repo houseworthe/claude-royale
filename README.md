@@ -32,7 +32,7 @@ Player Sub-Agents (3 instances per match)
 └── Stop at result screen, report back to Commander
 ```
 
-**Why 3 agents?** They naturally stagger card plays at different intervals, reducing wasted elixir and maintaining constant board pressure.
+**Why 3 agents?** We measured ~7 second latency between screenshot and action for each agent. Running 3 agents in parallel staggers their card plays, reducing effective latency and maintaining constant board pressure. As AI inference speeds improve, fewer agents may be needed.
 
 ## Project Structure
 
