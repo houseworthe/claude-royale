@@ -61,7 +61,8 @@ claude-royale/
 │   ├── screenshot.sh  # Capture game screen
 │   ├── play_card.sh   # Play card to grid position
 │   ├── tap.sh         # Tap UI elements
-│   └── get-chat.sh    # Twitch chat integration
+│   ├── get-chat.sh    # Twitch chat integration
+│   └── watch-agent.sh # Live feed of agent decisions (for streaming)
 ├── config/
 │   ├── coordinates.json  # UI element positions
 │   └── gameplay.json     # Battle grid mappings
