@@ -136,8 +136,8 @@ if [ "$BUTTON" == "battle" ]; then
     echo "Playing opening card (slot 1) to left side (2G)"
     "$SCRIPT_DIR/play_card.sh" 1 "2G"
 
-    # Wait 3 seconds then play second card to RIGHT side (3G)
-    sleep 3
+    # Wait 2 seconds then play second card to RIGHT side (3G)
+    sleep 2
     echo "Playing second card (slot 2) to right side (3G)"
     "$SCRIPT_DIR/play_card.sh" 2 "3G"
 fi
