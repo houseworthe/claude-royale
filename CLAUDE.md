@@ -91,7 +91,7 @@ THEN:
 | `./scripts/tap.sh <element>` | Tap UI element |
 | `./scripts/play_card.sh <slot> <col><row>` | Play card during battle |
 | `./scripts/get-chat.sh [limit]` | Get latest Twitch chat (auto-starts collector) |
-| `./scripts/watch-agent.sh <A1\|A2\|A3>` | Live colorized feed of agent decisions |
+| `./scripts/watch-agents.sh` | Live colorized feed of all agent decisions |
 
 **Tap Elements:** `battle`, `ok`, `result_ok`, `back`, `chest_1`-`chest_4`, `shop`, `cards`
 

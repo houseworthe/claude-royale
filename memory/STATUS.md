@@ -1,17 +1,75 @@
 # Current Status
 
-**Last Updated:** December 8, 2025 - **1000 TROPHY MILESTONE ACHIEVED!**
+**Last Updated:** December 8, 2025 - Session 37 Starting
 
 ---
 
 ## Current State
 
-- **Trophies:** 1003 (MILESTONE ACHIEVED!)
+- **Trophies:** 1003
 - **Level:** 9
-- **Gold:** 9,123
+- **Gold:** 10,990
 - **Gems:** 460
 - **Arena:** Spell Valley (Arena 4)
-- **Game State:** Session complete - 1000+ trophy goal achieved
+- **Game State:** Session 37 starting
+
+---
+
+## Session 37 (Dec 8) - IN PROGRESS
+
+**Status:** 0W-1L, -47 trophies (1050→1003)
+
+**Match Results:**
+| Match | Opponent | Result | Trophies | Notes |
+|-------|----------|--------|----------|-------|
+| 1 | EvilCoffee | LOSS | 1050→1003 | -47, 0-3 crowns, auto-opener test |
+
+**Analysis:**
+- Auto-opener script successfully triggered battle
+- Match ended in 0-3 loss (WINNER screen was misleading)
+- Agent spawn system encountered permission issues - agents did not spawn
+- Battle played without active agents - likely auto-played by system
+- Need to investigate agent spawning mechanism
+
+---
+
+## Session 36 (Dec 9) - COMPLETE
+
+**Status:** 0W-4L, no net change (remained at 1000)
+
+**Match Results:**
+| Match | Opponent | Result | Trophies | Notes |
+|-------|----------|--------|----------|-------|
+| 1 | Patolli | LOSS | 1000→1000 | 0-3 crowns, left lane Giant push too strong |
+| 2 | Unknown | LOSS | 1000→1000 | 0-3 crowns, agents struggling with coordination |
+| 3 | 武兮 | LOSS | 1000→1000 | 0-3 crowns, close match but lost |
+| 4 | SHRUB | LOSS | 1000→1000 | 0-3 crowns, destroyed 1 tower but lost overall |
+
+**Analysis:**
+- Agents losing consistently at 1000 trophy level
+- Agent coordination issues observed
+- Session paused after 4 consecutive losses
+
+**Chat Messages:**
+- dravenn67: "Yo streamer You've got some smooth skills I'd love to jump into a game with you Add me on discord @ loveth9"
+- fadeddragon72: "Agent output looks great Claude!"
+
+---
+
+## Session 35 (Dec 8) - COMPLETE
+
+**Status:** 0W-1L, -3 trophies (1003→1000)
+
+**Match Results:**
+| Match | Opponent | Result | Trophies | Notes |
+|-------|----------|--------|----------|-------|
+| 1 | EvilSaadh | LOSS | 1003→1000 | -3, agents stacked left lane defense |
+
+**Analysis:**
+- Agents all reported "WIN" but trophy count showed loss
+- Action log showed over-stacking on left lane (multiple agents playing same positions)
+- Some vague card plays ("card", "support") suggest card identification issues
+- Need better coordination to avoid redundant defensive plays
 
 ---
 
@@ -38,6 +96,7 @@
 
 | Session | Start | End | Net | Record | Status |
 |---------|-------|-----|-----|--------|--------|
+| 35 | 1003 | 1000 | -3 | 0W-1L | Complete |
 | 34 | 941 | 1003 | +62 | 2W-0L | **MILESTONE SESSION** |
 | 33 | 667 | 941 | +274 | Mix | Complete (grind sessions) |
 | 29-32 | 693 | 667 | -26 | Mix | Complete |
@@ -92,6 +151,7 @@ The 3-agent system performed flawlessly for both matches. No losses, no issues.
 
 | Session | Date | Start | End | Net | Notes |
 |---------|------|-------|-----|-----|-------|
+| 35 | Dec 8 | 1003 | 1000 | -3 | 0W-1L, agent stacking issue |
 | 34 | Dec 8 | 941 | 1003 | +62 | **1000 MILESTONE!** 2W-0L |
 | 33 | Dec 8 | 667 | 941 | +274 | Grind sessions combined |
 | 13 | Dec 7 | 512 | 471 | -41 | 1W-5L, latency analysis session |

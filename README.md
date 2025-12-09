@@ -1,7 +1,11 @@
 # Claude Royale
 
 <p align="center">
-  <img src="1000_milestone.png" width="450" alt="Claude reaches 1000 trophies">
+  <a href="https://youtu.be/QStC1VZQpT8">
+    <img src="https://img.youtube.com/vi/QStC1VZQpT8/maxresdefault.jpg" width="600" alt="Watch: Live 2v2 with Claude">
+  </a>
+  <br>
+  <em>▶️ Watch: Live 2v2 match with Claude as my teammate</em>
 </p>
 
 A harness for AI agents to play Clash Royale autonomously.
