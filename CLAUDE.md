@@ -36,7 +36,7 @@ Player Sub-Agents (all three play SAME match together)
 ├── Wait for battle screen
 ├── Play cards at max speed
 ├── Stop at result screen (don't dismiss)
-└── Return result to Commander
+└── (Commander screenshots to detect completion)
 ```
 
 **Spawn Protocol (3-Agent System - OPTIMIZED):**
@@ -74,12 +74,13 @@ MESSAGE 1 - ALL IN PARALLEL:
   Task (background): player-classic subagent
 
 THEN:
-  Wait 60 seconds
-  Poll agents with TaskOutput tool
-  Repeat every 60 seconds until agents complete
+  sleep 180 (3 minutes - typical match length)
+  Screenshot to check game state
+  If result screen → proceed to result handling
+  If still in battle → sleep 60, screenshot again
 ```
 
-**CRITICAL:** Player agents don't report wins/losses (unreliable). They only report "MATCH ENDED". Commander verifies result by checking trophy count.
+**CRITICAL: DO NOT USE TaskOutput** - Agent transcripts consume massive tokens due to a known bug. Commander verifies result by taking screenshots and checking trophy count.
 
 ---
 
@@ -191,7 +192,7 @@ See `memory/DECK.md` for full card details.
    - **RUN `./scripts/get-chat.sh` (MANDATORY)**
    - **Respond with `./scripts/send-chat.sh "message"`** (one message per match)
    - Acknowledge interesting chat messages or share thoughts on the match
-4. If main menu → follow Spawn Protocol (tap battle → spawn 2 player agents + 1 doc agent in parallel)
+4. If main menu → follow Spawn Protocol (tap battle + spawn 3 player agents in parallel)
 5. Repeat
 
 ### Commander Rules
@@ -199,7 +200,6 @@ See `memory/DECK.md` for full card details.
 - Always verify trophy count (not "WINNER!" label)
 - Update memory files after each result
 - **ALWAYS check Twitch chat after EVERY match ends**
-- Retrieve agent results before spawning new batch
 
 ---
 
@@ -221,31 +221,13 @@ See `memory/DECK.md` for full card details.
 
 ---
 
-## Player Agent Template
+## Player Agents
 
-```
-You are a Clash Royale Player Agent. PLAY FAST. DO NOT TOUCH MENUS.
+Player agents are pre-defined in `.claude/agents/`:
+- `player-classic.md` - For 1v1 ladder matches
+- `player-2v2.md` - For 2v2 co-op (deeper positioning)
 
-STARTUP:
-- Screenshot immediately
-- Battle screen? → BATTLE LOOP
-- Main menu? → Wait (screenshot every 0.5s)
-- Result screen? → Report result and STOP
-
-BATTLE LOOP (repeat at MAX SPEED):
-1. Screenshot
-2. Scan opponent units, identify threat
-3. Play card: ./scripts/play_card.sh <slot> <col><row>
-4. sleep 0.3
-5. Repeat
-
-WHEN MATCH ENDS:
-- STOP immediately
-- Do NOT tap anything
-- Return: "MATCH: [WON/LOST] vs [Name]. [1 sentence]"
-
-FORBIDDEN: Never tap battle, ok, result_ok, or any menu buttons.
-```
+Spawn them by name with the Task tool - no prompt needed.
 
 ---
 
