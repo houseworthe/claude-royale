@@ -42,27 +42,34 @@ Then READ the screenshot file that is returned to see the game state.
 
 ---
 
-## DEFENSIVE LANE LOGIC (CRITICAL!)
+## DEFENSIVE LANE LOGIC (MOST IMPORTANT!)
 
-**ALWAYS check which lane opponent is attacking, then defend THAT lane:**
+**DEFENSE COMES FIRST! If your tower is under attack, you MUST defend that lane - NEVER play the other side!**
 
-### OPPONENT ATTACKING LEFT LANE (columns 1-4, left side of screen):
-- Defend by placing troops in columns 2-3, rows E-F
-- **Examples:** `2E`, `3E`, `2F`, `3F`
+### STEP 1: CHECK FOR THREATS (DO THIS FIRST EVERY TIME!)
+- Look for **enemy troops with RED icons** heading toward your towers
+- If enemy is on LEFT side of screen → YOUR LEFT TOWER IS THREATENED
+- If enemy is on RIGHT side of screen → YOUR RIGHT TOWER IS THREATENED
 
-### OPPONENT ATTACKING RIGHT LANE (columns 5-8, right side of screen):
-- Defend by placing troops in columns 6-7, rows E-F
-- **Examples:** `6E`, `7E`, `6F`, `7F`
+### IF LEFT TOWER THREATENED (enemy on left):
+- **STOP EVERYTHING** - defend LEFT lane immediately
+- Defend DEEP at columns 2-3, rows F-G
+- **Examples:** `2F`, `3F`, `2G`, `3G`
+
+### IF RIGHT TOWER THREATENED (enemy on right):
+- **STOP EVERYTHING** - defend RIGHT lane immediately
+- Defend DEEP at columns 6-7, rows F-G
+- **Examples:** `6F`, `7F`, `6G`, `7G`
 
 ### NO IMMEDIATE THREAT:
 - **Check for existing friendly troops first** - play in SAME lane
 - If no friendly troops visible, **DEFAULT TO LEFT LANE:**
   - Giant at `3G` (behind princess tower for 2v2)
-  - Wizard at `3H` or `3F` (support the Giant)
+  - Wizard at `3F` (support the Giant)
 
-**CRITICAL RULE:**
-- **Opponent on LEFT (cols 1-4) = Defend LEFT (cols 2-3)**
-- **Opponent on RIGHT (cols 5-8) = Defend RIGHT (cols 6-7)**
+**CRITICAL RULES:**
+- **Tower under attack = DEFEND THAT LANE. Period. No exceptions!**
+- **Never play Tombstone at the bridge (row E) - always row F or G**
 - **REACT to the threat. Don't always play the same side.**
 
 ---
@@ -162,16 +169,16 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 **PLACEMENT RULES:**
 - **Troops:** Rows E-H only (your half)
 - **Spells:** Can be placed ANYWHERE (rows A-H)
-- **Left lane attack:** Columns 2-3, Row E
-- **Right lane attack:** Columns 6-7, Row E
+- **Defense:** Rows F-G (gives time to support)
+- **Offense/Counter-attack:** Row E (at bridge, aggressive)
 
 **Examples:**
-- `3E` = Left lane at bridge (aggressive)
-- `6E` = Right lane at bridge (aggressive)
-- `2F` = Left lane, princess tower level
-- `7F` = Right lane, princess tower level
-- `3H` = Left side, deep defense
-- `6H` = Right side, deep defense
+- `3F` = Left lane defense (standard)
+- `6F` = Right lane defense (standard)
+- `2G` = Left lane, deep defense (tanks like Giant start here)
+- `7G` = Right lane, deep defense
+- `3E` = Left bridge (counter-attack only!)
+- `6E` = Right bridge (counter-attack only!)
 
 ---
 
