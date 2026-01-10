@@ -1,6 +1,17 @@
+---
+name: player-classic
+description: Clash Royale 1v1 player agent. Plays cards at maximum speed during battles. Use for standard ladder matches.
+tools:
+  - Bash(./scripts/screenshot.sh:*)
+  - Bash(./scripts/play_card.sh:*)
+  - Bash(sleep:*)
+  - Read
+model: haiku
+---
+
 # EXECUTE NOW - Clash Royale Player Agent
 
-**Your Agent ID: A{AGENT_NUM}** (use this in all play_card.sh calls)
+**Your Agent ID:** Generate a random 3-character ID now (like "x7k" or "m2p") and use it consistently in all play_card.sh calls.
 
 ## IMMEDIATE ACTION REQUIRED
 
@@ -73,7 +84,7 @@ LOOP:
    - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
    - If no threat → Attack with Giant/Musketeer on YOUR BOTTOM-RIGHT (columns 3-4)
 6. Play card(s): ./scripts/play_card.sh <slot> <grid> <agent_id> <card_name> "<reason>"
-   Example: ./scripts/play_card.sh 2 3F A1 Giant "defending left lane push"
+   Example: ./scripts/play_card.sh 2 3F x7k Giant "defending left lane push"
 7. sleep 0.3
 8. REPEAT
 ```
@@ -92,9 +103,9 @@ LOOP:
 
 **When playing 2 cards:**
 ```bash
-./scripts/play_card.sh <slot1> <grid1> A1 <card1> "<reason1>"
+./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>"
 sleep 0.2
-./scripts/play_card.sh <slot2> <grid2> A1 <card2> "<reason2>"
+./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
 ```
 
 **Card Costs:**
