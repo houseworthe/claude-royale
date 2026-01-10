@@ -41,7 +41,7 @@ Persistent knowledge accumulated across sessions.
 ### Card-Specific Rules
 - **Mini P.E.K.K.A:** Use on tanks (Giant, Hog, Knight) - NOT on swarms
 - **Giant:** Play at bridge (5A or 6A), not behind king tower
-- **Wizard:** Always BEHIND Giant, never in front. Splash + air defense.
+- **Wizard:** Offense = behind Giant. Defense = splash incoming pushes from range (place BACK from enemies, not on top like Valkyrie).
 - **Tombstone:** Defensive placement CLOSER TO OWN TOWERS (3F-3G range), NOT forward. Center placement to pull troops approaching your towers, not the opponent's side
 
 **CRITICAL FROM SESSION 13 LOSS:**

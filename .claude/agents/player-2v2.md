@@ -183,7 +183,7 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 | 5 | Archers | 3 | Female character with pink hair | Ranged DPS, light air defense | **DEFENSE ONLY** - Never play alone for offense. |
 | 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Deploy at back to build push, or bridge for quick pressure. |
 | 7 | Valkyrie | 4 | Female with orange hair and axe | Tanky splash damage | **DROP ON TOP** of enemy swarms/support. Defense only. |
-| 8 | Wizard | 5 | Bearded man in blue hoodie/robe | Splash damage, hits AIR + ground | Survives Fireball. Place BEHIND Giant. Solves Minion Horde. |
+| 8 | Wizard | 5 | Bearded man in blue hoodie/robe | Splash damage, hits AIR + ground | Offense: behind Giant. Defense: splash from range (not on top). Solves Minion Horde. |
 
 **KEY SYNERGIES:**
 - **Giant + Wizard** = Main win condition. Wizard splashes air AND ground behind Giant.

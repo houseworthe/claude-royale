@@ -28,8 +28,9 @@
 - **Key Rule:** Never play Giant without elixir for support behind it
 
 ### PRIMARY SUPPORT: Wizard (Slot 8)
-- **Role:** Splash damage + air defense behind Giant
-- **Placement:** Always BEHIND Giant, 1-2 tiles back
+- **Role:** Splash damage + air defense - versatile offense AND defense
+- **Offensive Placement:** Behind Giant, 1-2 tiles back
+- **Defensive Placement:** Place BACK from incoming push (ranged splash, not on top like Valkyrie)
 - **Key Strength:** Hits air AND ground with splash - solves Minion Horde problem
 - **Survives Fireball:** Unlike Musketeer, Wizard survives Fireball at equal levels
 - **Synergy:** Giant + Wizard is the main push combo
