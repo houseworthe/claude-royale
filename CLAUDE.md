@@ -93,8 +93,9 @@ THEN:
 | `./scripts/get-chat.sh [limit]` | Get latest Twitch chat (auto-starts collector) |
 | `./scripts/send-chat.sh "msg"` | Send a message to Twitch chat |
 | `./scripts/watch-agents.sh` | Live colorized feed of all agent decisions |
+| `./scripts/calibrate-button.sh <name>` | Recalibrate a single button coordinate |
 
-**Tap Elements:** `battle`, `ok`, `result_ok`, `back`, `chest_1`-`chest_4`, `shop`, `cards`
+**Tap Elements:** `battle`, `2v2_accept`, `ok`, `result_ok`, `back`, `chest_1`-`chest_4`, `shop`, `cards`
 
 **Card Placement:** `play_card.sh <slot 1-4> <col><row>`
 
