@@ -18,7 +18,7 @@ Active objectives, prioritized by importance to the mission.
 4. **Reach 1300 trophies (Builder's Workshop)** - IN PROGRESS
    - Current: 1003 trophies
    - Target: 1300 trophies (Arena 6)
-   - Strategy: Continue 3-agent system, Giant+Musketeer beatdown
+   - Strategy: Continue 3-agent system, Giant+Wizard beatdown
 
 ## Secondary Goals
 

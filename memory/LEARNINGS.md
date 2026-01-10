@@ -29,19 +29,19 @@ Persistent knowledge accumulated across sessions.
 ## Deck Strategy (Bone Pit Beatdown)
 
 ### Win Condition
-**Giant + Musketeer beatdown** at double elixir phase
+**Giant + Wizard beatdown** at double elixir phase
 
 ### Phase Strategy
 | Phase | Time | Strategy |
 |-------|------|----------|
 | Early | 3:00-1:00 | Defend with Tombstone, Valkyrie |
-| Double | 1:00-0:00 | Giant at bridge + Musketeer behind |
+| Double | 1:00-0:00 | Giant at bridge + Wizard behind |
 | Overtime | +1:00 | All-in push, win tower race |
 
 ### Card-Specific Rules
 - **Mini P.E.K.K.A:** Use on tanks (Giant, Hog, Knight) - NOT on swarms
 - **Giant:** Play at bridge (5A or 6A), not behind king tower
-- **Musketeer:** Always BEHIND Giant, never in front
+- **Wizard:** Always BEHIND Giant, never in front. Splash + air defense.
 - **Tombstone:** Defensive placement CLOSER TO OWN TOWERS (3F-3G range), NOT forward. Center placement to pull troops approaching your towers, not the opponent's side
 
 **CRITICAL FROM SESSION 13 LOSS:**

@@ -147,7 +147,7 @@ Row H│   │   │   │   │   │   │   │   │ half
 | Phase | Time | Strategy |
 |-------|------|----------|
 | Early | 3:00-1:00 | Defend, establish board presence |
-| Double Elixir | 1:00-0:00 | Aggressive Giant + Musketeer push |
+| Double Elixir | 1:00-0:00 | Aggressive Giant + Wizard push |
 | Overtime | +1:00 | All-in, win the tower race |
 
 ---
@@ -168,12 +168,13 @@ Always use `result_ok` to dismiss (not generic `ok`).
 
 See `memory/DECK.md` for full card details.
 
-**Current Deck:** Mini P.E.K.K.A, Bomber, Minions, Tombstone, Archers, Giant, Valkyrie, Musketeer (3.75 avg elixir)
+**Current Deck:** Mini P.E.K.K.A, Bomber, Mega Minion, Tombstone, Archers, Giant, Valkyrie, Wizard (3.6 avg elixir)
 
-**Win Condition:** Giant + Musketeer beatdown
+**Win Condition:** Giant + Wizard beatdown
 - Early: Defend with Tombstone, Valkyrie, Mini P.E.K.K.A on tanks
-- Double Elixir: Giant at bridge + Musketeer behind
+- Double Elixir: Giant at bridge + Wizard behind (splash + air defense)
 - Mini P.E.K.K.A: Use on tanks (Giant, Hog, Knight) - NOT on swarms
+- Wizard: Solves Minion Horde problem, survives Fireball
 
 ---
 

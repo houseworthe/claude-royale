@@ -7,11 +7,17 @@
 ## Current State
 
 - **Trophies:** 1003
-- **Level:** 9
-- **Gold:** 10,990
-- **Gems:** 460
-- **Arena:** Spell Valley (Arena 4)
-- **Game State:** Session 37 starting
+- **King Tower Level:** 6
+- **Gold:** ~10,000
+- **Gems:** ~400 (spent on upgrades)
+- **Arena:** Spell Valley (Arena 5)
+- **Game State:** Session 37 - Deck updated
+
+**Deck Change (Jan 10, 2025):**
+- OUT: Musketeer (4 elixir)
+- IN: Wizard (5 elixir)
+- New Average Elixir: 3.6
+- Reason: Wizard provides splash + air defense, solves Minion Horde problem
 
 ---
 
