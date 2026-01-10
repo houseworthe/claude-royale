@@ -4,8 +4,55 @@ const path = require('path');
 
 // Configuration
 const CHANNEL = process.env.TWITCH_CHANNEL || 'FadedDragon72';
+const USERNAME = process.env.TWITCH_USERNAME;
+const OAUTH_TOKEN = process.env.TWITCH_OAUTH_TOKEN;
 const CHAT_LOG_FILE = path.join(__dirname, 'chat-log.txt');
 const MAX_MESSAGES = 50; // Keep last 50 messages
+
+// Check if running in send mode
+const SEND_MODE = process.argv[2] === '--send';
+const SEND_MESSAGE = process.argv[3];
+
+// Build client options (authenticated if credentials exist, anonymous otherwise)
+const clientOptions = { channels: [CHANNEL] };
+if (OAUTH_TOKEN && USERNAME) {
+    clientOptions.identity = {
+        username: USERNAME,
+        password: `oauth:${OAUTH_TOKEN}`
+    };
+}
+
+const client = new tmi.Client(clientOptions);
+
+// --- SEND MODE: Send a message and exit ---
+if (SEND_MODE) {
+    if (!SEND_MESSAGE) {
+        console.error('Usage: node twitch-chat.js --send "message"');
+        process.exit(1);
+    }
+    if (!OAUTH_TOKEN || !USERNAME) {
+        console.error('Error: TWITCH_OAUTH_TOKEN and TWITCH_USERNAME required for sending');
+        process.exit(1);
+    }
+
+    client.connect()
+        .then(() => {
+            return client.say(CHANNEL, SEND_MESSAGE);
+        })
+        .then(() => {
+            console.log(`Sent to #${CHANNEL}: ${SEND_MESSAGE}`);
+            setTimeout(() => process.exit(0), 500);
+        })
+        .catch(err => {
+            console.error('Failed to send:', err.message);
+            process.exit(1);
+        });
+
+    // Don't run the rest of the collector code
+    return;
+}
+
+// --- COLLECTOR MODE: Listen and log messages ---
 
 // Store messages in memory
 let messages = [];
@@ -43,16 +90,14 @@ function formatTime(date) {
     });
 }
 
-// Create client (anonymous/read-only - no auth needed)
-const client = new tmi.Client({
-    channels: [CHANNEL]
-});
-
 // Load existing messages on startup
 loadExistingMessages();
 
 // Handle incoming messages
 client.on('message', (channel, tags, message, self) => {
+    // Ignore messages from ourselves
+    if (self) return;
+
     const timestamp = formatTime(new Date());
     const username = tags['display-name'] || tags.username;
     const formattedMsg = `[${timestamp}] ${username}: ${message}`;
@@ -74,7 +119,8 @@ client.on('message', (channel, tags, message, self) => {
 
 // Connection events
 client.on('connected', (addr, port) => {
-    console.log(`Connected to Twitch chat for #${CHANNEL}`);
+    const authStatus = OAUTH_TOKEN ? '(authenticated)' : '(anonymous)';
+    console.log(`Connected to Twitch chat for #${CHANNEL} ${authStatus}`);
     console.log(`Logging messages to: ${CHAT_LOG_FILE}`);
     console.log('---');
 });
