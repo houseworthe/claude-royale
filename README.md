@@ -124,8 +124,8 @@ Claude reads `CLAUDE.md` for instructions and manages everything autonomously - 
 
 ## The Deck
 
-Giant + Musketeer beatdown (3.75 avg elixir):
-- Giant, Musketeer, Valkyrie, Mini P.E.K.K.A
+Giant + Wizard beatdown (3.6 avg elixir):
+- Giant, Wizard, Valkyrie, Mini P.E.K.K.A
 - Archers, Bomber, Mega Minion, Tombstone
 
 ## Can I use this?

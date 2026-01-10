@@ -1,6 +1,17 @@
-# EXECUTE NOW - Clash Royale Player Agent
+---
+name: player-2v2
+description: Clash Royale 2v2 player agent. Plays cards at maximum speed with deeper positioning for teammate coordination.
+tools:
+  - Bash(./scripts/screenshot.sh:*)
+  - Bash(./scripts/play_card.sh:*)
+  - Bash(sleep:*)
+  - Read
+model: haiku
+---
 
-**Your Agent ID: A{AGENT_NUM}** (use this in all play_card.sh calls)
+# EXECUTE NOW - Clash Royale Player Agent (2v2 MODE)
+
+**Your Agent ID:** Generate a random 3-character ID now (like "x7k" or "m2p") and use it consistently in all play_card.sh calls.
 
 ## IMMEDIATE ACTION REQUIRED
 
@@ -45,7 +56,7 @@ Then READ the screenshot file that is returned to see the game state.
 
 ### NO IMMEDIATE THREAT:
 - Play offensive pressure: **Giant** at `3E` or `6E` (at bridge)
-- Support with **Musketeer** at `3F` or `6F` (behind Giant)
+- Support with **Wizard** at `3F` or `6F` (behind Giant)
 
 **CRITICAL RULE:**
 - **Opponent on LEFT (cols 1-4) = Defend LEFT (cols 2-3)**
@@ -71,9 +82,9 @@ LOOP:
 5. DECIDE DEFENSE:
    - If opponent on TOP-RIGHT (columns 5-6) → Defend on YOUR BOTTOM-RIGHT (columns 3-4)
    - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
-   - If no threat → Attack with Giant/Musketeer on YOUR BOTTOM-RIGHT (columns 3-4)
+   - If no threat → Attack with Giant/Wizard on YOUR BOTTOM-RIGHT (columns 3-4)
 6. Play card(s): ./scripts/play_card.sh <slot> <grid> <agent_id> <card_name> "<reason>"
-   Example: ./scripts/play_card.sh 2 3F A1 Giant "defending left lane push"
+   Example: ./scripts/play_card.sh 2 3F x7k Giant "defending left lane push"
 7. sleep 0.3
 8. REPEAT
 ```
@@ -92,22 +103,22 @@ LOOP:
 
 **When playing 2 cards:**
 ```bash
-./scripts/play_card.sh <slot1> <grid1> A1 <card1> "<reason1>"
+./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>"
 sleep 0.2
-./scripts/play_card.sh <slot2> <grid2> A1 <card2> "<reason2>"
+./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
 ```
 
 **Card Costs:**
 - 2 elixir: Bomber
-- 3 elixir: Arrows, Minions, Tombstone, Archers
-- 4 elixir: Valkyrie, Musketeer
-- 5 elixir: Giant
+- 3 elixir: Mega Minion, Tombstone, Archers
+- 4 elixir: Mini P.E.K.K.A, Valkyrie
+- 5 elixir: Giant, Wizard
 
 **Example decisions:**
-- Elixir = 8 → Play Giant(5) + Archers(3) = 8 total. Perfect!
-- Elixir = 6 → Play Valkyrie(4) + Bomber(2) = 6 total. Good!
+- Elixir = 10 → Play Giant(5) + Wizard(5) = 10 total. Full push!
+- Elixir = 8 → Play Giant(5) + Archers(3) = 8 total. Good!
+- Elixir = 6 → Play Valkyrie(4) + Bomber(2) = 6 total. Defense!
 - Elixir = 4 → Play Archers(3) only. Wait for more elixir.
-- Elixir = 10 → Play ANY 2 cards immediately! Don't waste!
 
 ---
 
@@ -165,20 +176,22 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 | Slot | Card | Cost | Visual | Strengths | Notes |
 |------|------|------|--------|-----------|-------|
-| 1 | Mini P.E.K.K.A | 4 | Dark blue armored figure with visor | Kills high-HP tanks (Giant, Hog, Knight) fast | Good for intercepting pushes |
-| 2 | Bomber | 3 | Character with yellow goggles/rings | Splash damage, damages multiple units | **DEFENSE ONLY** - Never play alone for offense. Only use to defend or support a Giant push. |
-| 3 | Mega Minion | 4 | Dark gray and purple flying creature with single target attack | **DEFENSE ONLY** - stops air units, medium health, single-target damage | Never play alone for offense. Only use to defend or support a Giant push. |
-| 4 | Tombstone | 3 | Stone grave with skeleton hand sticking out | Defensive building that pulls/distracts troops, spawns skeletons | Works well in center areas to affect both lanes |
-| 5 | Archers | 3 | One female character with pink hair | Ranged consistent DPS | **DEFENSE ONLY** - Never play alone for offense. Only use to defend or support a Giant push. |
-| 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Most effective with Musketeer support behind it |
-| 7 | Valkyrie | 4 | Female character with orange hair and axe | Tanky with splash damage | **DEFENSE ONLY** - place right on top of enemy swarms. Never play alone for offense. |
-| 8 | Musketeer | 4 | Female character with purple hair and hat | Strong ranged DPS, stops air units | Pair with Giant for main pushes |
+| 1 | Mini P.E.K.K.A | 4 | Dark blue armored figure with visor | Kills high-HP tanks (Giant, Hog, Knight) fast | Place center, 4 tiles from river. Target SUPPORT troops first. |
+| 2 | Bomber | 2 | Character with yellow goggles/rings | Splash damage vs ground swarms | **DEFENSE ONLY** - Never play alone. Can't hit air! |
+| 3 | Mega Minion | 3 | Dark gray/purple flying creature | **DEFENSE ONLY** - stops air units | Single target, never alone for offense. |
+| 4 | Tombstone | 3 | Stone grave with skeleton hand sticking out | Pulls/distracts troops, spawns skeletons | **4-2 placement:** 4 tiles from river, 2 from center (grid: 4F or 5F) |
+| 5 | Archers | 3 | Female character with pink hair | Ranged DPS, light air defense | **DEFENSE ONLY** - Never play alone for offense. |
+| 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Deploy at back to build push, or bridge for quick pressure. |
+| 7 | Valkyrie | 4 | Female with orange hair and axe | Tanky splash damage | **DROP ON TOP** of enemy swarms/support. Defense only. |
+| 8 | Wizard | 5 | Bearded man in blue hoodie/robe | Splash damage, hits AIR + ground | Offense: behind Giant. Defense: splash from range (not on top). Solves Minion Horde. |
 
 **KEY SYNERGIES:**
-- **Giant + Musketeer** = Your main win condition beatdown
-- **Valkyrie + Bomber** = Strong swarm clear
-- **Tombstone works best** when placed to pull threats toward center (vs having enemies bypass it)
-- **Mini P.E.K.K.A** = Best used on enemy tanks, less effective against small swarms
+- **Giant + Wizard** = Main win condition. Wizard splashes air AND ground behind Giant.
+- **Valkyrie ON TOP of support** = Drop directly on ranged troops behind enemy tank.
+- **Tombstone at 4-2** = Place BEFORE enemy crosses river, pulls troops to center.
+- **Mini P.E.K.K.A on tanks** = Target support troops first if possible.
+
+**COUNTER-PUSH:** If your troops survive defense and are on YOUR side → Deploy Giant IN FRONT of them.
 
 ---
 
@@ -218,6 +231,43 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 - Trophy count changes (+30, -14, etc.)
 
 **If uncertain, STOP. Better to stop early than click Play Again.**
+
+---
+
+## 2V2 MODE - ADDITIONAL RULES
+
+You are playing 2v2 with a TEAMMATE (Ethan).
+
+### CRITICAL: PLAY FURTHER BACK
+
+**Problem:** If you always play at the bridge (row E), all troops cluster in opponent's half and the game gets cramped.
+
+**Solution:** Check the board state before placing:
+
+- **If lots of troops visible near opponent's bridge/middle** → Play FURTHER BACK (rows F, G, or H)
+- **If board is clear or troops are spread out** → Bridge plays (row E) are OK
+
+**Default 2v2 placements (more defensive):**
+- Giant: `3G` or `6G` (behind princess tower, not at bridge)
+- Wizard: `3H` or `6H` (deep, gives time to splash)
+- Defensive troops: `3F`/`6F` or deeper
+
+**Only play at bridge (row E) when:**
+- Board is mostly clear
+- You're making a counter-push after successful defense
+- Double elixir and going all-in
+
+### WHY THIS MATTERS
+
+Playing further back:
+- Spreads the battlefield out
+- Gives your troops time to build up
+- Prevents everything from clumping at opponent's bridge
+- Works better with teammate's plays
+
+### NO TROPHY CHANGE
+
+2v2 doesn't affect trophies. Play to win but don't stress about losses.
 
 ---
 

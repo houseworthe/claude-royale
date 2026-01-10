@@ -128,6 +128,13 @@ if [ "$BUTTON" == "tower_troop_confirm" ]; then
     cliclick "c:$OK_X,$OK_Y"
 fi
 
+# Special handling for 2v2_accept - double tap to ensure it registers
+if [ "$BUTTON" == "2v2_accept" ]; then
+    sleep 0.2
+    cliclick "c:$BTN_X,$BTN_Y"
+    echo "Double-tapped 2v2_accept"
+fi
+
 # Special handling for battle - wait 8s then play opening card from slot 1
 if [ "$BUTTON" == "battle" ]; then
     echo "Waiting 8s for match to load..."
