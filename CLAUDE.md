@@ -95,6 +95,7 @@ THEN:
 | `./scripts/send-chat.sh "msg"` | Send a message to Twitch chat |
 | `./scripts/watch-agents.sh` | Live colorized feed of all agent decisions |
 | `./scripts/calibrate-button.sh <name>` | Recalibrate a single button coordinate |
+| `./scripts/analyze-latency.sh` | Analyze timing patterns from actions.log |
 
 **Tap Elements:** `battle`, `2v2_accept`, `ok`, `result_ok`, `back`, `chest_1`-`chest_4`, `shop`, `cards`
 
@@ -260,6 +261,26 @@ You have full authority to improve this project:
 - Add new tools or buttons
 
 **Rule:** Document changes in STATUS.md handoff notes.
+
+---
+
+## Performance Analysis
+
+**Latency Analysis:** Run `./scripts/analyze-latency.sh` to analyze timing patterns.
+
+```bash
+./scripts/analyze-latency.sh           # Text summary
+./scripts/analyze-latency.sh --json    # Machine-readable
+./scripts/analyze-latency.sh --csv     # For spreadsheets
+./scripts/analyze-latency.sh --verbose # Per-match breakdown
+./scripts/analyze-latency.sh --last 5  # Last 5 matches only
+```
+
+**Key metrics:**
+- Inter-action gap: Time between any card plays (all agents)
+- Per-agent cycle: Time between one agent's consecutive plays
+- Cards per minute: Overall play rate
+- First agent latency: Time from auto-opener to first agent play
 
 ---
 
