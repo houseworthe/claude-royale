@@ -1,0 +1,41 @@
+{
+  "screenshot_id": "22",
+  "screenshot_path": "eval/screenshots/22.png",
+
+  "perception": {
+    "time_remaining": "0:41",
+    "phase": "double_elixir",
+    "elixir": 10,
+    "hand": ["Valkyrie", "Giant", "Mega Minion", "Archers"],
+    "board_state": "Our Wizard (half HP) at left bridge",
+    "threats": [],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474,
+      "king": 1276
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Giant",
+      "slot": 2,
+      "placement": "3E",
+      "reasoning": "Place at bridge in front of Wizard to tank, maxed elixir must spend"
+    },
+    "alternatives": [
+      {"card": "Valkyrie", "slot": 1, "placement": "3E", "validity": "acceptable", "reasoning": "Cheaper tank option, saves elixir for follow-up"}
+    ],
+    "incorrect": [
+      {"card": "wait", "placement": null, "why": "At 10 elixir, wasting regeneration"}
+    ]
+  },
+
+  "tags": ["offense", "double_elixir", "max_elixir", "tank_for_wizard"],
+  "difficulty": "easy"
+}

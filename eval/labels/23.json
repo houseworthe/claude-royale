@@ -1,0 +1,40 @@
+{
+  "screenshot_id": "23",
+  "screenshot_path": "eval/screenshots/23.png",
+
+  "perception": {
+    "time_remaining": "0:26",
+    "phase": "double_elixir",
+    "elixir": 7,
+    "hand": ["Valkyrie", "Giant", "Tombstone", "Bomber"],
+    "board_state": "Dueling Mega Minions on left side (our half), our Archer in middle supporting",
+    "threats": [
+      {"unit": "Mega Minion", "lane": "left", "severity": "low", "note": "Being countered by our Mega Minion"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474,
+      "king": 1276
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Giant",
+      "slot": 2,
+      "placement": "3E",
+      "reasoning": "Start push with Giant, follow with Bomber for support"
+    },
+    "alternatives": [
+      {"card": "Bomber", "slot": 4, "placement": "3F", "validity": "optimal", "reasoning": "Play behind Giant after placing"}
+    ]
+  },
+
+  "tags": ["offense", "double_elixir", "final_push", "beatdown"],
+  "difficulty": "easy"
+}

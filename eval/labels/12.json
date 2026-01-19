@@ -1,0 +1,20 @@
+{
+  "screenshot_id": "12",
+  "screenshot_path": "eval/screenshots/12.png",
+
+  "screen_type": "result_screen",
+
+  "perception": {
+    "match_ended": true
+  },
+
+  "decision": {
+    "primary": {
+      "action": "tap_result_ok",
+      "reasoning": "Match over, dismiss result screen"
+    }
+  },
+
+  "tags": ["result_screen", "not_in_battle", "end_of_match"],
+  "difficulty": "easy"
+}

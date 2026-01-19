@@ -7,6 +7,10 @@ screenshots/
 # Exception for README images
 !1000_milestone.png
 
+# Exception for eval test screenshots
+!eval/screenshots/
+!eval/screenshots/*.png
+
 # Logs
 logs/
 *.log
@@ -36,3 +40,4 @@ chat-log.txt
 
 # Local config overrides (user-specific coordinates)
 config/*.local.json
+eval/results/

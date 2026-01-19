@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "max_score": 100,
+
+  "perception": {
+    "weight": 40,
+    "fields": {
+      "elixir": {
+        "weight": 10,
+        "scoring": {
+          "exact": 10,
+          "off_by_1": 7,
+          "off_by_2": 4,
+          "off_by_3_plus": 0
+        }
+      },
+      "hand": {
+        "weight": 10,
+        "per_card": 2.5,
+        "notes": "2.5 points per correctly identified card"
+      },
+      "threat_detection": {
+        "weight": 15,
+        "scoring": {
+          "all_correct": 15,
+          "missed_threat": -5,
+          "false_positive": -3,
+          "wrong_lane": -7
+        }
+      },
+      "tower_health": {
+        "weight": 5,
+        "scoring": {
+          "within_200_hp": 5,
+          "within_500_hp": 3,
+          "within_1000_hp": 1,
+          "beyond_1000_hp": 0
+        }
+      }
+    }
+  },
+
+  "decision": {
+    "weight": 60,
+    "fields": {
+      "card_choice": {
+        "weight": 25,
+        "scoring": {
+          "matches_primary": 25,
+          "matches_alternative_optimal": 20,
+          "matches_alternative_acceptable": 15,
+          "matches_alternative_suboptimal": 10,
+          "neutral_play": 5,
+          "incorrect_counter": 0,
+          "catastrophic_misplay": -10
+        }
+      },
+      "placement": {
+        "weight": 20,
+        "scoring": {
+          "exact_match": 20,
+          "adjacent_cell": 17,
+          "same_lane_reasonable": 15,
+          "same_lane_suboptimal": 10,
+          "wrong_lane_but_logical": 5,
+          "wrong_lane_illogical": 0
+        }
+      },
+      "reasoning": {
+        "weight": 15,
+        "components": {
+          "threat_identification": 5,
+          "counter_logic": 5,
+          "timing_awareness": 3,
+          "elixir_efficiency": 2
+        }
+      }
+    }
+  },
+
+  "difficulty_multipliers": {
+    "easy": 0.8,
+    "medium": 1.0,
+    "hard": 1.2
+  },
+
+  "notes": {
+    "multiple_valid_plays": "If agent matches ANY alternative, use that tier's score",
+    "partial_credit": "Always give partial credit when possible",
+    "catastrophic": "Only use -10 for plays that actively lose the game (e.g., ignoring lethal threat)"
+  }
+}

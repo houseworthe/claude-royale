@@ -1,0 +1,23 @@
+{
+  "screenshot_id": "25",
+  "screenshot_path": "eval/screenshots/25.png",
+
+  "screen_type": "result_screen",
+
+  "perception": {
+    "match_ended": true,
+    "result": "win",
+    "crowns": {"player": 1, "opponent": 0},
+    "trophies_gained": 30
+  },
+
+  "decision": {
+    "primary": {
+      "action": "tap_result_ok",
+      "reasoning": "Match over, dismiss result screen"
+    }
+  },
+
+  "tags": ["result_screen", "win", "not_in_battle"],
+  "difficulty": "easy"
+}

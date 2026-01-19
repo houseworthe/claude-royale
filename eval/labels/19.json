@@ -1,0 +1,38 @@
+{
+  "screenshot_id": "19",
+  "screenshot_path": "eval/screenshots/19.png",
+
+  "perception": {
+    "time_remaining": "1:28",
+    "elixir": 7,
+    "hand": ["Valkyrie", "Wizard", "Tombstone", "Archers"],
+    "board_state": "Enemy Valkyrie on left side, our Bombers engaging",
+    "threats": [
+      {"unit": "Valkyrie", "lane": "left", "severity": "low"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "wait",
+      "slot": null,
+      "placement": null,
+      "reasoning": "See what opponent commits to, we have elixir advantage"
+    },
+    "alternatives": [
+      {"card": "Wizard", "slot": 2, "placement": "4H", "validity": "acceptable", "reasoning": "Start slow push from back toward right tower"}
+    ]
+  },
+
+  "tags": ["patience", "elixir_advantage", "tower_down", "optional_push"],
+  "difficulty": "medium"
+}

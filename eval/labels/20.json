@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "20",
+  "screenshot_path": "eval/screenshots/20.png",
+
+  "perception": {
+    "time_remaining": "1:12",
+    "elixir": 7,
+    "hand": ["Valkyrie", "Wizard", "Mega Minion", "Archers"],
+    "next_card": "Mini P.E.K.K.A",
+    "board_state": "Tombstone just placed center to pull enemy Giant",
+    "threats": [
+      {"unit": "Giant", "lane": "left", "severity": "medium", "note": "Being pulled by Tombstone"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Wizard",
+      "slot": 2,
+      "placement": "4F",
+      "reasoning": "Support Tombstone killing Giant, then Mini P.E.K.K.A next for counter-push"
+    },
+    "alternatives": [
+      {"card": "wait", "slot": null, "placement": null, "validity": "acceptable", "reasoning": "Tombstone may handle Giant alone, save elixir"}
+    ]
+  },
+
+  "tags": ["defense", "giant_counter", "tombstone_pull", "counter_push_setup"],
+  "difficulty": "medium"
+}

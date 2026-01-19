@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "16",
+  "screenshot_path": "eval/screenshots/16.png",
+
+  "perception": {
+    "time_remaining": "2:14",
+    "elixir": 5,
+    "hand": ["Mini P.E.K.K.A", "Wizard", "Mega Minion", "Bomber"],
+    "board_state": "Our Archers defending right side, enemy troops pushing right",
+    "threats": [
+      {"unit": "Enemy troops", "lane": "right", "severity": "medium"},
+      {"unit": "Goblin Hut", "lane": "right", "severity": "low", "note": "Spawning goblins"}
+    ],
+    "tower_health": {
+      "left": 1680,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": 544
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Mega Minion",
+      "slot": 3,
+      "placement": "6F",
+      "reasoning": "Defend right side, then follow up with Mini P.E.K.K.A"
+    },
+    "alternatives": [
+      {"card": "Mini P.E.K.K.A", "slot": 1, "placement": "6E", "validity": "optimal", "reasoning": "Counter their push on right, can turn into counter-push on low tower"}
+    ]
+  },
+
+  "tags": ["defense", "counter_push_setup", "low_enemy_tower"],
+  "difficulty": "medium"
+}

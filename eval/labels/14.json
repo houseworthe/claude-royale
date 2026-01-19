@@ -1,0 +1,43 @@
+{
+  "screenshot_id": "14",
+  "screenshot_path": "eval/screenshots/14.png",
+
+  "perception": {
+    "time_remaining": "2:44",
+    "elixir": 9,
+    "hand": ["Giant", "Tombstone", "Mega Minion", "Valkyrie"],
+    "hand_note": "Tombstone is see-through/held - not yet placed",
+    "board_state": "Enemy Giant at left bridge",
+    "threats": [
+      {"unit": "Giant", "lane": "left", "severity": "high"}
+    ],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Valkyrie",
+      "slot": 4,
+      "placement": "3E",
+      "reasoning": "Drop on top of Giant at bridge, tank and deal damage"
+    },
+    "alternatives": [
+      {"card": "Mega Minion", "slot": 3, "placement": "3E", "validity": "optimal", "reasoning": "Also place on Giant, air unit safe from Giant attacks"},
+      {"card": "Tombstone", "slot": 2, "placement": "4F", "validity": "acceptable", "reasoning": "Pull Giant to center, but Valk/MM better for killing it"}
+    ],
+    "incorrect": [
+      {"card": "Giant", "placement": "any", "why": "Don't ignore enemy Giant push to start your own"}
+    ]
+  },
+
+  "tags": ["defense", "giant_counter", "card_held_edge_case", "high_elixir"],
+  "difficulty": "hard"
+}

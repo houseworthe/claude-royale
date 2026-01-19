@@ -1,0 +1,37 @@
+{
+  "screenshot_id": "3",
+  "screenshot_path": "eval/screenshots/3.png",
+
+  "perception": {
+    "time_remaining": "2:43",
+    "elixir": 7,
+    "hand": ["Mega Minion", "Giant", "Wizard", "Bomber"],
+    "board_state": "Tombstone just placed center",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Giant",
+      "slot": 2,
+      "placement": "3E",
+      "reasoning": "Giant at left bridge to start push"
+    },
+    "alternatives": [
+      {"card": "Giant", "slot": 2, "placement": "6E", "validity": "optimal", "reasoning": "Right bridge equally valid"},
+      {"card": "Bomber", "slot": 4, "placement": "3F", "validity": "acceptable", "reasoning": "Support behind Giant after placing"}
+    ]
+  },
+
+  "tags": ["offense", "beatdown_setup", "early_game"],
+  "difficulty": "easy"
+}

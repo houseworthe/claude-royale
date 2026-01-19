@@ -1,0 +1,20 @@
+{
+  "screenshot_id": "13",
+  "screenshot_path": "eval/screenshots/13.png",
+
+  "screen_type": "loading_screen",
+
+  "perception": {
+    "loading_progress": "78%"
+  },
+
+  "decision": {
+    "primary": {
+      "action": "wait",
+      "reasoning": "Loading screen, wait for match to start"
+    }
+  },
+
+  "tags": ["loading", "not_in_battle", "wait"],
+  "difficulty": "easy"
+}

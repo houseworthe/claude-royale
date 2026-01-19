@@ -1,0 +1,37 @@
+{
+  "screenshot_id": "1",
+  "screenshot_path": "eval/screenshots/1.png",
+
+  "perception": {
+    "elixir": 10,
+    "hand": ["Valkyrie", "Bomber", "Mega Minion", "Wizard"],
+    "threats": [
+      {"unit": "Knight", "lane": "left", "severity": "high"},
+      {"unit": "Musketeer", "lane": "left", "severity": "high"}
+    ],
+    "tower_health": {
+      "left": 0,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Valkyrie",
+      "slot": 1,
+      "placement": "3F",
+      "reasoning": "Drop on top of Knight+Musketeer for splash damage on both"
+    },
+    "alternatives": [
+      {"card": "Mega Minion", "slot": 3, "placement": "3F", "validity": "acceptable", "reasoning": "Also kills both, but Valk better value for splash"}
+    ]
+  },
+
+  "tags": ["defense", "counter_push", "left_tower_down"],
+  "difficulty": "medium"
+}

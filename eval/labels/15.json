@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "15",
+  "screenshot_path": "eval/screenshots/15.png",
+
+  "perception": {
+    "time_remaining": "2:29",
+    "elixir": 2,
+    "hand": ["Mini P.E.K.K.A", "Wizard", "Mega Minion", "Archers"],
+    "board_state": "Our Giant + Bomber pushing right, attacking enemy right tower. Enemy Mega Minion defending.",
+    "threats": [
+      {"unit": "Barbarians", "lane": "left", "severity": "high", "note": "About to reach our tower"},
+      {"unit": "Mega Minion", "lane": "right", "severity": "medium", "note": "Defending our push"}
+    ],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": "under_attack"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Archers",
+      "slot": 4,
+      "placement": "4G",
+      "reasoning": "Center-back to defend Barbarians, priority is stopping tower damage"
+    },
+    "alternatives": [
+      {"card": "Archers", "slot": 4, "placement": "6E", "validity": "acceptable", "reasoning": "Right bridge to kill Mega Minion and support push"}
+    ]
+  },
+
+  "tags": ["split_decision", "defense_priority", "barbarian_counter", "low_elixir"],
+  "difficulty": "hard"
+}

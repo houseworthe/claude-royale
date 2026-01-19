@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "17",
+  "screenshot_path": "eval/screenshots/17.png",
+
+  "perception": {
+    "time_remaining": "1:58",
+    "elixir": 3,
+    "hand": [null, "Wizard", "Tombstone", "Bomber"],
+    "hand_note": "First slot empty - Mini P.E.K.K.A being placed on screen",
+    "board_state": "Mini P.E.K.K.A being deployed to defend",
+    "threats": [
+      {"unit": "Battle Ram", "lane": "left", "severity": "high"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 474,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Bomber",
+      "slot": 4,
+      "placement": "3F",
+      "reasoning": "Cheap support behind Mini P.E.K.K.A, can play now at 3 elixir (costs 2)"
+    },
+    "alternatives": [
+      {"card": "Wizard", "slot": 2, "placement": "3F", "validity": "optimal", "reasoning": "Better support, wait for 5 elixir"}
+    ]
+  },
+
+  "tags": ["defense", "battle_ram_counter", "card_placing_edge_case", "low_towers"],
+  "difficulty": "medium"
+}

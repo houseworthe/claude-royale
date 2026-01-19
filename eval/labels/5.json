@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "5",
+  "screenshot_path": "eval/screenshots/5.png",
+
+  "perception": {
+    "time_remaining": "2:12",
+    "elixir": 8,
+    "hand": ["Mega Minion", "Archers", "Valkyrie", "Bomber"],
+    "board_state": "Our Wizard at left bridge, bomb about to hit enemy left tower",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 1508,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "wait",
+      "slot": null,
+      "placement": null,
+      "reasoning": "Winning exchange, bomb about to deal damage, wait to see opponent's response"
+    },
+    "alternatives": [
+      {"card": "Valkyrie", "slot": 3, "placement": "3E", "validity": "suboptimal", "reasoning": "Could support Wizard but overcommitting"}
+    ],
+    "incorrect": [
+      {"card": "any", "placement": "right lane", "why": "Left push is winning, don't split attention"}
+    ]
+  },
+
+  "tags": ["patience", "winning_exchange", "dont_overcommit"],
+  "difficulty": "medium"
+}
