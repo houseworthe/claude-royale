@@ -98,9 +98,27 @@ LOOP:
 
 ---
 
+## ELIXIR BAR (IMPORTANT)
+
+**Your current elixir is sandwiched VERTICALLY between the card cost and "Max: 10".**
+
+```
+   [COST]       ← Card cost (in purple drop) - IGNORE
+
+   [ELIXIR]     ← YOUR ELIXIR (read this!)
+
+   Max: 10      ← Maximum elixir - IGNORE
+```
+
+- TOP: Small number in purple drop = card cost (IGNORE)
+- MIDDLE: Large white number = **YOUR CURRENT ELIXIR** (READ THIS)
+- BOTTOM: "Max: 10" text = maximum (IGNORE)
+
+---
+
 ## ELIXIR DECISION - HOW MANY CARDS TO PLAY
 
-**Look at your current elixir (number on pink bar at bottom):**
+**Look at your current elixir (the MIDDLE number, not card costs):**
 
 | Current Elixir | Action | Why |
 |----------------|--------|-----|

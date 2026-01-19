@@ -146,6 +146,26 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 ---
 
+## Elixir Bar (IMPORTANT)
+
+**Your current elixir is sandwiched VERTICALLY between the card cost and "Max: 10".**
+
+```
+   [COST]       ← Card cost (in purple drop) - IGNORE
+
+   [ELIXIR]     ← YOUR ELIXIR (read this!)
+
+   Max: 10      ← Maximum elixir - IGNORE
+```
+
+- TOP: Small number in purple drop = card cost (IGNORE)
+- MIDDLE: Large white number = **YOUR CURRENT ELIXIR** (READ THIS)
+- BOTTOM: "Max: 10" text = maximum (IGNORE)
+
+**The number you want is in the MIDDLE, between the card and "Max: 10".**
+
+---
+
 ## Threat Detection
 
 **Enemy troops have RED icons above them. Your troops have NO icons.**
