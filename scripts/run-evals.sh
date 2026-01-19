@@ -47,31 +47,9 @@ for i in $(seq $START $END); do
     echo -n "[$i] Evaluating... "
     TOTAL=$((TOTAL + 1))
 
-    # Run claude with player-eval agent
-    # Using --print to get just the output, --dangerously-skip-permissions for non-interactive
-    RESULT=$(claude -p "You are a Clash Royale screenshot evaluation agent. Read the screenshot at eval/screenshots/$i.png and output ONLY valid JSON with this structure:
-{
-  \"screen_type\": \"battle\" | \"home_menu\" | \"result\" | \"loading\",
-  \"perception\": {
-    \"elixir\": <1-10>,
-    \"hand\": [<4 card names LEFT-to-RIGHT, or null for empty>],
-    \"threats\": [{\"unit\": \"<name>\", \"lane\": \"left\"|\"right\", \"severity\": \"low\"|\"medium\"|\"high\"}],
-    \"tower_health\": {\"left\": <number or \"full\">, \"right\": <>, \"king\": <>},
-    \"enemy_tower_health\": {\"left\": <>, \"right\": <>}
-  },
-  \"decision\": {
-    \"primary\": {
-      \"card\": \"<card name or wait>\",
-      \"slot\": <1-4 or null>,
-      \"placement\": \"<grid like 3F or null>\",
-      \"reasoning\": \"<why>\"
-    }
-  }
-}
-For non-battle screens, use action instead of card/slot/placement.
-Card reference: Mini P.E.K.K.A(4), Bomber(2), Mega Minion(3), Tombstone(3), Archers(3), Giant(5), Valkyrie(4), Wizard(5)
-Grid: Cols 1-4=left, 5-8=right. Rows F-G=defense. Enemy troops have RED icons.
-Output ONLY JSON, no markdown, no explanation." --allowedTools "Read" 2>/dev/null)
+    # Run claude with player-eval agent instructions
+    # Agent reads its full instructions from .claude/agents/player-eval.md (single source of truth)
+    RESULT=$(claude -p "First, read .claude/agents/player-eval.md for your complete instructions, schema, card reference, grid system, and decision logic. Then evaluate the screenshot at eval/screenshots/$i.png. Output ONLY the JSON object as specified in the agent file - no markdown, no explanation." --allowedTools "Read" 2>/dev/null)
 
     # Extract JSON from response using Python for robust handling
     JSON_RESULT=$(echo "$RESULT" | python3 -c '

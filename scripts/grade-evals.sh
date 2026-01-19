@@ -52,7 +52,7 @@ for result_file in "$RESULTS_DIR"/*.json; do
 
     TOTAL_EVALS=$((TOTAL_EVALS + 1))
     SCORE=0
-    MAX_SCORE=85
+    MAX_SCORE=100
     NOTES=""
 
     # Parse result and label
@@ -139,27 +139,70 @@ for result_file in "$RESULTS_DIR"/*.json; do
         SCORE=$((SCORE + 8))
     fi
 
-    # Add base points for hand recognition (10 points) and tower health (5 points)
-    # Simplified: just add partial credit if perception exists
-    if jq -e '.perception.hand' "$result_file" >/dev/null 2>&1; then
-        SCORE=$((SCORE + 5))
-    fi
-    if jq -e '.perception.tower_health' "$result_file" >/dev/null 2>&1; then
-        SCORE=$((SCORE + 3))
+    # Hand recognition (10 points) - 2.5 per correct card
+    HAND_CORRECT=0
+    if jq -e '.perception.hand' "$result_file" >/dev/null 2>&1 && jq -e '.perception.hand' "$LABEL_FILE" >/dev/null 2>&1; then
+        RESULT_HAND=$(jq -r '.perception.hand | @json' "$result_file" 2>/dev/null)
+        LABEL_HAND=$(jq -r '.perception.hand | @json' "$LABEL_FILE" 2>/dev/null)
+        for i in 0 1 2 3; do
+            RESULT_CARD_I=$(jq -r ".perception.hand[$i] // \"\"" "$result_file" 2>/dev/null)
+            LABEL_CARD_I=$(jq -r ".perception.hand[$i] // \"\"" "$LABEL_FILE" 2>/dev/null)
+            if [[ "$RESULT_CARD_I" == "$LABEL_CARD_I" && -n "$RESULT_CARD_I" ]]; then
+                HAND_CORRECT=$((HAND_CORRECT + 1))
+            fi
+        done
+        # 2.5 pts per card, but bash doesn't do decimals, so: 0=0, 1=2, 2=5, 3=7, 4=10
+        case $HAND_CORRECT in
+            1) SCORE=$((SCORE + 2)) ;;
+            2) SCORE=$((SCORE + 5)) ;;
+            3) SCORE=$((SCORE + 7)) ;;
+            4) SCORE=$((SCORE + 10)) ;;
+        esac
     fi
 
-    # Reasoning points (15 points) - give partial credit if reasoning exists
+    # Tower health (5 points) - tolerance bands
+    TOWER_SCORE=0
+    if jq -e '.perception.tower_health' "$result_file" >/dev/null 2>&1 && jq -e '.perception.tower_health' "$LABEL_FILE" >/dev/null 2>&1; then
+        for tower in left right king; do
+            RESULT_HP=$(jq -r ".perception.tower_health.$tower // \"full\"" "$result_file" 2>/dev/null)
+            LABEL_HP=$(jq -r ".perception.tower_health.$tower // \"full\"" "$LABEL_FILE" 2>/dev/null)
+            # Handle "full" as matching
+            if [[ "$RESULT_HP" == "$LABEL_HP" ]]; then
+                TOWER_SCORE=$((TOWER_SCORE + 1))
+            elif [[ "$RESULT_HP" != "full" && "$LABEL_HP" != "full" ]]; then
+                # Both are numbers - check tolerance
+                HP_DIFF=$((RESULT_HP - LABEL_HP))
+                HP_DIFF=${HP_DIFF#-}
+                if [[ $HP_DIFF -le 200 ]]; then
+                    TOWER_SCORE=$((TOWER_SCORE + 1))
+                fi
+            fi
+        done
+        # 3 towers, ~1.67 pts each -> 0=0, 1=1, 2=3, 3=5
+        case $TOWER_SCORE in
+            1) SCORE=$((SCORE + 1)) ;;
+            2) SCORE=$((SCORE + 3)) ;;
+            3) SCORE=$((SCORE + 5)) ;;
+        esac
+    fi
+
+    # Reasoning points (15 points) - length-based scoring
     if jq -e '.decision.primary.reasoning' "$result_file" >/dev/null 2>&1; then
         REASONING=$(jq -r '.decision.primary.reasoning' "$result_file")
-        if [[ ${#REASONING} -gt 20 ]]; then
-            SCORE=$((SCORE + 7))
+        REASON_LEN=${#REASONING}
+        if [[ $REASON_LEN -gt 50 ]]; then
+            SCORE=$((SCORE + 15))
+        elif [[ $REASON_LEN -gt 30 ]]; then
+            SCORE=$((SCORE + 10))
+        elif [[ $REASON_LEN -gt 15 ]]; then
+            SCORE=$((SCORE + 5))
         fi
     fi
 
     TOTAL_SCORE=$((TOTAL_SCORE + SCORE))
     TOTAL_POSSIBLE=$((TOTAL_POSSIBLE + MAX_SCORE))
 
-    printf "%-4s %-8s %-8s %-12s %-12s %-8s %s\n" "$ID" "$SCORE/85" "$ELIXIR_STATUS" "$CARD_STATUS" "$PLACEMENT_STATUS" "$THREAT_STATUS" "$NOTES"
+    printf "%-4s %-8s %-8s %-12s %-12s %-8s %s\n" "$ID" "$SCORE/100" "$ELIXIR_STATUS" "$CARD_STATUS" "$PLACEMENT_STATUS" "$THREAT_STATUS" "$NOTES"
 done
 
 echo ""
