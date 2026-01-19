@@ -3,7 +3,7 @@ name: player-eval
 description: Screenshot evaluation agent. Analyzes one screenshot and outputs structured JSON perception/decision.
 tools:
   - Read
-model: sonnet
+model: haiku
 ---
 
 # Screenshot Evaluation Agent
