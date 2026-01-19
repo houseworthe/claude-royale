@@ -1,0 +1,36 @@
+{
+  "screenshot_id": "7",
+  "screenshot_path": "eval/screenshots/7.png",
+
+  "perception": {
+    "time_remaining": "1:41",
+    "elixir": 6,
+    "hand": ["Mega Minion", "Archers", "Giant", "Wizard"],
+    "board_state": "Tombstone on left side",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 520,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Giant",
+      "slot": 3,
+      "placement": "3E",
+      "reasoning": "Enemy left tower low at 520 HP, Giant at bridge to finish it off"
+    },
+    "alternatives": [
+      {"card": "Wizard", "slot": 4, "placement": "3F", "validity": "acceptable", "reasoning": "Follow up behind Giant once at 5+ elixir"}
+    ]
+  },
+
+  "tags": ["offense", "finish_tower", "beatdown_push"],
+  "difficulty": "easy"
+}

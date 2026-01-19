@@ -1,0 +1,38 @@
+{
+  "screenshot_id": "11",
+  "screenshot_path": "eval/screenshots/11.png",
+
+  "perception": {
+    "time_remaining": "0:39",
+    "phase": "double_elixir",
+    "elixir": 3,
+    "hand": ["Mega Minion", "Giant", "Mini P.E.K.K.A", "Wizard"],
+    "board_state": "Our troops pushing left lane toward king tower",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": "full",
+      "king": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Mini P.E.K.K.A",
+      "slot": 3,
+      "placement": "3D",
+      "reasoning": "Add to push on king tower once at 4 elixir, high DPS finisher"
+    },
+    "alternatives": [
+      {"card": "Mega Minion", "slot": 1, "placement": "3D", "validity": "acceptable", "reasoning": "Can play immediately at 3 elixir"}
+    ]
+  },
+
+  "tags": ["offense", "king_tower_push", "double_elixir", "winning"],
+  "difficulty": "easy"
+}

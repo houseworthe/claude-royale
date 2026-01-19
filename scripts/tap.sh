@@ -20,6 +20,23 @@ fi
 
 BUTTON="$1"
 
+# Handle virtual buttons (no coordinate lookup needed)
+if [ "$BUTTON" == "2v2_opener" ]; then
+    echo "2v2 auto-opener: Waiting 8s for match to load..."
+    sleep 8
+    # Play both opening cards to LEFT side (same lane pressure)
+    echo "Playing opening card (slot 1) to left side (2G)"
+    "$SCRIPT_DIR/play_card.sh" 1 "2G"
+
+    # Wait 2 seconds then play second card to SAME side (3G)
+    sleep 2
+    echo "Playing second card (slot 2) to left side (3G)"
+    "$SCRIPT_DIR/play_card.sh" 2 "3G"
+
+    echo "2v2 auto-opener complete"
+    exit 0
+fi
+
 # Validate arguments
 if [ -z "$BUTTON" ]; then
     echo "Usage: $0 <button_name>" >&2
@@ -139,12 +156,13 @@ fi
 if [ "$BUTTON" == "battle" ]; then
     echo "Waiting 8s for match to load..."
     sleep 8
-    # Play opening card to LEFT side (2G)
+    # Play both opening cards to LEFT side (same lane pressure)
     echo "Playing opening card (slot 1) to left side (2G)"
     "$SCRIPT_DIR/play_card.sh" 1 "2G"
 
-    # Wait 2 seconds then play second card to RIGHT side (7G)
+    # Wait 2 seconds then play second card to SAME side (3G)
     sleep 2
-    echo "Playing second card (slot 2) to right side (7G)"
-    "$SCRIPT_DIR/play_card.sh" 2 "7G"
+    echo "Playing second card (slot 2) to left side (3G)"
+    "$SCRIPT_DIR/play_card.sh" 2 "3G"
 fi
+

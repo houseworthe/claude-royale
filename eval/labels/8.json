@@ -1,0 +1,36 @@
+{
+  "screenshot_id": "8",
+  "screenshot_path": "eval/screenshots/8.png",
+
+  "perception": {
+    "time_remaining": "1:26",
+    "elixir": 3,
+    "hand": ["Mega Minion", "Valkyrie", "Mini P.E.K.K.A", "Wizard"],
+    "board_state": "Our Giant at left bridge with Archers behind",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 520,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Mini P.E.K.K.A",
+      "slot": 3,
+      "placement": "3F",
+      "reasoning": "Add to push behind Giant, high DPS to finish tower fast"
+    },
+    "alternatives": [
+      {"card": "Mega Minion", "slot": 1, "placement": "3F", "validity": "acceptable", "reasoning": "Cheaper option at 3 elixir, can play immediately"}
+    ]
+  },
+
+  "tags": ["offense", "support_push", "finish_tower"],
+  "difficulty": "easy"
+}

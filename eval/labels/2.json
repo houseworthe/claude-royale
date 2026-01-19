@@ -1,0 +1,28 @@
+{
+  "screenshot_id": "2",
+  "screenshot_path": "eval/screenshots/2.png",
+
+  "screen_type": "home_menu",
+
+  "perception": {
+    "trophies": 1092,
+    "gold": 13430,
+    "gems": 62,
+    "king_level": 14,
+    "xp_progress": "172/350"
+  },
+
+  "decision": {
+    "primary": {
+      "action": "tap_battle",
+      "reasoning": "Home screen - tap battle to start match"
+    },
+    "alternatives": [
+      {"action": "open_chests", "validity": "acceptable"},
+      {"action": "check_shop", "validity": "acceptable"}
+    ]
+  },
+
+  "tags": ["menu", "not_in_battle"],
+  "difficulty": "easy"
+}

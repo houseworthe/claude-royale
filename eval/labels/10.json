@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "10",
+  "screenshot_path": "eval/screenshots/10.png",
+
+  "perception": {
+    "time_remaining": "0:55",
+    "phase": "double_elixir",
+    "elixir": 4,
+    "hand": ["Archers", "Bomber", "unknown", "unknown"],
+    "board_state": "Our Tombstone center being attacked by enemy Giant, our Mini P.E.K.K.A just placed to defend",
+    "threats": [
+      {"unit": "Giant", "lane": "center", "severity": "high"}
+    ],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 520,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Archers",
+      "slot": 1,
+      "placement": "4F",
+      "reasoning": "Support Mini P.E.K.K.A killing Giant, ranged DPS from safe distance"
+    },
+    "alternatives": [
+      {"card": "Bomber", "slot": 2, "placement": "4F", "validity": "acceptable", "reasoning": "Also provides support DPS, costs 1 less"}
+    ]
+  },
+
+  "tags": ["defense", "support_defense", "double_elixir", "giant_counter"],
+  "difficulty": "medium"
+}

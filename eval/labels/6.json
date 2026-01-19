@@ -1,0 +1,34 @@
+{
+  "screenshot_id": "6",
+  "screenshot_path": "eval/screenshots/6.png",
+
+  "perception": {
+    "time_remaining": "1:56",
+    "elixir": 0,
+    "hand": ["Mega Minion", "Archers", "Giant", null],
+    "board_state": "Our Mega Minion, Tombstone, Bomber pushing left lane",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 1315,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "wait",
+      "slot": null,
+      "placement": null,
+      "reasoning": "Zero elixir, troops already pushing, let elixir regenerate"
+    },
+    "alternatives": []
+  },
+
+  "tags": ["no_elixir", "push_in_progress", "wait"],
+  "difficulty": "easy"
+}

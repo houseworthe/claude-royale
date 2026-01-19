@@ -1,0 +1,34 @@
+{
+  "screenshot_id": "18",
+  "screenshot_path": "eval/screenshots/18.png",
+
+  "perception": {
+    "time_remaining": "1:43",
+    "elixir": 2,
+    "hand": ["Valkyrie", "Wizard", "Tombstone", "Archers"],
+    "board_state": "Our Giant + Mini P.E.K.K.A attacking enemy left tower, Bomber at bridge fighting enemy Bomber",
+    "threats": [],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 1297,
+      "right": 474
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "wait",
+      "slot": null,
+      "placement": null,
+      "reasoning": "Only 2 elixir, push already strong, let it play out"
+    },
+    "alternatives": []
+  },
+
+  "tags": ["no_elixir", "push_in_progress", "wait", "winning_position"],
+  "difficulty": "easy"
+}

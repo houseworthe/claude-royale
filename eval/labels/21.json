@@ -1,0 +1,37 @@
+{
+  "screenshot_id": "21",
+  "screenshot_path": "eval/screenshots/21.png",
+
+  "perception": {
+    "time_remaining": "0:57",
+    "phase": "double_elixir",
+    "elixir": 5,
+    "hand": ["Valkyrie", "Giant", "Mega Minion", "Archers"],
+    "board_state": "Our Mini P.E.K.K.A, Mega Minion, Wizard spread on left side pushing",
+    "threats": [
+      {"unit": "Enemy troop", "lane": "left", "severity": "low", "note": "At tower, being attacked by our Mega Minion"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Giant",
+      "slot": 2,
+      "placement": "3E",
+      "reasoning": "Place at bridge so Wizard can get behind it, tank for ongoing push"
+    },
+    "alternatives": []
+  },
+
+  "tags": ["offense", "double_elixir", "reinforce_push", "giant_tank"],
+  "difficulty": "medium"
+}

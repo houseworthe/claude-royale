@@ -1,0 +1,36 @@
+{
+  "screenshot_id": "9",
+  "screenshot_path": "eval/screenshots/9.png",
+
+  "perception": {
+    "time_remaining": "1:10",
+    "elixir": 9,
+    "hand": ["Mega Minion", "Valkyrie", "Mini P.E.K.K.A", "Wizard"],
+    "board_state": "Enemy Bomb Tower defending left lane",
+    "threats": [],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 520,
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Mini P.E.K.K.A",
+      "slot": 3,
+      "placement": "3E",
+      "reasoning": "High DPS to destroy Bomb Tower and finish low tower"
+    },
+    "alternatives": [
+      {"card": "Wizard", "slot": 4, "placement": "3F", "validity": "optimal", "reasoning": "Follow up behind Mini P.E.K.K.A for support"}
+    ]
+  },
+
+  "tags": ["offense", "push_into_building", "high_elixir"],
+  "difficulty": "medium"
+}

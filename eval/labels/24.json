@@ -1,0 +1,41 @@
+{
+  "screenshot_id": "24",
+  "screenshot_path": "eval/screenshots/24.png",
+
+  "perception": {
+    "time_remaining": "0:11",
+    "phase": "double_elixir",
+    "elixir": 2,
+    "hand": ["Archers", "Mini P.E.K.K.A", "Tombstone", null],
+    "hand_note": "Fourth slot empty - just played a card",
+    "board_state": "Our Giant + Bomber attacking enemy king tower, lots of action on left",
+    "threats": [
+      {"unit": "Giant", "lane": "left", "severity": "medium", "note": "Enemy Giant at bridge"}
+    ],
+    "tower_health": {
+      "left": 820,
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": 0,
+      "right": 474,
+      "king": 1276
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "wait",
+      "slot": null,
+      "placement": null,
+      "reasoning": "Low elixir at 2, push already on king tower, let it play out"
+    },
+    "alternatives": [
+      {"card": "Tombstone", "slot": 3, "placement": "4F", "validity": "acceptable", "reasoning": "Could pull enemy Giant once at 3 elixir"}
+    ]
+  },
+
+  "tags": ["low_elixir", "final_seconds", "push_in_progress", "wait"],
+  "difficulty": "easy"
+}

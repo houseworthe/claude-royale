@@ -1,0 +1,39 @@
+{
+  "screenshot_id": "4",
+  "screenshot_path": "eval/screenshots/4.png",
+
+  "perception": {
+    "time_remaining": "2:27",
+    "elixir": 2,
+    "hand": ["Mega Minion", "Archers", "Valkyrie", "Bomber"],
+    "board_state": "Our Giant+Wizard pushing left lane",
+    "threats": [
+      {"unit": "Flying troop", "lane": "left", "severity": "medium", "note": "Defending our push"}
+    ],
+    "tower_health": {
+      "left": "full",
+      "right": "full",
+      "king": "full"
+    },
+    "enemy_tower_health": {
+      "left": "full",
+      "right": "full"
+    }
+  },
+
+  "decision": {
+    "primary": {
+      "card": "Mega Minion",
+      "slot": 1,
+      "placement": "3E",
+      "reasoning": "Kill their air defense to protect our Giant push, play once at 3 elixir"
+    },
+    "alternatives": [
+      {"card": "Archers", "slot": 2, "placement": "3F", "validity": "acceptable", "reasoning": "Also handles air, same cost"},
+      {"card": "wait", "slot": null, "placement": null, "validity": "acceptable", "reasoning": "Low elixir, let push develop"}
+    ]
+  },
+
+  "tags": ["offense", "support_push", "low_elixir"],
+  "difficulty": "medium"
+}

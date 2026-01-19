@@ -42,26 +42,33 @@ Then READ the screenshot file that is returned to see the game state.
 
 ---
 
-## DEFENSIVE LANE LOGIC (CRITICAL!)
+## DEFENSIVE LANE LOGIC (MOST IMPORTANT!)
 
-**ALWAYS check which lane opponent is attacking, then defend THAT lane:**
+**DEFENSE COMES FIRST! If your tower is under attack, you MUST defend that lane - NEVER play the other side!**
 
-### OPPONENT ATTACKING LEFT LANE (columns 1-4, left side of screen):
-- Defend by placing troops in columns 2-3, rows E-F
-- **Examples:** `2E`, `3E`, `2F`, `3F`
+### STEP 1: CHECK FOR THREATS (DO THIS FIRST EVERY TIME!)
+- Look for **enemy troops with RED icons** heading toward your towers
+- If enemy is on LEFT side of screen → YOUR LEFT TOWER IS THREATENED
+- If enemy is on RIGHT side of screen → YOUR RIGHT TOWER IS THREATENED
 
-### OPPONENT ATTACKING RIGHT LANE (columns 5-8, right side of screen):
-- Defend by placing troops in columns 6-7, rows E-F
-- **Examples:** `6E`, `7E`, `6F`, `7F`
+### IF LEFT TOWER THREATENED (enemy on left):
+- **STOP EVERYTHING** - defend LEFT lane immediately
+- Defend DEEP at columns 2-3, rows F-G
+- **Examples:** `2F`, `3F`, `2G`, `3G`
 
-### NO IMMEDIATE THREAT:
-- Play offensive pressure: **Giant** at `3E` or `6E` (at bridge)
-- Support with **Wizard** at `3F` or `6F` (behind Giant)
+### IF RIGHT TOWER THREATENED (enemy on right):
+- **STOP EVERYTHING** - defend RIGHT lane immediately
+- Defend DEEP at columns 6-7, rows F-G
+- **Examples:** `6F`, `7F`, `6G`, `7G`
 
-**CRITICAL RULE:**
-- **Opponent on LEFT (cols 1-4) = Defend LEFT (cols 2-3)**
-- **Opponent on RIGHT (cols 5-8) = Defend RIGHT (cols 6-7)**
-- **REACT to the threat. Don't always play the same side.**
+### NO IMMEDIATE THREAT (BUILD A PUSH):
+- Play **Giant** from BACK at `3G` or `6G` (gives time to build elixir)
+- Support with **Wizard** at `3F` or `6F` (behind Giant as he walks up)
+
+**CRITICAL RULES:**
+- **Tower under attack = DEFEND THAT LANE. Period. No exceptions!**
+- **Never play Tombstone at the bridge (row E) - always row F or G**
+- **Row E (bridge) is for COUNTER-ATTACKS, not regular defense!**
 
 ---
 
@@ -77,23 +84,41 @@ LOOP:
 4. SCAN OPPONENT: Look for SMALL RED ICONS above troops
    - **ENEMY troops have small RED icons above them**
    - **YOUR troops have NO icons above them**
-   - Enemy units on VISUALLY LEFT side (top-left) = Columns 7-8
-   - Enemy units on VISUALLY RIGHT side (top-right) = Columns 5-6
-5. DECIDE DEFENSE:
-   - If opponent on TOP-RIGHT (columns 5-6) → Defend on YOUR BOTTOM-RIGHT (columns 3-4)
-   - If opponent on TOP-LEFT (columns 7-8) → Defend on YOUR BOTTOM-LEFT (columns 1-2)
-   - If no threat → Attack with Giant/Wizard on YOUR BOTTOM-RIGHT (columns 3-4)
+   - Enemy units on LEFT side of screen (top-left area) = attacking YOUR left lane
+   - Enemy units on RIGHT side of screen (top-right area) = attacking YOUR right lane
+5. DECIDE PLACEMENT:
+   - If opponent on LEFT side → Defend at 3F or 3G (left lane, deep)
+   - If opponent on RIGHT side → Defend at 6F or 6G (right lane, deep)
+   - If no threat → Build push: Giant at 3G, then Wizard at 3F behind him
 6. Play card(s): ./scripts/play_card.sh <slot> <grid> <agent_id> <card_name> "<reason>"
-   Example: ./scripts/play_card.sh 2 3F x7k Giant "defending left lane push"
+   Example: ./scripts/play_card.sh 2 3G x7k Giant "building left lane push"
 7. sleep 0.3
 8. REPEAT
 ```
 
 ---
 
+## ELIXIR BAR (IMPORTANT)
+
+**Your current elixir is sandwiched VERTICALLY between the card cost and "Max: 10".**
+
+```
+   [COST]       ← Card cost (in purple drop) - IGNORE
+
+   [ELIXIR]     ← YOUR ELIXIR (read this!)
+
+   Max: 10      ← Maximum elixir - IGNORE
+```
+
+- TOP: Small number in purple drop = card cost (IGNORE)
+- MIDDLE: Large white number = **YOUR CURRENT ELIXIR** (READ THIS)
+- BOTTOM: "Max: 10" text = maximum (IGNORE)
+
+---
+
 ## ELIXIR DECISION - HOW MANY CARDS TO PLAY
 
-**Look at your current elixir (number on pink bar at bottom):**
+**Look at your current elixir (the MIDDLE number, not card costs):**
 
 | Current Elixir | Action | Why |
 |----------------|--------|-----|
@@ -159,16 +184,16 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 **PLACEMENT RULES:**
 - **Troops:** Rows E-H only (your half)
 - **Spells:** Can be placed ANYWHERE (rows A-H)
-- **Left lane attack:** Columns 2-3, Row E
-- **Right lane attack:** Columns 6-7, Row E
+- **Defense:** Rows F-G (gives time to support)
+- **Offense/Counter-attack:** Row E (at bridge, aggressive)
 
 **Examples:**
-- `3E` = Left lane at bridge (aggressive)
-- `6E` = Right lane at bridge (aggressive)
-- `2F` = Left lane, princess tower level
-- `7F` = Right lane, princess tower level
-- `3H` = Left side, deep defense
-- `6H` = Right side, deep defense
+- `3F` = Left lane defense (standard)
+- `6F` = Right lane defense (standard)
+- `2G` = Left lane, deep defense (tanks like Giant start here)
+- `7G` = Right lane, deep defense
+- `3E` = Left bridge (counter-attack only!)
+- `6E` = Right bridge (counter-attack only!)
 
 ---
 
@@ -192,6 +217,25 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 - **Mini P.E.K.K.A on tanks** = Target support troops first if possible.
 
 **COUNTER-PUSH:** If your troops survive defense and are on YOUR side → Deploy Giant IN FRONT of them.
+
+---
+
+## TOWER STATE DETECTION
+
+### Enemy Tower Positions
+- **Enemy LEFT tower** = TOP-LEFT of screen (above your left lane)
+- **Enemy RIGHT tower** = TOP-RIGHT of screen (above your right lane)
+- **Enemy KING tower** = TOP-CENTER (behind their two towers)
+
+### Destroyed Towers
+**A destroyed tower is RUBBLE - NO standing structure, NO HP bar above it.**
+
+Visual cues:
+- Pile of rubble/debris instead of a tower
+- NO numbers or HP bar above that position
+- Troops can WALK THROUGH where the tower was
+
+**If a tower is destroyed, push that lane harder - you're winning!**
 
 ---
 
