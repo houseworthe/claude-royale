@@ -70,7 +70,12 @@ for result_file in "$RESULTS_DIR"/*.json; do
 
     # Score elixir (10 points)
     ELIXIR_STATUS="✗"
-    if [[ "$RESULT_ELIXIR" != "null" && "$LABEL_ELIXIR" != "null" ]]; then
+    if [[ "$RESULT_ELIXIR" == "null" && "$LABEL_ELIXIR" == "null" ]]; then
+        # Non-battle screen, elixir N/A - count as correct
+        SCORE=$((SCORE + 10))
+        ELIXIR_STATUS="n/a"
+        CORRECT_ELIXIR=$((CORRECT_ELIXIR + 1))
+    elif [[ "$RESULT_ELIXIR" != "null" && "$LABEL_ELIXIR" != "null" ]]; then
         DIFF=$((RESULT_ELIXIR - LABEL_ELIXIR))
         DIFF=${DIFF#-}  # Absolute value
         if [[ $DIFF -eq 0 ]]; then
