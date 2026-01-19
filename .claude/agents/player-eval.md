@@ -168,7 +168,9 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 ## Threat Detection
 
-**Enemy troops have RED icons above them. Your troops have NO icons.**
+**Your troops have BLUE health bars. Enemy troops have RED health bars/icons.**
+
+Only report ENEMY troops (red) as threats. Your own troops (blue) are not threats.
 
 - Enemy on LEFT side of screen → YOUR LEFT TOWER threatened
 - Enemy on RIGHT side of screen → YOUR RIGHT TOWER threatened
@@ -177,6 +179,53 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 - `high`: Immediate tower damage incoming (Hog at bridge, tank near tower)
 - `medium`: Threat developing (tank at bridge, ranged unit)
 - `low`: Distant or minor threat
+
+---
+
+## Tower State Detection
+
+### Enemy Tower Positions
+
+**From your perspective (playing as blue/bottom side):**
+- **Enemy LEFT tower** = TOP-LEFT of screen (above your left lane)
+- **Enemy RIGHT tower** = TOP-RIGHT of screen (above your right lane)
+- **Enemy KING tower** = TOP-CENTER (behind their two towers)
+
+When reading enemy tower HP, check the position on screen:
+- HP numbers at TOP-LEFT → enemy_tower_health.left
+- HP numbers at TOP-RIGHT → enemy_tower_health.right
+
+### Reading Tower Health
+Tower HP is displayed ABOVE each tower with this layout:
+- **Yellow number on LEFT** = Tower level (ignore this)
+- **White number** = Current HP
+- **HP bar** = Visual health indicator
+
+**Location:** Look ABOVE the tower structure for these indicators.
+
+### Destroyed Towers (CRITICAL)
+**A destroyed tower is RUBBLE - a pile of debris with NO standing structure.**
+
+Visual cues for destroyed tower:
+- NO tall tower structure visible at that position
+- Pile of rubble/debris on the ground
+- **NO numbers or HP bar above it** (destroyed towers have nothing)
+- The space where the tower was is now empty/rubble
+- **TROOPS WALKING THROUGH the tower position** - troops can walk over destroyed towers. If you see a troop where a tower should be, with troop HP bars (small, attached to unit) instead of tower HP (large, stationary above tower position), the tower is destroyed
+
+**If tower is destroyed, report HP as `0` or `"destroyed"`:**
+```json
+"enemy_tower_health": {
+  "left": 0,        // ← destroyed = rubble, no structure, no HP display
+  "right": "full"
+}
+```
+
+### Common Mistake
+DO NOT hallucinate HP values for destroyed towers:
+- If there's NO structure and NO HP display above that position → tower is destroyed → HP = 0
+- Numbers from nearby troops are NOT tower HP (troop HP bars are smaller, attached to the unit)
+- If you can't find HP numbers above the tower position, it's likely destroyed
 
 ---
 
