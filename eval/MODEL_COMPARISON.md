@@ -12,7 +12,7 @@ We evaluated three Claude models on their ability to perceive game state and mak
 
 | Model | Overall Score | Latency | Verdict |
 |-------|---------------|---------|---------|
-| **Haiku** | **63%** | ~15-20s | **Winner** |
+| **Haiku** | **65%** | ~15-20s | **Winner** |
 | Sonnet 4.5 | 54% | ~20-25s | Overthinks |
 | Opus 4.5 | 56% | ~35-40s | Too slow |
 
@@ -22,9 +22,28 @@ Haiku's simpler, faster decision-making outperforms both Sonnet and Opus. The la
 
 ---
 
+## Latest Results (After Prompt Improvements)
+
+After adding elixir bar instructions and tower state detection to `player-eval.md`:
+
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| **Overall Score** | 62% | **65%** | +3% |
+| **Elixir Reading** | 68% (17/25) | **100% (25/25)** | +32% |
+| Card Choice | 40% (10/25) | 44% (11/25) | +4% |
+| Placement | 40% (10/25) | 44% (11/25) | +4% |
+| Tower Detection (destroyed) | 29% (2/7) | 43% (3/7) | +14% |
+
+**Key improvements:**
+- Elixir bar instructions ("read the MIDDLE number between card cost and Max: 10") fixed perception completely
+- Tower detection instructions helped identify destroyed towers (rubble, no HP bar, troops walking through)
+- Remaining tower detection failures are left/right confusion on busy boards
+
+---
+
 ## Detailed Results
 
-### Overall Accuracy
+### Overall Accuracy (Original Baseline)
 
 | Metric | Haiku | Sonnet | Opus | Best |
 |--------|-------|--------|------|------|
