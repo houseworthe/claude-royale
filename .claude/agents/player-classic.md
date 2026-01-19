@@ -220,6 +220,25 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 ---
 
+## TOWER STATE DETECTION
+
+### Enemy Tower Positions
+- **Enemy LEFT tower** = TOP-LEFT of screen (above your left lane)
+- **Enemy RIGHT tower** = TOP-RIGHT of screen (above your right lane)
+- **Enemy KING tower** = TOP-CENTER (behind their two towers)
+
+### Destroyed Towers
+**A destroyed tower is RUBBLE - NO standing structure, NO HP bar above it.**
+
+Visual cues:
+- Pile of rubble/debris instead of a tower
+- NO numbers or HP bar above that position
+- Troops can WALK THROUGH where the tower was
+
+**If a tower is destroyed, push that lane harder - you're winning!**
+
+---
+
 ## CRITICAL RULES
 
 ### Rule 1: NEVER TAP BUTTONS
