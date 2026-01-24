@@ -74,27 +74,25 @@ Then READ the screenshot file that is returned to see the game state.
 
 ## BATTLE LOOP (REPEAT UNTIL MATCH ENDS)
 
-**Speed is EVERYTHING. You can play 1 OR 2 cards per loop based on elixir.**
+**SPEED IS EVERYTHING. PLAY FAST. NEVER SIT AT HIGH ELIXIR.**
 
 ```
 LOOP:
 1. ./scripts/screenshot.sh then READ the image
-2. Check elixir bar (pink bar at bottom, number shown)
+2. Check elixir (MIDDLE number between card cost and "Max: 10")
 3. Look at hand (4 cards at bottom)
-4. SCAN OPPONENT: Look for SMALL RED ICONS above troops
-   - **ENEMY troops have small RED icons above them**
-   - **YOUR troops have NO icons above them**
-   - Enemy units on LEFT side of screen (top-left area) = attacking YOUR left lane
-   - Enemy units on RIGHT side of screen (top-right area) = attacking YOUR right lane
-5. DECIDE PLACEMENT:
-   - If opponent on LEFT side → Defend at 3F or 3G (left lane, deep)
-   - If opponent on RIGHT side → Defend at 6F or 6G (right lane, deep)
-   - If no threat → Build push: Giant at 3G, then Wizard at 3F behind him
-6. Play card(s): ./scripts/play_card.sh <slot> <grid> <agent_id> <card_name> "<reason>"
-   Example: ./scripts/play_card.sh 2 3G x7k Giant "building left lane push"
-7. sleep 0.3
-8. REPEAT
+4. QUICK SCAN: Enemy troops? Which lane?
+5. PLAY IMMEDIATELY - see elixir rules below
+6. sleep 0.1
+7. REPEAT INSTANTLY
 ```
+
+**ELIXIR RULES - MEMORIZE THIS:**
+- **Elixir 8-10:** ALWAYS play 2 cards back-to-back. No exceptions!
+- **Elixir 5-7:** Play 1-2 cards based on threat
+- **Elixir 1-4:** Play 1 cheap card if needed
+
+**NEVER let elixir sit at 10. That's wasted elixir = losing.**
 
 ---
 
@@ -116,34 +114,34 @@ LOOP:
 
 ---
 
-## ELIXIR DECISION - HOW MANY CARDS TO PLAY
+## ELIXIR DECISION - PLAY FAST!
 
-**Look at your current elixir (the MIDDLE number, not card costs):**
+**CRITICAL: High elixir = play multiple cards immediately!**
 
-| Current Elixir | Action | Why |
-|----------------|--------|-----|
-| 1-4 | Play 1 cheap card (2-3 cost) | Not enough for 2 cards |
-| 5-6 | Play 1 card OR 2 cheap cards | Your choice based on threat |
-| 7-10 | Play 2 cards back-to-back | You have enough, don't waste elixir |
+| Elixir | Action | Cards to Play |
+|--------|--------|---------------|
+| **8-10** | **ALWAYS 2 CARDS!** | Giant+Wizard, Mini P+Fire Spirit, etc. |
+| 5-7 | Play 1-2 cards | Based on threat level |
+| 1-4 | Play 1 cheap card | Fire Spirit, Bomber, or wait |
 
-**When playing 2 cards:**
+**When playing 2 cards (DO THIS FAST):**
 ```bash
-./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>"
-sleep 0.2
-./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
+./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>" && ./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
 ```
+**Chain them with && for speed!**
 
 **Card Costs:**
+- 1 elixir: Fire Spirit
 - 2 elixir: Bomber
 - 3 elixir: Mega Minion, Tombstone, Archers
-- 4 elixir: Mini P.E.K.K.A, Valkyrie
+- 4 elixir: Mini P.E.K.K.A
 - 5 elixir: Giant, Wizard
 
 **Example decisions:**
 - Elixir = 10 → Play Giant(5) + Wizard(5) = 10 total. Full push!
 - Elixir = 8 → Play Giant(5) + Archers(3) = 8 total. Good!
-- Elixir = 6 → Play Valkyrie(4) + Bomber(2) = 6 total. Defense!
-- Elixir = 4 → Play Archers(3) only. Wait for more elixir.
+- Elixir = 5 → Play Mini P.E.K.K.A(4) + Fire Spirit(1) = 5 total. Tank killer + swarm clear!
+- Elixir = 4 → Play Archers(3) + Fire Spirit(1) = 4 total. Or Archers only.
 
 ---
 
@@ -199,22 +197,25 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 ## YOUR CARDS & STRATEGY
 
-| Slot | Card | Cost | Visual | Strengths | Notes |
-|------|------|------|--------|-----------|-------|
-| 1 | Mini P.E.K.K.A | 4 | Dark blue armored figure with visor | Kills high-HP tanks (Giant, Hog, Knight) fast | Place center, 4 tiles from river. Target SUPPORT troops first. |
-| 2 | Bomber | 2 | Character with yellow goggles/rings | Splash damage vs ground swarms | **DEFENSE ONLY** - Never play alone. Can't hit air! |
-| 3 | Mega Minion | 3 | Dark gray/purple flying creature | **DEFENSE ONLY** - stops air units | Single target, never alone for offense. |
-| 4 | Tombstone | 3 | Stone grave with skeleton hand sticking out | Pulls/distracts troops, spawns skeletons | **4-2 placement:** 4 tiles from river, 2 from center (grid: 4F or 5F) |
-| 5 | Archers | 3 | Female character with pink hair | Ranged DPS, light air defense | **DEFENSE ONLY** - Never play alone for offense. |
-| 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Deploy at back to build push, or bridge for quick pressure. |
-| 7 | Valkyrie | 4 | Female with orange hair and axe | Tanky splash damage | **DROP ON TOP** of enemy swarms/support. Defense only. |
-| 8 | Wizard | 5 | Bearded man in blue hoodie/robe | Splash damage, hits AIR + ground | Offense: behind Giant. Defense: splash from range (not on top). Solves Minion Horde. |
+**IMPORTANT: Cards appear in random positions 1-4 in your hand. Identify cards by their VISUAL appearance, then play using the position number (1=leftmost, 4=rightmost).**
+
+| Card | Cost | How to Identify (Visual) | Role & Notes |
+|------|------|--------------------------|--------------|
+| Mega Minion | 3 | Gray/purple flying creature with helmet | **DEFENSE ONLY** - stops air units. Single target. |
+| Bomber | 2 | Skeleton with yellow goggles holding bomb | Splash vs ground swarms. **Can't hit air!** Never alone. |
+| Mini P.E.K.K.A | 4 | Dark blue armored figure with glowing visor | Tank killer (Giant, Hog, Knight). Place center row F. |
+| Tombstone | 3 | Gray gravestone with skeleton hand | Pulls/distracts troops. Place at 4F or 5F (center). |
+| Archers | 3 | Two females with pink hair, bows | Ranged DPS, light air defense. Never alone. |
+| Giant | 5 | Large orange-bearded muscular man | **WIN CONDITION** - Deploy at back (row G/H) or bridge. |
+| Fire Spirit | 1 | Orange fiery creature with glowing eyes | Splash vs swarms (air+ground). **ALWAYS PAIR with another card!** Level 11 = huge advantage! |
+| Wizard | 5 | Bearded man in blue hood/robe | Splash air+ground. Behind Giant on offense. Solves Minion Horde. |
 
 **KEY SYNERGIES:**
 - **Giant + Wizard** = Main win condition. Wizard splashes air AND ground behind Giant.
-- **Valkyrie ON TOP of support** = Drop directly on ranged troops behind enemy tank.
+- **Mini P.E.K.K.A + Fire Spirit** = Tank killer + swarm clear in one 5-elixir combo. Fire Spirit behind Mini P.
+- **Giant + Fire Spirit** = Fire Spirit clears swarms blocking Giant's path.
 - **Tombstone at 4-2** = Place BEFORE enemy crosses river, pulls troops to center.
-- **Mini P.E.K.K.A on tanks** = Target support troops first if possible.
+- **Fire Spirit NEVER ALONE** = Always pair with another card!
 
 **COUNTER-PUSH:** If your troops survive defense and are on YOUR side → Deploy Giant IN FRONT of them.
 
@@ -241,9 +242,11 @@ Visual cues:
 
 ## CRITICAL RULES
 
-### Rule 1: NEVER TAP BUTTONS
-- **NEVER** use `./scripts/tap.sh`
+### Rule 1: NEVER TAP BUTTONS (ZERO EXCEPTIONS)
+- **NEVER** use `./scripts/tap.sh` - you don't even have access to it
 - **ONLY** use `./scripts/screenshot.sh` and `./scripts/play_card.sh`
+- **NEVER** click on "Play Again", "OK", "Battle", or ANY button
+- If you see a button, IGNORE IT. Your job is ONLY to play cards.
 
 ### Rule 2: STOP AT RESULT SCREEN
 **THIS IS CRITICAL - When you see ANY of these, STOP IMMEDIATELY:**
