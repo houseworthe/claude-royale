@@ -22,7 +22,7 @@ model: haiku
 ./scripts/screenshot.sh
 ```
 
-Then READ the screenshot file that is returned to see the game state.
+Then READ the screenshot file that is returned to see the game state. Then READ the screenshot file to see the game state.
 
 **STEP 2: BASED ON WHAT YOU SEE:**
 - **Main menu or matchmaking?** → Wait 2 seconds, screenshot again, repeat until battle starts
@@ -61,9 +61,9 @@ Then READ the screenshot file that is returned to see the game state.
 - Defend DEEP at columns 6-7, rows F-G
 - **Examples:** `6F`, `7F`, `6G`, `7G`
 
-### NO IMMEDIATE THREAT (BUILD A PUSH):
-- Play **Giant** from BACK at `3G` or `6G` (gives time to build elixir)
-- Support with **Wizard** at `3F` or `6F` (behind Giant as he walks up)
+### NO IMMEDIATE THREAT (ATTACK WITH HOG!):
+- Play **Hog Rider** at `2E` (left bridge) or `5E` (right bridge) - ALWAYS AT BRIDGE!
+- Support with **Fire Spirit** right behind, or **Witch** at `2F` or `5F`
 
 **CRITICAL RULES:**
 - **Tower under attack = DEFEND THAT LANE. Period. No exceptions!**
@@ -114,34 +114,61 @@ LOOP:
 
 ---
 
+## CARD IDENTIFICATION (MANDATORY BEFORE EVERY PLAY!)
+
+**You MUST identify every card by its EXACT name before playing. NEVER use generic names.**
+
+**STEP 1: Look at the card slot you want to play**
+**STEP 2: Match the visual to ONE of these 8 exact names:**
+
+| Visual | EXACT Name to Use |
+|--------|-------------------|
+| Dark blue armor, single blue eye | `Mini P.E.K.K.A` |
+| Skeleton with yellow goggles, holding bomb | `Bomber` |
+| Helmet with two blue eyes, two blue horns | `Mega Minion` |
+| Gray gravestone with skeleton hand | `Tombstone` |
+| Girl with pink hair shooting a bow | `Archers` |
+| **Brown laughing man, mohawk, dark beard** | `Hog Rider` |
+| Orange fiery creature with glowing eyes | `Fire Spirit` |
+| White woman, purple helmet, pink eyes | `Witch` |
+
+**BANNED CARD NAMES (NEVER USE THESE):**
+- ❌ "Card 1", "Card 2", "Slot 1", "Slot 2"
+- ❌ "tank", "defense", "support", "opening card"
+- ❌ "ranged unit", "splash damage", "tank killer"
+
+**If you cannot identify the card, use `Unknown` - but this should be rare.**
+
+---
+
 ## ELIXIR DECISION - PLAY FAST!
 
 **CRITICAL: High elixir = play multiple cards immediately!**
 
 | Elixir | Action | Cards to Play |
 |--------|--------|---------------|
-| **8-10** | **ALWAYS 2 CARDS!** | Giant+Wizard, Mini P+Fire Spirit, etc. |
+| **8-10** | **ALWAYS 2 CARDS!** | Hog Rider+Witch, Mini P.E.K.K.A+Fire Spirit, etc. |
 | 5-7 | Play 1-2 cards | Based on threat level |
 | 1-4 | Play 1 cheap card | Fire Spirit, Bomber, or wait |
 
 **When playing 2 cards (DO THIS FAST):**
 ```bash
-./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>" && ./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
+./scripts/play_card.sh 2 2E k7m "Hog Rider" "Counter-attack left bridge" && ./scripts/play_card.sh 4 2F k7m "Fire Spirit" "Support Hog with swarm clear"
 ```
 **Chain them with && for speed!**
 
 **Card Costs:**
 - 1 elixir: Fire Spirit
 - 2 elixir: Bomber
-- 3 elixir: Mega Minion, Tombstone, Archers
-- 4 elixir: Mini P.E.K.K.A
-- 5 elixir: Giant, Wizard
+- 3 elixir: Tombstone, Archers
+- 4 elixir: Mini P.E.K.K.A, Mega Minion, **Hog Rider**
+- 5 elixir: Witch
 
 **Example decisions:**
-- Elixir = 10 → Play Giant(5) + Wizard(5) = 10 total. Full push!
-- Elixir = 8 → Play Giant(5) + Archers(3) = 8 total. Good!
-- Elixir = 5 → Play Mini P.E.K.K.A(4) + Fire Spirit(1) = 5 total. Tank killer + swarm clear!
-- Elixir = 4 → Play Archers(3) + Fire Spirit(1) = 4 total. Or Archers only.
+- Elixir = 10 → Play Hog(4) at 2E + Witch(5) at 2F + Fire Spirit(1) = 10 total. Full push!
+- Elixir = 8 → Play Hog(4) at 5E + Mini P.E.K.K.A(4) = 8 total. Or Hog + Archers + Fire Spirit!
+- Elixir = 5 → Play Hog(4) at 2E + Fire Spirit(1) = 5 total. Quick chip damage!
+- Elixir = 4 → Play Hog(4) at 2E or 5E alone. Or Archers(3) + Fire Spirit(1).
 
 ---
 
@@ -201,23 +228,43 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 | Card | Cost | How to Identify (Visual) | Role & Notes |
 |------|------|--------------------------|--------------|
-| Mega Minion | 3 | Gray/purple flying creature with helmet | **DEFENSE ONLY** - stops air units. Single target. |
+| Mini P.E.K.K.A | 4 | Dark blue armor, single blue eye | Tank killer (Giant, Hog, Knight). Place center row F. |
 | Bomber | 2 | Skeleton with yellow goggles holding bomb | Splash vs ground swarms. **Can't hit air!** Never alone. |
-| Mini P.E.K.K.A | 4 | Dark blue armored figure with glowing visor | Tank killer (Giant, Hog, Knight). Place center row F. |
+| Mega Minion | 4 | Helmet with two blue eyes, two blue horns | **DEFENSE ONLY** - stops air units. Single target. |
 | Tombstone | 3 | Gray gravestone with skeleton hand | Pulls/distracts troops. Place at 4F or 5F (center). |
-| Archers | 3 | Two females with pink hair, bows | Ranged DPS, light air defense. Never alone. |
-| Giant | 5 | Large orange-bearded muscular man | **WIN CONDITION** - Deploy at back (row G/H) or bridge. |
-| Fire Spirit | 1 | Orange fiery creature with glowing eyes | Splash vs swarms (air+ground). **ALWAYS PAIR with another card!** Level 11 = huge advantage! |
-| Wizard | 5 | Bearded man in blue hood/robe | Splash air+ground. Behind Giant on offense. Solves Minion Horde. |
+| Archers | 3 | Girl with pink hair shooting a bow | Ranged DPS, light air defense. Never alone. |
+| **Hog Rider** | **4** | **Brown laughing man, mohawk, dark beard** | **WIN CONDITION - ALWAYS PLAY AT 2E OR 5E. NO EXCEPTIONS!** |
+| Fire Spirit | 1 | Orange fiery creature with glowing eyes | Splash vs swarms (air+ground). Level 11 = huge advantage! |
+| Witch | 5 | White woman, purple helmet, pink eyes | Splash air+ground, spawns skeletons. Behind Hog on offense. |
+
+---
+
+## HOG RIDER RULE (CRITICAL - MEMORIZE THIS!)
+
+**THE HOG RIDER IS A BROWN LAUGHING MAN WITH A MOHAWK AND DARK BEARD.**
+
+**HOG RIDER PLACEMENT: ALWAYS `2E` (left bridge) OR `5E` (right bridge). NO EXCEPTIONS!**
+
+- If you see Hog Rider in your hand → Play it at `2E` or `5E` IMMEDIATELY
+- NEVER play Hog at rows F, G, or H - that wastes its speed
+- NEVER play Hog at columns 1, 3, 4, 6, 7, 8 - only columns 2 or 5
+- Pick the lane with the weaker tower or less defense
+
+**Hog + Support Combos:**
+- Hog alone at 2E or 5E = 4 elixir chip damage
+- Hog at 2E + Fire Spirit at 2E = 5 elixir, clears swarms
+- Hog at 5E + Witch at 5F = 9 elixir big push
+
+---
 
 **KEY SYNERGIES:**
-- **Giant + Wizard** = Main win condition. Wizard splashes air AND ground behind Giant.
-- **Mini P.E.K.K.A + Fire Spirit** = Tank killer + swarm clear in one 5-elixir combo. Fire Spirit behind Mini P.
-- **Giant + Fire Spirit** = Fire Spirit clears swarms blocking Giant's path.
-- **Tombstone at 4-2** = Place BEFORE enemy crosses river, pulls troops to center.
-- **Fire Spirit NEVER ALONE** = Always pair with another card!
+- **Hog Rider + Fire Spirit** = Main combo. Hog tanks, Fire Spirit clears swarms.
+- **Hog Rider + Witch** = Big push. Witch splashes behind Hog.
+- **Mini P.E.K.K.A + Fire Spirit** = Tank killer + swarm clear in one 5-elixir combo.
+- **Tombstone at 4F or 5F** = Place BEFORE enemy crosses river, pulls troops to center.
+- **Defend → Counter with Hog** = After defense, drop Hog at bridge while opponent is low on elixir.
 
-**COUNTER-PUSH:** If your troops survive defense and are on YOUR side → Deploy Giant IN FRONT of them.
+**COUNTER-PUSH:** After defending, drop Hog Rider at 2E or 5E immediately!
 
 ---
 

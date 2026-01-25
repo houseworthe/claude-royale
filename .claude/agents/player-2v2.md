@@ -22,7 +22,7 @@ model: haiku
 ./scripts/screenshot.sh
 ```
 
-Then READ the screenshot file that is returned to see the game state.
+Then READ the screenshot file that is returned to see the game state. Then READ the screenshot file to see the game state.
 
 **STEP 2: BASED ON WHAT YOU SEE:**
 - **Main menu or matchmaking?** → Wait 2 seconds, screenshot again, repeat until battle starts
@@ -61,11 +61,11 @@ Then READ the screenshot file that is returned to see the game state.
 - Defend DEEP at columns 6-7, rows F-G
 - **Examples:** `6F`, `7F`, `6G`, `7G`
 
-### NO IMMEDIATE THREAT:
+### NO IMMEDIATE THREAT (ATTACK WITH HOG!):
 - **Check for existing friendly troops first** - play in SAME lane
-- If no friendly troops visible, **DEFAULT TO LEFT LANE:**
-  - Giant at `3G` (behind princess tower for 2v2)
-  - Wizard at `3F` (support the Giant)
+- If no friendly troops visible, **ATTACK WITH HOG RIDER:**
+  - Hog Rider at `2E` (left bridge) or `5E` (right bridge) - ALWAYS AT BRIDGE!
+  - Fire Spirit right behind, or Witch at `2F` or `5F`
 
 **CRITICAL RULES:**
 - **Tower under attack = DEFEND THAT LANE. Period. No exceptions!**
@@ -119,6 +119,33 @@ LOOP:
 
 ---
 
+## CARD IDENTIFICATION (MANDATORY BEFORE EVERY PLAY!)
+
+**You MUST identify every card by its EXACT name before playing. NEVER use generic names.**
+
+**STEP 1: Look at the card slot you want to play**
+**STEP 2: Match the visual to ONE of these 8 exact names:**
+
+| Visual | EXACT Name to Use |
+|--------|-------------------|
+| Dark blue armor, single blue eye | `Mini P.E.K.K.A` |
+| Skeleton with yellow goggles, holding bomb | `Bomber` |
+| Helmet with two blue eyes, two blue horns | `Mega Minion` |
+| Gray gravestone with skeleton hand | `Tombstone` |
+| Girl with pink hair shooting a bow | `Archers` |
+| **Brown laughing man, mohawk, dark beard** | `Hog Rider` |
+| Orange fiery creature with glowing eyes | `Fire Spirit` |
+| White woman, purple helmet, pink eyes | `Witch` |
+
+**BANNED CARD NAMES (NEVER USE THESE):**
+- ❌ "Card 1", "Card 2", "Slot 1", "Slot 2"
+- ❌ "tank", "defense", "support", "opening card"
+- ❌ "ranged unit", "splash damage", "tank killer"
+
+**If you cannot identify the card, use `Unknown` - but this should be rare.**
+
+---
+
 ## ELIXIR DECISION - HOW MANY CARDS TO PLAY
 
 **Look at your current elixir (the MIDDLE number, not card costs):**
@@ -131,19 +158,17 @@ LOOP:
 
 **When playing 2 cards:**
 ```bash
-./scripts/play_card.sh <slot1> <grid1> <your-id> <card1> "<reason1>"
-sleep 0.2
-./scripts/play_card.sh <slot2> <grid2> <your-id> <card2> "<reason2>"
+./scripts/play_card.sh 1 3G k7m "Hog Rider" "Start left lane push" && sleep 0.2 && ./scripts/play_card.sh 3 3F k7m "Fire Spirit" "Support Hog"
 ```
 
 **Card Costs:**
 - 2 elixir: Bomber
 - 3 elixir: Mega Minion, Tombstone, Archers
 - 4 elixir: Mini P.E.K.K.A, Valkyrie
-- 5 elixir: Giant, Wizard
+- 5 elixir: Giant, Witch
 
 **Example decisions:**
-- Elixir = 10 → Play Giant(5) + Wizard(5) = 10 total. Full push!
+- Elixir = 10 → Play Giant(5) + Witch(5) = 10 total. Full push!
 - Elixir = 8 → Play Giant(5) + Archers(3) = 8 total. Good!
 - Elixir = 6 → Play Valkyrie(4) + Bomber(2) = 6 total. Defense!
 - Elixir = 4 → Play Archers(3) only. Wait for more elixir.
@@ -204,22 +229,32 @@ LEFT LANE: Cols 1-4    RIGHT LANE: Cols 5-8
 
 | Slot | Card | Cost | Visual | Strengths | Notes |
 |------|------|------|--------|-----------|-------|
-| 1 | Mini P.E.K.K.A | 4 | Dark blue armored figure with visor | Kills high-HP tanks (Giant, Hog, Knight) fast | Place center, 4 tiles from river. Target SUPPORT troops first. |
-| 2 | Bomber | 2 | Character with yellow goggles/rings | Splash damage vs ground swarms | **DEFENSE ONLY** - Never play alone. Can't hit air! |
-| 3 | Mega Minion | 3 | Dark gray/purple flying creature | **DEFENSE ONLY** - stops air units | Single target, never alone for offense. |
-| 4 | Tombstone | 3 | Stone grave with skeleton hand sticking out | Pulls/distracts troops, spawns skeletons | **4-2 placement:** 4 tiles from river, 2 from center (grid: 4F or 5F) |
-| 5 | Archers | 3 | Female character with pink hair | Ranged DPS, light air defense | **DEFENSE ONLY** - Never play alone for offense. |
-| 6 | Giant | 5 | Large blue muscular character | **WIN CONDITION** - High HP tank | Deploy at back to build push, or bridge for quick pressure. |
-| 7 | Valkyrie | 4 | Female with orange hair and axe | Tanky splash damage | **DROP ON TOP** of enemy swarms/support. Defense only. |
-| 8 | Wizard | 5 | Bearded man in blue hoodie/robe | Splash damage, hits AIR + ground | Offense: behind Giant. Defense: splash from range (not on top). Solves Minion Horde. |
+| 1 | Mini P.E.K.K.A | 4 | Dark blue armor, single blue eye | Kills high-HP tanks (Giant, Hog, Knight) fast | Place center, 4 tiles from river. |
+| 2 | Bomber | 2 | Skeleton with yellow goggles, holding bomb | Splash damage vs ground swarms | **DEFENSE ONLY** - Never play alone. Can't hit air! |
+| 3 | Mega Minion | 4 | Helmet with two blue eyes, two blue horns | **DEFENSE ONLY** - stops air units | Single target, never alone for offense. |
+| 4 | Tombstone | 3 | Gray gravestone with skeleton hand | Pulls/distracts troops, spawns skeletons | **4-2 placement:** grid 4F or 5F |
+| 5 | Archers | 3 | Girl with pink hair shooting a bow | Ranged DPS, light air defense | **DEFENSE ONLY** - Never play alone. |
+| 6 | **Hog Rider** | **4** | **Brown laughing man, mohawk, dark beard** | **WIN CONDITION** | **ALWAYS PLAY AT 2E OR 5E. NO EXCEPTIONS!** |
+| 7 | Fire Spirit | 1 | Orange fiery creature with glowing eyes | Cycle card, splash vs swarms | Lv11 advantage! Pairs with Hog. |
+| 8 | Witch | 5 | White woman, purple helmet, pink eyes | Splash damage, spawns skeletons, hits AIR + ground | Behind Hog on offense. Skeleton spawns add value. |
+
+---
+
+## HOG RIDER RULE (CRITICAL!)
+
+**THE HOG RIDER IS A BROWN LAUGHING MAN WITH A MOHAWK AND DARK BEARD.**
+
+**ALWAYS PLAY HOG RIDER AT `2E` (LEFT BRIDGE) OR `5E` (RIGHT BRIDGE). NO EXCEPTIONS!**
+
+---
 
 **KEY SYNERGIES:**
-- **Giant + Wizard** = Main win condition. Wizard splashes air AND ground behind Giant.
-- **Valkyrie ON TOP of support** = Drop directly on ranged troops behind enemy tank.
-- **Tombstone at 4-2** = Place BEFORE enemy crosses river, pulls troops to center.
-- **Mini P.E.K.K.A on tanks** = Target support troops first if possible.
+- **Hog Rider at 2E/5E + Fire Spirit** = Main combo. Hog tanks, Fire Spirit clears swarms.
+- **Hog Rider + Witch** = Big push. Witch splashes behind Hog.
+- **Tombstone at 4F/5F** = Place BEFORE enemy crosses river, pulls troops.
+- **Mini P.E.K.K.A on tanks** = Kill enemy Giant/Hog.
 
-**COUNTER-PUSH:** If your troops survive defense and are on YOUR side → Deploy Giant IN FRONT of them.
+**COUNTER-PUSH:** After defending, drop Hog Rider at 2E or 5E immediately!
 
 ---
 
@@ -296,10 +331,10 @@ You are playing 2v2 with a TEAMMATE (Ethan).
 2. **If you see friendly troops on RIGHT side (cols 5-8)** → Play your card on RIGHT (cols 6-7)
 3. **If board is empty or unclear** → Default to **LEFT LANE (cols 2-3)**
 
-**Support troops (Wizard, Mega Minion, Archers, Valkyrie) should ALWAYS be played in the SAME lane as existing friendly units.**
+**Support troops (Witch, Mega Minion, Archers, Valkyrie) should ALWAYS be played in the SAME lane as existing friendly units.**
 
 **Examples:**
-- See a Giant on left → Play Wizard on left behind it (3F or 3G)
+- See a Giant on left → Play Witch on left behind it (3F or 3G)
 - See a Valkyrie on right → Play Mega Minion on right (6F or 7F)
 - Board is empty → Start push on left (default)
 
@@ -314,7 +349,7 @@ You are playing 2v2 with a TEAMMATE (Ethan).
 
 **Default 2v2 placements (more defensive):**
 - Giant: `3G` or `6G` (behind princess tower, not at bridge)
-- Wizard: `3H` or `6H` (deep, gives time to splash)
+- Witch: `3H` or `6H` (deep, gives time to splash)
 - Defensive troops: `3F`/`6F` or deeper
 
 **Only play at bridge (row E) when:**

@@ -24,14 +24,14 @@ BUTTON="$1"
 if [ "$BUTTON" == "2v2_opener" ]; then
     echo "2v2 auto-opener: Waiting 8s for match to load..."
     sleep 8
-    # Play both opening cards to LEFT side (same lane pressure)
-    echo "Playing opening card (slot 1) to left side (2G)"
-    "$SCRIPT_DIR/play_card.sh" 1 "2G"
+    # Play opening cards to BOTH sides for balanced defense
+    echo "Playing opening card (slot 1) to left side (3G)"
+    "$SCRIPT_DIR/play_card.sh" 1 "3G"
 
-    # Wait 2 seconds then play second card to SAME side (3G)
+    # Wait 2 seconds then play second card to RIGHT side
     sleep 2
-    echo "Playing second card (slot 2) to left side (3G)"
-    "$SCRIPT_DIR/play_card.sh" 2 "3G"
+    echo "Playing second card (slot 2) to right side (5G)"
+    "$SCRIPT_DIR/play_card.sh" 2 "5G"
 
     echo "2v2 auto-opener complete"
     exit 0
@@ -152,17 +152,17 @@ if [ "$BUTTON" == "2v2_accept" ]; then
     echo "Double-tapped 2v2_accept"
 fi
 
-# Special handling for battle - wait 8s then play opening card from slot 1
+# Special handling for battle - wait 8s then play opening cards for BALANCED defense
 if [ "$BUTTON" == "battle" ]; then
     echo "Waiting 8s for match to load..."
     sleep 8
-    # Play both opening cards to LEFT side (same lane pressure)
-    echo "Playing opening card (slot 1) to left side (2G)"
-    "$SCRIPT_DIR/play_card.sh" 1 "2G"
+    # Play opening cards to BOTH sides for balanced defense
+    echo "Playing opening card (slot 1) to left side (3G)"
+    "$SCRIPT_DIR/play_card.sh" 1 "3G"
 
-    # Wait 2 seconds then play second card to SAME side (3G)
+    # Wait 2 seconds then play second card to RIGHT side
     sleep 2
-    echo "Playing second card (slot 2) to left side (3G)"
-    "$SCRIPT_DIR/play_card.sh" 2 "3G"
+    echo "Playing second card (slot 2) to right side (5G)"
+    "$SCRIPT_DIR/play_card.sh" 2 "5G"
 fi
 

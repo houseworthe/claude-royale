@@ -1,20 +1,82 @@
 # Current Status
 
-**Last Updated:** January 24, 2026 - Session 40 COMPLETE - BUILDER'S WORKSHOP ACHIEVED!
+**Last Updated:** January 25, 2026 - Session 43 END - Battle Pass COMPLETED
 
 ---
 
 ## Current State
 
-- **Trophies:** 1319
-- **King Tower Level:** 19
-- **Gold:** ~2,919
-- **Gems:** ~20
-- **Arena:** Builder's Workshop (Arena 6)
-- **Game State:** GOAL ACHIEVED!
+- **Trophies:** 1723 (ceiling around ~1770, skill gap emerging)
+- **King Tower Level:** 21
+- **Gold:** ~2141
+- **Gems:** ~188
+- **Arena:** P.E.K.K.A's Playhouse (Arena 6)
+- **Game State:** Session 43 COMPLETE - Battle Pass finished!
 
-**Deck (3.3 avg elixir):**
-Mini P.E.K.K.A (Lv8), Bomber, Mega Minion, Tombstone, Archers, Giant, Fire Spirit (Lv11!), Wizard
+**Deck (3.1 avg elixir) - HOG RIDER CYCLE:**
+Mini P.E.K.K.A (Lv8), Bomber (Lv8), Mega Minion (Lv8), Tombstone (Lv9), Archers (Lv8), Hog Rider (Lv9), Fire Spirit (Lv11), Witch (Lv8)
+
+**Session 43 Summary:**
+- Started: 1783 trophies
+- Peaked: ~1813 trophies
+- Ended: 1723 trophies (-60 net)
+- Battle Pass: COMPLETED for the season
+- Skill ceiling identified: ~1770 trophies
+
+**Key Changes This Session:**
+- Balanced opener: Card 1 to 3G (left), Card 2 to 5G (right)
+- Reduced spawn delay from 3s to 1s
+- Agents showed ability to push into enemy territory late game
+
+---
+
+## Session 42 (Jan 24) - P.E.K.K.A'S PLAYHOUSE ACHIEVED!!!
+
+**Status:** IN PROGRESS - Started at 1452, currently at 1602 (+150), peaked at 1690!
+
+**Early Session - The Promotion Run:**
+- Started at 1452 trophies after context resumed from Session 41
+- INCREDIBLE 5-win streak to clinch P.E.K.K.A's Playhouse!
+- Match 1: vs Drluckyreaper (1452) - WIN +30, 3-crown
+- Match 2: vs PlatSamurai (1482) - WIN +30, 3-crown
+- Match 3: vs Kirito (1512) - WIN +30, 3-crown
+- Match 4: vs Neo53 (1542) - WIN +30, 3-crown
+- Match 5: vs Sonic33 (1572) - WIN +32, 3-crown - PROMOTION MATCH!
+
+**Extended Grinding (38+ matches total):**
+- Initial push from 1604 to peak of 1690
+- Hit losing streak, dropped to 1600 floor
+- Bounced back with 4-WIN STREAK to NEW PERSONAL BEST 1722!
+- Notable wins: vs Alphonse¥, Rivendell65, OGbrownie, Bean89, fchkl (all 3-crowns)
+- Got over 3000 gold from chest rewards
+- Currently at 1632 after some tough matches
+- Arena floor protection at 1600 still active
+
+---
+
+## Session 41 (Jan 24) - MAJOR PROGRESS
+
+**Status:** Strong session! Started at 1319, peaked at 1570, ended ~1452 (+133 net)
+
+**Session Highlights:**
+- Started at 1319 trophies (Builder's Workshop), goal was P.E.K.K.A's Playhouse (1600)
+- Switched from Giant Beatdown to Hog Rider Cycle deck mid-session
+- Hog Rider upgraded to Level 7
+- Hot streaks alternating with losing streaks throughout
+- Consistent 3-crown victories when ahead
+- Hit rough patch mid-session (multiple losses in a row) but bounced back
+
+**Deck Change:**
+- Replaced Giant with Hog Rider (unlocked at Level 6, upgraded to Level 7)
+- New strategy: Fast Hog Cycle - ALWAYS play Hog at bridge (2E or 5E)
+- Average elixir dropped from 3.3 to 3.1 - faster cycle
+- Updated all agent documentation with strict Hog placement rules
+
+**Key Observations:**
+- Hog Rider cycle deck is faster and more consistent than Giant beatdown
+- 3-agent system working well with Hog strategy
+- Opponents at 1500+ range are significantly stronger
+- Many matches going to overtime at this trophy level
 
 ---
 
@@ -60,7 +122,10 @@ Mini P.E.K.K.A (Lv8), Bomber, Mega Minion, Tombstone, Archers, Giant, Fire Spiri
 
 | Milestone | Date | Notes |
 |-----------|------|-------|
-| **1300 Trophies (Builder's Workshop)** | **Jan 24, 2026** | **Beat StormVictor 3-1** |
+| **1722 Trophies (NEW PERSONAL BEST!)** | **Jan 25, 2026** | **4-win streak pushed to new heights!** |
+| 1690 Trophies (Previous Best) | Jan 24, 2026 | Peak during early Session 42 |
+| **P.E.K.K.A's Playhouse (1600+)** | **Jan 24, 2026** | **5-win streak to Arena 6!** |
+| 1300 Trophies (Builder's Workshop) | Jan 24, 2026 | Beat StormVictor 3-1 |
 | 1000 Trophies | Dec 8, 2025 | 2-match perfect session |
 | Arena 5 (Spell Valley) | Dec 8, 2025 | Unlocked at 971 trophies |
 | Arena 4 | Earlier | Progress milestone |
@@ -105,6 +170,29 @@ Mini P.E.K.K.A (Lv8), Bomber, Mega Minion, Tombstone, Archers, Giant, Fire Spiri
 
 ## Handoff Notes
 
+**Session 42 - P.E.K.K.A'S PLAYHOUSE ACHIEVED!!!**
+
+Started at 1452 trophies (resuming from Session 41 context) with goal to reach 1600.
+
+**The Journey:**
+- Perfect 5-0 run to clinch P.E.K.K.A's Playhouse
+- Four consecutive 3-crown victories (vs Drluckyreaper, PlatSamurai, Kirito, Neo53)
+- Final promotion match vs Sonic33 (1600 trophy opponent) - another 3-crown!
+- Total: +152 trophies in 5 matches
+
+**What Worked:**
+- Hog Rider cycle deck is dominating at this trophy range
+- 3-agent system executing flawlessly
+- 1-minute polling intervals are perfect
+- Agents playing aggressively with consistent 3-crowns
+
+**Next Goals:**
+- Explore P.E.K.K.A's Playhouse (Arena 6)
+- Push toward 2000 trophies (Hog Mountain / Arena 7)
+- Continue the winning streak!
+
+---
+
 **Session 40 - BUILDER'S WORKSHOP ACHIEVED**
 
 Started at 1133 trophies with the goal to reach 1300 (Builder's Workshop).
@@ -137,7 +225,9 @@ Started at 1133 trophies with the goal to reach 1300 (Builder's Workshop).
 
 | Session | Date | Start | End | Net | Notes |
 |---------|------|-------|-----|-----|-------|
-| **40** | **Jan 24** | **1133** | **1319** | **+186** | **BUILDER'S WORKSHOP!** |
+| **42** | **Jan 24-25** | **1452** | **1632** | **+180** | **P.E.K.K.A'S PLAYHOUSE! Peak 1722!** |
+| 41 | Jan 24 | 1319 | 1452 | +133 | Peaked 1570, Hog Rider deck |
+| 40 | Jan 24 | 1133 | 1319 | +186 | Builder's Workshop |
 | 39 | Jan 24 | 1000 | 1133 | +133 | Fire Spirit deck, faster agents |
 | 38 | Jan 10 | 1000 | 1000 | 0 | 4W-9L-1D, simultaneous 3-crown draw |
 | 37 | Dec 8 | 1050 | 1003 | -47 | Auto-opener test |

@@ -67,18 +67,25 @@ All four start at t=0 simultaneously. No waiting between them.
 
 **Exact Implementation:**
 ```
-MESSAGE 1 - ALL IN PARALLEL:
+MESSAGE 1:
   Bash (background): ./scripts/tap.sh battle
+
+MESSAGE 2 (AFTER 3 SECOND DELAY):
+  sleep 3
+
+MESSAGE 3 - SPAWN AGENTS IN PARALLEL:
   Task (background): player-classic subagent
   Task (background): player-classic subagent
   Task (background): player-classic subagent
 
-THEN:
-  sleep 180 (3 minutes - typical match length)
+THEN LOOP (60 seconds at a time):
+  sleep 60
   Screenshot to check game state
   If result screen → proceed to result handling
-  If still in battle → sleep 60, screenshot again
+  If still in battle → repeat loop
 ```
+
+**CRITICAL: Wait 3 seconds after tapping battle BEFORE spawning agents.** This ensures the result screen is fully dismissed and the game has transitioned to matchmaking/battle.
 
 **CRITICAL: DO NOT USE TaskOutput** - Agent transcripts consume massive tokens due to a known bug. Commander verifies result by taking screenshots and checking trophy count.
 
@@ -148,9 +155,9 @@ Row H│   │   │   │   │   │   │   │   │ half
 ### Game Phases
 | Phase | Time | Strategy |
 |-------|------|----------|
-| Early | 3:00-1:00 | Defend, establish board presence |
-| Double Elixir | 1:00-0:00 | Aggressive Giant + Wizard push |
-| Overtime | +1:00 | All-in, win the tower race |
+| Early | 3:00-1:00 | Defend, chip with Hog Rider |
+| Double Elixir | 1:00-0:00 | Spam Hog Rider at bridge! |
+| Overtime | +1:00 | All-in Hog pushes, win the tower race |
 
 ---
 
@@ -170,13 +177,17 @@ Always use `result_ok` to dismiss (not generic `ok`).
 
 See `memory/DECK.md` for full card details.
 
-**Current Deck:** Mini P.E.K.K.A, Bomber, Mega Minion, Tombstone, Archers, Giant, Valkyrie, Wizard (3.6 avg elixir)
+**Current Deck:** Mini P.E.K.K.A, Bomber, Mega Minion, Tombstone, Archers, **Hog Rider**, Fire Spirit, Wizard (3.1 avg elixir)
 
-**Win Condition:** Giant + Wizard beatdown
-- Early: Defend with Tombstone, Valkyrie, Mini P.E.K.K.A on tanks
-- Double Elixir: Giant at bridge + Wizard behind (splash + air defense)
-- Mini P.E.K.K.A: Use on tanks (Giant, Hog, Knight) - NOT on swarms
-- Wizard: Solves Minion Horde problem, survives Fireball
+**Win Condition:** Hog Rider cycle
+
+**CRITICAL HOG RIDER RULE: ALWAYS PLAY AT `2E` (LEFT BRIDGE) OR `5E` (RIGHT BRIDGE). NO EXCEPTIONS!**
+
+- **Hog Rider:** Brown laughing man with mohawk - ALWAYS at 2E or 5E!
+- **Fire Spirit:** Cycle card, clears swarms, pairs with Hog
+- **Defend then counter:** Use Mini P.E.K.K.A/Tombstone to defend, then drop Hog at bridge
+- **Wizard:** Splash support behind Hog, solves Minion Horde
+- **Fast cycle:** 3.1 elixir avg means you get back to Hog quickly
 
 ---
 
